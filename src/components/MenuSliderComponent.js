@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide} from "swiper/react";
 import SwiperCore, {Autoplay, Navigation, Pagination, EffectFade} from 'swiper';
 import {multilanguage, changeLanguage, loadLanguages} from "redux-multilanguage";
 import {connect} from "react-redux";
+import { Link } from 'react-router-dom';
 import "swiper/swiper.min.css";
 import "swiper/components/effect-fade/effect-fade.min.css"
 import "swiper/components/navigation/navigation.min.css"
@@ -24,31 +25,49 @@ class MenuSliderComponent extends React.Component{
                             <div id="box__category-all-layer" className="box__category-all-layer js-ussr-component">
                                 <ul className="list__category-all">
                                     <li className="list-item__1depth">
-                                        <span className="link__1depth-item">{strings["menu_skinCare"]}</span>
+                                        <Link to="/category/1">
+                                            <span className="link__1depth-item">{strings["menu_skinCare"]}</span>
+                                        </Link>
                                     </li>
                                     <li className="list-item__1depth">
-                                        <span className="link__1depth-item">{strings["menu_perfume"]}</span>
+                                        <Link to="/category/2">
+                                            <span className="link__1depth-item">{strings["menu_perfume"]}</span>
+                                        </Link>
                                     </li>
                                     <li className="list-item__1depth">
-                                        <span className="link__1depth-item">{strings["menu_beautyAccessories"]}</span>
+                                        <Link to="/category/3">
+                                            <span className="link__1depth-item">{strings["menu_beautyAccessories"]}</span>
+                                        </Link>
                                     </li>
                                     <li className="list-item__1depth">
-                                        <span className="link__1depth-item">{strings["menu_nailCare"]}</span>
+                                        <Link to="/category/4">
+                                            <span className="link__1depth-item">{strings["menu_nailCare"]}</span>
+                                        </Link>
                                     </li>
                                     <li className="list-item__1depth">
-                                        <span className="link__1depth-item">{strings["menu_colorMakeup"]}</span>
+                                        <Link to="/category/5">
+                                            <span className="link__1depth-item">{strings["menu_colorMakeup"]}</span>
+                                        </Link>
                                     </li>
                                     <li className="list-item__1depth">
-                                        <span className="link__1depth-item">{strings["menu_cleansingPeeling"]}</span>
+                                        <Link to="/category/6">
+                                            <span className="link__1depth-item">{strings["menu_cleansingPeeling"]}</span>
+                                        </Link>
                                     </li>
                                     <li className="list-item__1depth">
-                                        <span className="link__1depth-item">{strings["menu_mask"]}</span>
+                                        <Link to="/category/7">
+                                            <span className="link__1depth-item">{strings["menu_mask"]}</span>
+                                        </Link>
                                     </li>
                                     <li className="list-item__1depth">
-                                        <span className="link__1depth-item">{strings["menu_menCosmetics"]}</span>
+                                        <Link to="/category/8">
+                                            <span className="link__1depth-item">{strings["menu_menCosmetics"]}</span>
+                                        </Link>
                                     </li>
                                     <li className="list-item__1depth">
-                                        <span className="link__1depth-item">{strings["menu_sunCare"]}</span>
+                                        <Link to="/category/9">
+                                            <span className="link__1depth-item">{strings["menu_sunCare"]}</span>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>

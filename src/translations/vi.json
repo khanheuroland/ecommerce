@@ -5,6 +5,8 @@
     "new": "NEW",
     "hot": "HOT",
     "freeship": "Freeship",
+    "view_all": "Xem tât cả",
+    "tel": "Điện thoại",
     "searchPlaceHolder": "Vui lòng nhập từ khoá để tìm kiếm.",
     "allCategories": "Danh Mục",
     "best": "Tốt nhất",
@@ -56,5 +58,15 @@
     "signup_fullname_validate": "Vui lòng nhập họ và tên hợp lệ",
     "signup_email_validate": "Vui lòng nhập Email đúng định dạng",
     "signup_phone_validate": "Vui lòng nhập số điện thoại hợp lệ",
-    "signup_password_validate": "Vui lòng nhập mật khẩu hợp lệ (nhiều hơn 6 ký tự)"
+    "signup_password_validate": "Vui lòng nhập mật khẩu hợp lệ (nhiều hơn 6 ký tự)",
+    "footer_about": "Giới thiệu về Youngsante",
+    "footer_user_agreement": "Thoả thuận người dùng",
+    "footer_privacy": "Chính sách bảo mật",
+    "footer_site_map": "Sơ đồ trang",
+    "footer_customer_service": "Dịch vụ khách hàng",
+    "footer_company_name": "CÔNG TY TNHH GJ INTERNATIONAL VIỆT NAM",
+    "footer_company_address": "DM 12-11 Khu tiểu thủ công nghiệp, làng nghề Vạn Phúc, Phường Vạn Phúc, Quận Hà Đông, TP. Hà Nội",
+    "footer_business_code": "Mã số doanh nghiệp",
+    "footer_service_center": "TRUNG TÂM DỊCH VỤ",
+    "footer_working_time": "Các ngày trong tuần từ 09:00 ~ 18:00"
 }

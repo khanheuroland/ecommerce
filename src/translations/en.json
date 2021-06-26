@@ -5,6 +5,8 @@
     "new": "NEW",
     "hot": "HOT",
     "freeship": "Freeship",
+    "view_all": "View All",
+    "tel": "Tel",
     "searchPlaceHolder": "Please enter a search term.",
     "allCategories": "All categories",
     "best": "Best",
@@ -56,5 +58,17 @@
     "signup_fullname_validate": "Please enter a valid fullname",
     "signup_email_validate": "Please enter your correct Email",
     "signup_phone_validate": "Please enter a valid phone number",
-    "signup_password_validate": "Please enter a valid password (more than 6 characters)"
+    "signup_password_validate": "Please enter a valid password (more than 6 characters)",
+    "footer_about": "About Youngsante",
+    "footer_user_agreement": "User Agreement",
+    "footer_privacy": "Privacy Policy",
+    "footer_site_map": "Site Map",
+    "footer_customer_service": "Customer Service",
+    "footer_company_name": "GJ INTERNATIONAL VIETNAM CO., LTD",
+    "footer_company_address": "DM 12-11 Van Phuc handicraft village, Van Phuc ward, Ha Dong district, City. Hanoi",
+    "footer_business_code": "Business code",
+    "footer_service_center": "SERVICE CENTER",
+    "footer_working_time": "Weekdays from 09:00 to 18:00",
+    "footer_fax": "",
+    "footer_mail": ""
 }

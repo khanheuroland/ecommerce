@@ -64,7 +64,7 @@ function FlashSaleItem(props)
         <>
             <a href="#" className="link__item">
                 <div className="box__image">
-                    <img src={data.image} alt={data.name[langcode.toUpperCase()]} className="image"/>
+                    <img src={data.middleImage} alt={data.name[langcode.toUpperCase()]} className="image"/>
                 </div>
                 <div className="box__information">
                     <div className="box__price"><span className="text__price">{getPrice(data.price, "won")}</span><span className="text__unit">{strings["currency"]}</span></div>

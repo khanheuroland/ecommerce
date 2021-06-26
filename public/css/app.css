@@ -69,6 +69,27 @@
 
 /*global skip navigation*/
 
+#main-menu .MuiPopover-paper {
+    top: 173px !important;
+    width: 224px;
+    border-radius: 0;
+    background-color: #74cb0d;
+    color: #FFF;
+}
+
+#main-menu li {
+    position: relative;
+    display: block;
+    height: 44px;
+    font-size: 15px;
+    letter-spacing: -1px;
+    color: #fff;
+    background-color: #74cb0d;
+    text-indent: 24px;
+    line-height: 42px;
+    cursor: pointer;
+}
+
 #skip-navigation {}
 
 #skip-navigation a {
@@ -802,13 +823,13 @@ button {
     display: block
 }
 
-.box__category-all-layer .list__category-all {
+.list__category-all {
     position: relative;
     width: 224px;
     z-index: 100;
 }
 
-.box__category-all-layer .list__category-all .list-item__1depth+.list-item__1depth .link__1depth-item:before {
+.list__category-all .list-item__1depth+.list-item__1depth .link__1depth-item:before {
     content: '';
     opacity: 0.3;
     position: absolute;
@@ -820,7 +841,7 @@ button {
     background-color: #ddd;
 }
 
-.box__category-all-layer .list__category-all .link__1depth-item {
+.list__category-all .link__1depth-item {
     position: relative;
     display: block;
     height: 44px;

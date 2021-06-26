@@ -5,6 +5,7 @@ import BestProductComponent from '../components/BestProductComponent';
 import PopularProductComponent from "../components/PopularProductComponent";
 import FreeShipProductComponent from "../components/FreeShipProductComponent";
 import FlashSaleProductCoponent from '../components/FlashSaleProductCoponent';
+import FooterComponent from '../components/FooterComponent';
 
 function HomePage(props)
 {
@@ -25,6 +26,7 @@ function HomePage(props)
             </div>
         </div>
         <FlashSaleProductCoponent/>
+        <FooterComponent/>
         </>
     )
 }

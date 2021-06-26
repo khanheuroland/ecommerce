@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {connect} from "react-redux";
+import { Link } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -31,6 +32,7 @@ function PageHeaderComponent(props) {
     const {strings, currentLanguageCode} = props;
     const [open, setOpen] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [showMenu, setShowMenu] = React.useState(null);
 
     const [authModule, setAuthModule] = React.useState("login");
     const classes = useStyles();
@@ -43,10 +45,15 @@ function PageHeaderComponent(props) {
     const handleClose = () => {
         setOpen(false);
         setAnchorEl(null);
+        setShowMenu(false);
     };
 
     const openChangeLanguage=(event)=>{
         setAnchorEl(event.currentTarget);
+    }
+
+    const openCategoryMenu=(event)=>{
+        setShowMenu(!showMenu);
     }
 
     const handleChangeLanguage=(event)=>{
@@ -63,7 +70,7 @@ function PageHeaderComponent(props) {
                         <div className="box__header-content">
                             <h1 className="box__title-logo">
                                 <a href="/" title="Youngsante" className="link__head">
-                                    <img src="./images/image__logo.png" width="240" height="113" className="image__logo"/>
+                                    <img src="/images/image__logo.png" width="240" height="113" className="image__logo"/>
                                 </a>
                             </h1>
 
@@ -73,7 +80,7 @@ function PageHeaderComponent(props) {
                                         <span className="box__search-input">
                                             <input name="keyword" title="검색어 입력" type="text" autoCapitalize="off" spellCheck="false" autoComplete="off" className="form__input" placeholder={strings["searchPlaceHolder"]} autoCorrect="off"/>
                                             <button type="submit" className="button__search">
-                                                <img src="./images/image__header-search.png" alt="검색" className="image"/>
+                                                <img src="/images/image__header-search.png" alt="검색" className="image"/>
                                             </button>
                                         </span>
                                     </fieldset>
@@ -104,7 +111,60 @@ function PageHeaderComponent(props) {
 
                         <div className="box__navigation">
                             <div id="skip-navigation-category-all" className="box__category-all">
-                                <button type="button" id="button__category-all" className="button__category-all sprite__common--before">{strings["allCategories"]}</button>
+                                <button type="button" id="button__category-all" className="button__category-all sprite__common--before"
+                                    aria-controls="main-menu" aria-haspopup="true" onClick={openCategoryMenu}>{strings["allCategories"]}</button>
+                                      {
+                                        showMenu &&
+                                          <>
+                                            <ul className="list__category-all">
+                                                <li className="list-item__1depth">
+                                                    <Link to="/category/1">
+                                                        <span className="link__1depth-item">{strings["menu_skinCare"]}</span>
+                                                    </Link>
+                                                </li>
+                                                <li className="list-item__1depth">
+                                                    <Link to="/category/2">
+                                                        <span className="link__1depth-item">{strings["menu_perfume"]}</span>
+                                                    </Link>
+                                                </li>
+                                                <li className="list-item__1depth">
+                                                    <Link to="/category/3">
+                                                        <span className="link__1depth-item">{strings["menu_beautyAccessories"]}</span>
+                                                    </Link>
+                                                </li>
+                                                <li className="list-item__1depth">
+                                                    <Link to="/category/4">
+                                                        <span className="link__1depth-item">{strings["menu_nailCare"]}</span>
+                                                    </Link>
+                                                </li>
+                                                <li className="list-item__1depth">
+                                                    <Link to="/category/5">
+                                                        <span className="link__1depth-item">{strings["menu_colorMakeup"]}</span>
+                                                    </Link>
+                                                </li>
+                                                <li className="list-item__1depth">
+                                                    <Link to="/category/6">
+                                                        <span className="link__1depth-item">{strings["menu_cleansingPeeling"]}</span>
+                                                    </Link>
+                                                </li>
+                                                <li className="list-item__1depth">
+                                                    <Link to="/category/7">
+                                                        <span className="link__1depth-item">{strings["menu_mask"]}</span>
+                                                    </Link>
+                                                </li>
+                                                <li className="list-item__1depth">
+                                                    <Link to="/category/8">
+                                                        <span className="link__1depth-item">{strings["menu_menCosmetics"]}</span>
+                                                    </Link>
+                                                </li>
+                                                <li className="list-item__1depth">
+                                                    <Link to="/category/9">
+                                                        <span className="link__1depth-item">{strings["menu_sunCare"]}</span>
+                                                    </Link>
+                                                </li>
+                                            </ul>
+                                          </>
+                                      }  
                             </div>
 
                             <div className="box__service-all">

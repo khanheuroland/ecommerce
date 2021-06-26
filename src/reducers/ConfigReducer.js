@@ -60,6 +60,7 @@ const initialConfigState={
                 'VI': 'Zucchini (special/pcs)'
             },
             image: '//gdimg.gmarket.co.kr/1482817745/still/280?ver=1615181556',
+            middleImage: '//image.gmarket.co.kr/hanbando/202105/c25d3c61-5176-4bc0-8810-75df7815f949.jpg',
             price: 1460,
             currency: 'won',
             tag: 'new'
@@ -72,6 +73,7 @@ const initialConfigState={
                 'VI': 'Bánh sừng bò độc quyền bột đông lạnh 120ea'
             },
             image: '//gdimg.gmarket.co.kr/761799243/still/280?ver=1624352953',
+            middleImage: '//image.gmarket.co.kr/hanbando/202105/a864efe3-fa1b-47da-a8e6-35def4ce8159.jpg',
             price: 18270,
             currency: 'won',
             tag: 'new'
@@ -84,6 +86,7 @@ const initialConfigState={
                 'VI': 'Gạo Dongjin mới của Hàn Quốc_ Túi 10KG'
             },
             image: '//gdimg.gmarket.co.kr/2095259594/still/280?ver=1624356494',
+            middleImage: '//image.gmarket.co.kr/hanbando/202105/4305af33-6638-4102-95ab-dfe57c8fc480.jpg',
             price: 33400,
             currency: 'won',
             tag: 'hot'
@@ -96,6 +99,7 @@ const initialConfigState={
                 'VI': 'Baekoksaeng Premium Sun Cream 60ml*3ea'
             },
             image: '//gdimg.gmarket.co.kr/1818154090/still/400/',
+            middleImage: '//image.gmarket.co.kr/hanbando/202105/7a62dbec-2fa7-47f9-8033-8f28d2076cb0.jpg',
             price: 9900,
             currency: 'won',
             tag: 'hot'
@@ -108,6 +112,7 @@ const initialConfigState={
                 'VI': 'Dầu bơ nguyên chất 250ml * 3 chai'
             },
             image: '//gdimg.gmarket.co.kr/2136645324/still/400/',
+            middleImage: '//image.gmarket.co.kr/hanbando/202105/e8df0352-947e-437a-91a3-bb3ce609b99b.jpg',
             price: 23670,
             currency: 'won',
             tag: 'hot'
@@ -120,6 +125,7 @@ const initialConfigState={
                 'VI': 'Giữ túi Ngăn ngừa tham nhũng thực phẩm'
             },
             image: '//gdimg.gmarket.co.kr/1871506383/still/400/',
+            middleImage: '//image.gmarket.co.kr/hanbando/202105/e24557a7-d386-4d95-80c9-f321ec6bc3f3.jpg',
             price: 23670,
             currency: 'won',
             tag: 'hot'
@@ -203,6 +209,9 @@ const initialConfigState={
         wonusd: 0.00088,
         wonvnd: 20.29,
         wonwon: 1
+    },
+    authStatus:{
+        module: ''
     }
 }
 

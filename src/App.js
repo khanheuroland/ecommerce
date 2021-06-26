@@ -1,7 +1,9 @@
 import React from "react";
+import { BrowserRouter, Route, Link} from "react-router-dom";
 import {multilanguage, changeLanguage, loadLanguages} from "redux-multilanguage";
 import {connect} from "react-redux";
 import HomePage from './pages/HomePage'
+import CategoryPage from './pages/CategoryPage'
 
 class App extends React.Component {
   componentDidMount(){
@@ -23,7 +25,11 @@ class App extends React.Component {
   render(){
     const {strings, currentLanguageCode} = this.props;
     return (
-      <HomePage/>
+      <BrowserRouter>
+        
+        <Route exact path="/" component={HomePage}/>
+        <Route path="/category/:id" component={CategoryPage}/>
+      </BrowserRouter>
     )
   }
 }
