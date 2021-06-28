@@ -1,16 +1,46 @@
 import React from "react"
 import PageHeaderComponent from '../components/PageHeaderComponent';
 import { useParams } from "react-router"
+import { useSelector, connect } from 'react-redux';
+import {multilanguage, changeLanguage, loadLanguages} from "redux-multilanguage";
+import FlashSaleItem from '../components/FlashSaleItem';
+import FooterComponent from '../components/FooterComponent';
 
 function CategoryPage(props)
 {
-    let {catId} = useParams();
+    let {catId, catName} = useParams();
+    const {strings, currentLanguageCode} = props;
+    const bestProducts = useSelector((state)=>{
+        return state.configReducer.popularProducts
+    })
 
     return(
         <>
-        <PageHeaderComponent/>
+            <PageHeaderComponent/>
+            
+            <div className="section__main section__main-category">
+                    <div className="section__main-inner">
+                        <div className="box__superdeal">
+                            <h2 className="text__title">
+                                {strings["menu_"+catName]}
+                            </h2>
+                            <div className="box__item">
+                                <ul className="list__item">
+                                    {
+                                        bestProducts.map((item, index)=>(
+                                            <li key={item.id} className="list-item">
+                                                <FlashSaleItem data={item} index={1+ index} langcode = {currentLanguageCode} translation={strings}></FlashSaleItem>
+                                            </li>
+                                        ))
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <FooterComponent/>
         </>
     )
 }
 
-export default CategoryPage
+export default connect()(multilanguage(CategoryPage));

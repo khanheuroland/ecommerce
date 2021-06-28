@@ -8,7 +8,6 @@ const routes= [
     },
     {
         path: '/category',
-        exact: true,
         main: (match) => <CategoryPage match={match}/>
     }
 ]

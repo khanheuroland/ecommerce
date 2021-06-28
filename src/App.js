@@ -28,7 +28,7 @@ class App extends React.Component {
       <BrowserRouter>
         
         <Route exact path="/" component={HomePage}/>
-        <Route path="/category/:id" component={CategoryPage}/>
+        <Route path="/category/:catId/:catName" children={<CategoryPage/>}/>
       </BrowserRouter>
     )
   }

@@ -25,47 +25,47 @@ class MenuSliderComponent extends React.Component{
                             <div id="box__category-all-layer" className="box__category-all-layer js-ussr-component">
                                 <ul className="list__category-all">
                                     <li className="list-item__1depth">
-                                        <Link to="/category/1">
+                                        <Link to="/category/1/skinCare">
                                             <span className="link__1depth-item">{strings["menu_skinCare"]}</span>
                                         </Link>
                                     </li>
                                     <li className="list-item__1depth">
-                                        <Link to="/category/2">
+                                        <Link to="/category/2/perfume">
                                             <span className="link__1depth-item">{strings["menu_perfume"]}</span>
                                         </Link>
                                     </li>
                                     <li className="list-item__1depth">
-                                        <Link to="/category/3">
+                                        <Link to="/category/3/beautyAccessories">
                                             <span className="link__1depth-item">{strings["menu_beautyAccessories"]}</span>
                                         </Link>
                                     </li>
                                     <li className="list-item__1depth">
-                                        <Link to="/category/4">
+                                        <Link to="/category/4/nailCare">
                                             <span className="link__1depth-item">{strings["menu_nailCare"]}</span>
                                         </Link>
                                     </li>
                                     <li className="list-item__1depth">
-                                        <Link to="/category/5">
+                                        <Link to="/category/5/colorMakeup">
                                             <span className="link__1depth-item">{strings["menu_colorMakeup"]}</span>
                                         </Link>
                                     </li>
                                     <li className="list-item__1depth">
-                                        <Link to="/category/6">
+                                        <Link to="/category/6/cleansingPeeling">
                                             <span className="link__1depth-item">{strings["menu_cleansingPeeling"]}</span>
                                         </Link>
                                     </li>
                                     <li className="list-item__1depth">
-                                        <Link to="/category/7">
+                                        <Link to="/category/7/mask">
                                             <span className="link__1depth-item">{strings["menu_mask"]}</span>
                                         </Link>
                                     </li>
                                     <li className="list-item__1depth">
-                                        <Link to="/category/8">
+                                        <Link to="/category/8/menCosmetics">
                                             <span className="link__1depth-item">{strings["menu_menCosmetics"]}</span>
                                         </Link>
                                     </li>
                                     <li className="list-item__1depth">
-                                        <Link to="/category/9">
+                                        <Link to="/category/9/sunCare">
                                             <span className="link__1depth-item">{strings["menu_sunCare"]}</span>
                                         </Link>
                                     </li>

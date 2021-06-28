@@ -1,6 +1,6 @@
 import {combineReducers} from "redux";
 import { createMultilanguageReducer} from 'redux-multilanguage';
-import UserReducer from './UserReducer';
+import UserReducer from './userReducer';
 import ConfigReducer from './ConfigReducer';
 
 export default combineReducers({
