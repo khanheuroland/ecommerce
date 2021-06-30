@@ -46,7 +46,7 @@ function BestProductItem(props)
     }
 
     return (
-        <a href="#" className="link__item">
+        <a href={"/product/"+ data.id} className="link__item">
             <span className="text__rank">{index}</span>
             <div className="box__image">
                 <img src={data.image} className="image"/>

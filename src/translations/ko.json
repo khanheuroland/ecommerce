@@ -4,6 +4,7 @@
     "currency_group": ",",
     "new": "새로운",
     "hot": "뜨거운",
+    "hello": "어서 오십시오",
     "freeship": "무료 배송",
     "view_all": "모두보기",
     "tel": "전화",
@@ -59,6 +60,7 @@
     "signup_email_validate": "정확한 이메일을 입력하세요",
     "signup_phone_validate": "유효한 전화 번호를 입력하세요",
     "signup_password_validate": "유효한 암호를 입력하십시오 (6 자 이상).",
+    "signup_confirm_password_validate": "비밀번호와 확인 비밀번호가 일치하지 않습니다.",
     "footer_about": "영산 테 소개",
     "footer_user_agreement": "사용자 동의",
     "footer_privacy": "개인 정보 정책",
@@ -68,5 +70,8 @@
     "footer_company_address": "DM 12-11 Van Phuc 수공예 마을, Van Phuc ward, Ha Dong 지구, City. 하노이",
     "footer_business_code": "비즈니스 코드",
     "footer_service_center": "서비스 센터",
-    "footer_working_time": "평일 09 : 00 ~ 18 : 00"
+    "footer_working_time": "평일 09 : 00 ~ 18 : 00",
+    "login_invalid_message": "사용자 이름이나 비밀번호가 잘못되었습니다.",
+    "login_account_inactive": "귀하의 계정 {0}이 활성화되지 않았습니다.",
+    "login_account_locked": "귀하의 계정 {0}이 일시적으로 잠겨 있습니다."
 }

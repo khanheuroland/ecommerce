@@ -1,4 +1,7 @@
 import React from "react";
+import userservices from "../services/user.service";
+import Alert from '@material-ui/lab/Alert';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 function SignUpComponent(props)
 {
@@ -14,24 +17,50 @@ function SignUpComponent(props)
     const [phone, setPhone] = React.useState("");
     const [password, setPassword]=React.useState("");
     const [confirmPassword, setConfirmPassword]= React.useState("");
-
-    const signUp = (event)=>{
+    const [registerStatus, setRegisterStatus]=React.useState("");
+    const [isProcessing, setProcessing] = React.useState(false);
+    async function signUp(event){
+        let isValid = true;
         const reEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        setEmailValidate(reEmail.test(String(email).toLowerCase()));
+        isValid = reEmail.test(String(email).toLowerCase());
+        setEmailValidate(isValid);
         
         const reFullname = /^[a-zA-z\s]+$/
         setFullnameValidate(reFullname.test(String(fullname)));
+        isValid = isValid && reFullname.test(String(fullname));
 
         const rePhone= /^[0-9]{10}$/
         setPhoneValidate(rePhone.test(String(phone)));
+        isValid = isValid && rePhone.test(String(phone));
 
         const rePassword=/^.{6,}$/
         setPasswordValidate(rePassword.test(String(password)));
+        isValid = isValid && rePassword.test(String(password))
+
+        if(isValid && password!=confirmPassword)
+        {
+            setConfirmPasswordValidate(false);
+        }
+        isValid = isValid && password == confirmPassword;
+
+        if(isValid)
+        {
+            let result = await userservices.register(fullname, email, phone, password, langcode);
+            setRegisterStatus(result.Message);
+        }
     }
 
     return (
         <div className="modal-form">
             <div className="heading">{strings["signup_title"]}</div>
+            {
+                registerStatus=="EMAIL_IS_IN_USED"&&
+                    <Alert severity="error">Email <b>{email}</b> đã đăng ký bởi tài khoản khác.</Alert>
+            }
+            {
+                registerStatus == "REGISTERED" && 
+                    <Alert severity="success">Tài khoản <b>{email}</b> đã được tạo thành công.</Alert>
+            }
             <form id="auth-block__login-form" className="auth-block__form" method="post">
                 <div className="mz-form-group">
                     <div className="mz-form-group__label-col">
@@ -102,7 +131,8 @@ function SignUpComponent(props)
 
                             <div className="mz-min-w-0 mz-w-1/2 mz-px-4 mz-text-center ">
                             <div className="mz-form-control mz-form-control-md">
-                                <input id="auth-block__register-form__confirm-password-input" type="password" className="my-form-control" placeholder={strings["signup_confirm_password_placeholder"]}/>
+                                <input id="auth-block__register-form__confirm-password-input" type="password" className={confirmPasswordValidate==false?"my-form-control error":"my-form-control"} 
+                                placeholder={strings["signup_confirm_password_placeholder"]} onChange={(evt)=>{setConfirmPassword(evt.target.value); setConfirmPasswordValidate(null)}}/>
                             </div>
                             </div>
                             <div className="clear"/>
@@ -111,12 +141,23 @@ function SignUpComponent(props)
                             passwordValidate==false && 
                             <label class="mz-form-error-label" for="password">{strings["signup_password_validate"]}</label>
                         }
-                        
+                        {
+                            confirmPasswordValidate==false &&
+                            <label class="mz-form-error-label" for="password">{strings["signup_confirm_password_validate"]}</label>
+                        }
                     </div>
                 </div>
 
                 <div className="auth-block__btn-group">
-                    <button type="button" data-test-login-btn-submit className="my-btn -btn-pill auth-block__signup-btn mz-btn-primary" onClick={signUp}>{strings["signup_register"]}</button>
+                    <button type="button" data-test-login-btn-submit className="my-btn -btn-pill auth-block__signup-btn mz-btn-primary" onClick={signUp}>
+                        {
+                            isProcessing&&
+                            <CircularProgress color="white" size={20}/>
+                        }
+                        <span style={{marginLeft:"10px", marginRight: "10px"}}>
+                            {strings["signup_register"]}
+                        </span>
+                    </button>
                 </div>
             </form>
 

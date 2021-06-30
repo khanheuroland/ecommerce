@@ -1,11 +1,33 @@
+import callApi from '../utils/callApi'
+
 const initialUserState={
+    authFormOpen: false,
+    authForm: "",
     profile: {
-        username: "GUESS",
-        firstname: "",
-        lastname: "",
-        token: null
-    }
+        Email: "",
+        FullName: "",
+        Token: null
+    },
 }
+
+export const openAuthForm = (form)=> async(dispatch)=>{
+    dispatch({type: 'OPEN_AUTH', payload: form})
+}
+export const closeAuthForm=()=>async(dispatch)=>{
+    dispatch({type: 'CLOSE_AUTH'})
+}
+export const loginSuccess=(profile)=>async(dispatch)=>{
+    dispatch({type: 'UPDATE', payload: profile});
+    dispatch({type: 'CLOSE_AUTH'})
+}
+export const logout=()=>async(dispatch)=>{
+    dispatch({type: 'UPDATE', payload: {
+        Email: "",
+        FullName: "",
+        Token: null
+    }})
+}
+
 
 const UserReducer = (state=initialUserState, action)=>{
     switch(action.type)
@@ -16,6 +38,23 @@ const UserReducer = (state=initialUserState, action)=>{
             return {
                 ...state,
                 profile: newProfile
+            }
+        }
+        case "OPEN_AUTH": 
+        {
+            const authForm = action.payload;
+            return {
+                ...state,
+                authFormOpen: true,
+                authForm: authForm
+            }
+        }
+        case "CLOSE_AUTH":
+        {
+            return {
+                ...state,
+                authFormOpen: false,
+                authForm: ''
             }
         }
         default:

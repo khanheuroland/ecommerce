@@ -44,7 +44,7 @@ function PopularProductItem(props)
     }
 
     return (
-        <a href="#" className="link__item">
+        <a href={"/product/"+ data.id} className="link__item">
             <div className="box__image">
                 <img src={data.image} alt={data.name[langcode.toUpperCase()]} className="image"/>
             </div>

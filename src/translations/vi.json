@@ -4,6 +4,7 @@
     "currency_group": " ",
     "new": "NEW",
     "hot": "HOT",
+    "hello": "Chào mừng",
     "freeship": "Freeship",
     "view_all": "Xem tât cả",
     "tel": "Điện thoại",
@@ -59,6 +60,7 @@
     "signup_email_validate": "Vui lòng nhập Email đúng định dạng",
     "signup_phone_validate": "Vui lòng nhập số điện thoại hợp lệ",
     "signup_password_validate": "Vui lòng nhập mật khẩu hợp lệ (nhiều hơn 6 ký tự)",
+    "signup_confirm_password_validate": "Mật khẩu và xác nhận mật khẩu không khớp",
     "footer_about": "Giới thiệu về Youngsante",
     "footer_user_agreement": "Thoả thuận người dùng",
     "footer_privacy": "Chính sách bảo mật",
@@ -68,5 +70,8 @@
     "footer_company_address": "DM 12-11 Khu tiểu thủ công nghiệp, làng nghề Vạn Phúc, Phường Vạn Phúc, Quận Hà Đông, TP. Hà Nội",
     "footer_business_code": "Mã số doanh nghiệp",
     "footer_service_center": "TRUNG TÂM DỊCH VỤ",
-    "footer_working_time": "Các ngày trong tuần từ 09:00 ~ 18:00"
+    "footer_working_time": "Các ngày trong tuần từ 09:00 ~ 18:00",
+    "login_invalid_message": "Tên đăng nhập hoặc mật khẩu không đúng.",
+    "login_account_inactive": "Tài khoản {0} chưa được kích hoạt.",
+    "login_account_locked": "Tài khoản {0} đang bị tạm khoá."
 }

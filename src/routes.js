@@ -8,6 +8,12 @@ const routes= [
     },
     {
         path: '/category',
+        exact: true,
         main: (match) => <CategoryPage match={match}/>
+    },
+    {
+        path: '/product',
+        exact: true,
+        main: (match)=> <DetailPage match={match}/>
     }
 ]

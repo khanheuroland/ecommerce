@@ -4,6 +4,7 @@
     "currency_group": ",",
     "new": "NEW",
     "hot": "HOT",
+    "hello": "Welcome",
     "freeship": "Freeship",
     "view_all": "View All",
     "tel": "Tel",
@@ -59,6 +60,7 @@
     "signup_email_validate": "Please enter your correct Email",
     "signup_phone_validate": "Please enter a valid phone number",
     "signup_password_validate": "Please enter a valid password (more than 6 characters)",
+    "signup_confirm_password_validate": "Password and confirm password do not match",
     "footer_about": "About Youngsante",
     "footer_user_agreement": "User Agreement",
     "footer_privacy": "Privacy Policy",
@@ -70,5 +72,8 @@
     "footer_service_center": "SERVICE CENTER",
     "footer_working_time": "Weekdays from 09:00 to 18:00",
     "footer_fax": "",
-    "footer_mail": ""
+    "footer_mail": "",
+    "login_invalid_message": "Username or password is incorrect.",
+    "login_account_inactive": "Account {0} has not been activated.",
+    "login_account_locked": "Account {0} is temporarily locked."
 }

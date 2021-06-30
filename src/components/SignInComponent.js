@@ -1,4 +1,10 @@
 import React from "react";
+import store from "../store";
+import {loginSuccess, openAuthForm, closeAuthForm} from '../reducers/userReducer'
+import { useSelector } from 'react-redux';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import userservice from "../services/user.service";
+import Alert from '@material-ui/lab/Alert';
 
 function SignInComponent(props)
 {
@@ -9,27 +15,80 @@ function SignInComponent(props)
     const [passwordvalidate, setPasswordValidate] = React.useState(null);
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
+    const [loginstatus, setLoginStatus] = React.useState(null);
+    const [isProcessing, setProcessing] = React.useState(false);
     const updateEmailValue = (event)=>{
         setEmail(event.target.value);
         setEmailValidate(null)
+        setLoginStatus(null)
     }
     const updatePasswordValue=(event)=>{
         setPassword(event.target.value);
         setPasswordValidate(null)
+        setLoginStatus(null)
     }
-    const signIn = (event)=>{
+    const openSignUp=(event)=>{
+        store.dispatch(openAuthForm("signup"));
+    }
+
+    const loginStatus = useSelector((state)=>{
+        return state.userReducer.loginStatus
+    })
+
+    async function signIn(event){
+        
+        let isValidate = true;
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        setEmailValidate(re.test(String(email).toLowerCase()));
+        if(re.test(String(email).toLowerCase())==false)
+        {
+            setEmailValidate(false)
+            isValidate=false;
+        }
         
         if(password=="")
         {
             setPasswordValidate(false);
+            isValidate=false;
+        }
+        
+        if(isValidate)
+        {
+            setProcessing(true);
+            let user = await userservice.login(email, password);
+                
+            if(user)
+            {
+                if(user.Token)
+                {
+                    store.dispatch(loginSuccess(user))
+                }
+                else{
+                    setLoginStatus(user.Message)
+                }
+            }
+            setProcessing(false);
         }
     }
+    
 
     return (
         <div className="modal-form">
             <div className="heading">{strings["signin_title"]}</div>
+            {
+                loginstatus=="CREDENTIAL_INVALID" &&
+                    <Alert severity="error">{strings["login_invalid_message"]}</Alert>
+            }
+
+            {
+                loginstatus=="ACCOUNT_IS_INACTIVE"&&
+                    <Alert severity="error">{strings["login_account_inactive"].replace("{0}", email)}</Alert>
+            }
+
+            {
+                loginstatus=="ACCOUNT_IS_LOCKED"&&
+                    <Alert security="error">{strings["login_account_locked"].replace("{0}", email)}</Alert>
+            }
+            
             <form id="auth-block__login-form" className="auth-block__form" method="post">
                 <div className="mz-form-group">
                     <div className="mz-form-group__label-col">
@@ -70,7 +129,13 @@ function SignInComponent(props)
                 </div>
 
                 <div className="auth-block__btn-group">
-                    <button type="button" className="my-btn -btn-pill auth-block__login-btn mz-btn-primary" onClick={signIn}>{strings["signin_login"]}</button>
+                    <button type="button" className="my-btn -btn-pill auth-block__login-btn mz-btn-primary" onClick={signIn}>
+                        {
+                            isProcessing&&
+                            <CircularProgress color="white" size={20}/>
+                        }
+                        <span style={{marginLeft:"10px", marginRight: "10px"}}>{strings["signin_login"]}</span>
+                    </button>
                 </div>
             </form>
 
@@ -93,7 +158,7 @@ function SignInComponent(props)
                 </div>
                 <div className="clear"/>
                 <div className="auth-block__alert-register-field">
-                        {strings["signin_dont_have_account"]} <a data-test-register-link="" href="/dang-ky-thanh-vien?redirect=https%3A%2F%2Ffado.vn%2F">{strings["signin_register_now"]}</a>              
+                        {strings["signin_dont_have_account"]} <a href="javascript:;" onClick={openSignUp}>{strings["signin_register_now"]}</a>              
                 </div>
             </div>
         </div>

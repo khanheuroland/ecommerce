@@ -3,8 +3,9 @@ import {multilanguage, changeLanguage, loadLanguages} from "redux-multilanguage"
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import {connect} from "react-redux";
+import {connect, useSelector} from "react-redux";
 import { Link } from 'react-router-dom';
+import CheckIcon from '@material-ui/icons/Check';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -12,7 +13,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import SignInComponent from "./SignInComponent";
 import SignUpComponent from "./SignUpComponent";
-
+import {openAuthForm, closeAuthForm, logout} from "../reducers/userReducer";
 const useStyles = makeStyles((theme) => ({
     modal: {
       display: 'flex',
@@ -30,37 +31,46 @@ const useStyles = makeStyles((theme) => ({
 
 function PageHeaderComponent(props) {
     const {strings, currentLanguageCode} = props;
-    const [open, setOpen] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [profileEl, setProfileEl] = React.useState(null);
     const [showMenu, setShowMenu] = React.useState(null);
 
-    const [authModule, setAuthModule] = React.useState("login");
     const classes = useStyles();
 
     const handleOpen = (module) => {
-        setAuthModule(module);
-        setOpen(true);
+        props.dispatch(openAuthForm(module));
     };
 
     const handleClose = () => {
-        setOpen(false);
         setAnchorEl(null);
         setShowMenu(false);
+        props.dispatch(closeAuthForm());
     };
 
     const openChangeLanguage=(event)=>{
         setAnchorEl(event.currentTarget);
     }
 
+    const openProfile = (event)=>{
+        setProfileEl(event.currentTarget);
+    }
+
     const openCategoryMenu=(event)=>{
         setShowMenu(!showMenu);
     }
 
+    const logOut = (event)=>{
+        props.dispatch(logout());
+    }
     const handleChangeLanguage=(event)=>{
         let selectedItem = event.currentTarget;
         props.dispatch(changeLanguage(selectedItem.id));
         setAnchorEl(null);
     }
+
+    const userContext = useSelector((state)=>{
+        return state.userReducer
+    })
 
     return (
         <header id="header" className="js-ussr-component">
@@ -178,8 +188,28 @@ function PageHeaderComponent(props) {
                             
                             <div className="box__usermenu">
                                 <ul className="list__usermenu">
-                                    <li className="list-item"><a href="#" className="link__usermenu" onClick={()=>{handleOpen("signin")}}>{strings["signIn"]}</a></li>
-                                    <li className="list-item"><a href="#" className="link__usermenu" onClick={()=>{handleOpen("signup")}}>{strings["signUp"]}</a></li>
+                                    {
+                                        userContext.profile.Token==null&&
+                                        <li className="list-item"><a href="#" className="link__usermenu" onClick={()=>{handleOpen("signin")}}>{strings["signIn"]}</a></li>
+                                    }
+                                    {
+                                        userContext.profile.Token==null&&
+                                        <li className="list-item"><a href="#" className="link__usermenu" onClick={()=>{handleOpen("signup")}}>{strings["signUp"]}</a></li>
+                                    }
+                                    {
+                                        userContext.profile.Token &&
+                                        <li className="list-item"><a href="#" className="link__usermenu" aria-controls="profile-menu" aria-haspopup="true" onClick={openProfile}>{strings["hello"]} <b>{userContext.profile.FullName}</b></a>
+                                            <Menu
+                                                id="profile-menu"
+                                                anchorEl={profileEl}
+                                                keepMounted
+                                                open={Boolean(profileEl)}
+                                                onClose={handleClose}
+                                            >
+                                                <MenuItem onClick={logOut} id="logout">Logout</MenuItem>
+                                            </Menu>
+                                        </li>
+                                    }
                                     <li className="list-item"><a href="#" className="link__usermenu">{strings["serviceSupport"]}</a></li>
                                     <li className="list-item list-item--global">
                                         <button type="button" id="button__usermenu--global" className="button__usermenu sprite__common--after"
@@ -191,9 +221,16 @@ function PageHeaderComponent(props) {
                                             open={Boolean(anchorEl)}
                                             onClose={handleClose}
                                         >
-                                            <MenuItem onClick={handleChangeLanguage} id="en">English</MenuItem>
-                                            <MenuItem onClick={handleChangeLanguage} id="vi">Tiếng Việt</MenuItem>
-                                            <MenuItem onClick={handleChangeLanguage} id="ko">한국어</MenuItem>
+                                            <MenuItem onClick={handleChangeLanguage} id="en">
+                                                <CheckIcon fontSize="small" style={{ color: currentLanguageCode=="en"? "#FF8C0B": "transparent", marginRight:"10px"}}/>
+                                                <span>English</span>
+                                            </MenuItem>
+                                            <MenuItem onClick={handleChangeLanguage} id="vi">
+                                                <CheckIcon fontSize="small" style={{ color: currentLanguageCode=="vi"? "#FF8C0B": "transparent", marginRight:"10px", visibility: false}}/>
+                                                <span>Tiếng Việt</span></MenuItem>
+                                            <MenuItem onClick={handleChangeLanguage} id="ko">
+                                                <CheckIcon fontSize="small" style={{ color: currentLanguageCode=="ko"? "#FF8C0B": "transparent", marginRight:"10px",  visibility: false}}/>
+                                                <span>한국어</span></MenuItem>
                                         </Menu>
                                     </li>
                                 </ul>
@@ -206,24 +243,21 @@ function PageHeaderComponent(props) {
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
                 className={classes.modal}
-                open={open}
+                open={userContext.authFormOpen}
                 onClose={handleClose}
                 closeAfterTransition
                 BackdropComponent={Backdrop}
-                BackdropProps={{
-                    timeout: 500,
-                }}
                 disableEnforceFocus
              >
-                <Fade in={open}>
+                <Fade in={userContext.authFormOpen}>
                     <div className={classes.paper}>
                         {
-                            authModule=="signin"&&
+                            userContext.authForm=="signin" &&
                                 <SignInComponent translation={strings}/>
                         }
                         {
-                            authModule=="signup"&&
-                                <SignUpComponent translation={strings}/>
+                            userContext.authForm=="signup" && 
+                                <SignUpComponent translation={strings} langcode={currentLanguageCode}/>
                         }
                     </div>
                 </Fade>
