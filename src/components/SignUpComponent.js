@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useRef }from "react";
 import userservices from "../services/user.service";
 import Alert from '@material-ui/lab/Alert';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 function SignUpComponent(props)
 {
+    const useFocus=()=>{
+        const htmlElRef=useRef(null);
+        const setFocus=()=>{htmlElRef.current && htmlElRef.current.focus()}
+        return [htmlElRef, setFocus];
+    }
+    const [emailRef, setEmailFocus] = useFocus();
+    const [fullnameRef, setFullNameFocus] = useFocus();
+    const [phoneRef, setPhoneFocus] = useFocus();
+    const [passwordRef, setPasswordFocus] = useFocus();
+    const [confirmPasswordRef, setConfirmPasswordFocus] = useFocus();
+
     const strings = props.translation;
     const langcode = props.langcode;
     const [fullnameValidate, setFullnameValidate] = React.useState(null);
@@ -21,32 +32,40 @@ function SignUpComponent(props)
     const [isProcessing, setProcessing] = React.useState(false);
     async function signUp(event){
         let isValid = true;
-        const reEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        isValid = reEmail.test(String(email).toLowerCase());
-        setEmailValidate(isValid);
-        
-        const reFullname = /^[a-zA-z\s]+$/
+
+        const reFullname = /^[\D\s]+$/
         setFullnameValidate(reFullname.test(String(fullname)));
-        isValid = isValid && reFullname.test(String(fullname));
+        isValid = reFullname.test(String(fullname));
+        !isValid && setFullNameFocus();
+
+        const reEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        isValid && !reEmail.test(String(email).toLowerCase()) && setEmailFocus();
+        isValid = isValid && reEmail.test(String(email).toLowerCase());
+        setEmailValidate(isValid);
 
         const rePhone= /^[0-9]{10}$/
         setPhoneValidate(rePhone.test(String(phone)));
+        isValid && !rePhone.test(String(phone)) && setPhoneFocus();
         isValid = isValid && rePhone.test(String(phone));
 
         const rePassword=/^.{6,}$/
         setPasswordValidate(rePassword.test(String(password)));
+        isValid && !rePassword.test(String(password)) && setPasswordFocus();
         isValid = isValid && rePassword.test(String(password))
 
         if(isValid && password!=confirmPassword)
         {
             setConfirmPasswordValidate(false);
+            setConfirmPasswordFocus();
         }
         isValid = isValid && password == confirmPassword;
 
         if(isValid)
         {
+            setProcessing(true);
             let result = await userservices.register(fullname, email, phone, password, langcode);
             setRegisterStatus(result.Message);
+            setProcessing(false);
         }
     }
 
@@ -55,11 +74,11 @@ function SignUpComponent(props)
             <div className="heading">{strings["signup_title"]}</div>
             {
                 registerStatus=="EMAIL_IS_IN_USED"&&
-                    <Alert severity="error">Email <b>{email}</b> đã đăng ký bởi tài khoản khác.</Alert>
+                    <Alert severity="error">{strings["register_email_unavailable"].replace("{0}",email)}</Alert>
             }
             {
                 registerStatus == "REGISTERED" && 
-                    <Alert severity="success">Tài khoản <b>{email}</b> đã được tạo thành công.</Alert>
+                    <Alert severity="success">{strings["register_successfully"].replace("{0}",email)}</Alert>
             }
             <form id="auth-block__login-form" className="auth-block__form" method="post">
                 <div className="mz-form-group">
@@ -70,7 +89,12 @@ function SignUpComponent(props)
                     <div className="mz-form-group__control-col">
                         <div className="mz-form-control mz-form-control-md">
                             <input type="text" className={fullnameValidate==false?"my-form-control error":"my-form-control"} name="fullname" 
-                                placeholder={strings["signup_fullname_placeholder"]} autoFocus="true" onChange={(evt)=>{setFullname(evt.target.value);setFullnameValidate(null)}}/>
+                                placeholder={strings["signup_fullname_placeholder"]} autoFocus="true" onChange={(evt)=>{setFullname(evt.target.value);setFullnameValidate(null)}}
+                                ref={fullnameRef} onKeyPress={(event) => {
+                                    if (event.key === "Enter") {
+                                      signUp();
+                                    }
+                                  }}/>
                             {   fullnameValidate==false &&
                                 <label class="mz-form-error-label" for="fullname">{strings["signup_fullname_validate"]}</label>
                             }
@@ -86,7 +110,12 @@ function SignUpComponent(props)
                     <div className="mz-form-group__control-col">
                         <div className="mz-form-control mz-form-control-md">
                             <input type="email" className={emailValidate==false? "my-form-control error": "my-form-control"} name="email" 
-                                placeholder={strings["signup_email_placeholder"]} onChange={(evt)=>{setEmail(evt.target.value); setEmailValidate(null)}}/>
+                                placeholder={strings["signup_email_placeholder"]} onChange={(evt)=>{setEmail(evt.target.value); setEmailValidate(null)}}
+                                ref={emailRef} onKeyPress={(event) => {
+                                    if (event.key === "Enter") {
+                                      signUp();
+                                    }
+                                  }}/>
                             {
                                 emailValidate==false &&
                                 <label class="mz-form-error-label" for="email">{strings["signup_email_validate"]}</label>
@@ -103,7 +132,11 @@ function SignUpComponent(props)
                     <div className="mz-form-group__control-col">
                         <div className="mz-form-control mz-form-control-md">
                             <input type="text" className={phoneValidate==false?"my-form-control error": "my-form-control"} name="phone" placeholder={strings["signup_phone_placeholder"]} 
-                            onChange={(evt)=>{setPhone(evt.target.value);setPhoneValidate(null)}}/>
+                            onChange={(evt)=>{setPhone(evt.target.value);setPhoneValidate(null)}} ref={phoneRef} onKeyPress={(event) => {
+                                if (event.key === "Enter") {
+                                  signUp();
+                                }
+                              }}/>
                             {   
                                 phoneValidate==false &&
                                 <label class="mz-form-error-label" for="phone">{strings["signup_phone_validate"]}</label>
@@ -125,14 +158,24 @@ function SignUpComponent(props)
                             <div className="mz-min-w-0 mz-w-1/2 mz-px-4">
                             <div className="mz-form-control mz-form-control-md">
                                 <input id="auth-block__register-form__password-input" type="password" name="password" className={passwordValidate==false?"my-form-control error":"my-form-control"} 
-                                    placeholder={strings["signup_password_placeholder"]} onChange={(evt)=>{setPassword(evt.target.value); setPasswordValidate(null)}}/>
+                                    placeholder={strings["signup_password_placeholder"]} onChange={(evt)=>{setPassword(evt.target.value); setPasswordValidate(null)}} ref={passwordRef} 
+                                    onKeyPress={(event) => {
+                                        if (event.key === "Enter") {
+                                          signUp();
+                                        }
+                                      }}/>
                             </div>
                             </div>
 
                             <div className="mz-min-w-0 mz-w-1/2 mz-px-4 mz-text-center ">
                             <div className="mz-form-control mz-form-control-md">
                                 <input id="auth-block__register-form__confirm-password-input" type="password" className={confirmPasswordValidate==false?"my-form-control error":"my-form-control"} 
-                                placeholder={strings["signup_confirm_password_placeholder"]} onChange={(evt)=>{setConfirmPassword(evt.target.value); setConfirmPasswordValidate(null)}}/>
+                                placeholder={strings["signup_confirm_password_placeholder"]} onChange={(evt)=>{setConfirmPassword(evt.target.value); setConfirmPasswordValidate(null)}} ref={confirmPasswordRef}
+                                onKeyPress={(event) => {
+                                    if (event.key === "Enter") {
+                                      signUp();
+                                    }
+                                  }}/>
                             </div>
                             </div>
                             <div className="clear"/>

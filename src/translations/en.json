@@ -75,5 +75,7 @@
     "footer_mail": "",
     "login_invalid_message": "Username or password is incorrect.",
     "login_account_inactive": "Account {0} has not been activated.",
-    "login_account_locked": "Account {0} is temporarily locked."
+    "login_account_locked": "Account {0} is temporarily locked.",
+    "register_email_unavailable": "Email {0} is already in use by another account.",
+    "register_successfully": "Account {0} has been created successfully."
 }

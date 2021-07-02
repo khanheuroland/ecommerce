@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import store from "../store";
 import {loginSuccess, openAuthForm, closeAuthForm} from '../reducers/userReducer'
 import { useSelector } from 'react-redux';
@@ -8,6 +8,11 @@ import Alert from '@material-ui/lab/Alert';
 
 function SignInComponent(props)
 {
+    const useFocus=()=>{
+        const htmlElRef=useRef(null);
+        const setFocus=()=>{htmlElRef.current && htmlElRef.current.focus()}
+        return [htmlElRef, setFocus];
+    }
     const strings = props.translation;
     const langcode = props.langcode;
 
@@ -17,6 +22,8 @@ function SignInComponent(props)
     const [password, setPassword] = React.useState("");
     const [loginstatus, setLoginStatus] = React.useState(null);
     const [isProcessing, setProcessing] = React.useState(false);
+    const [emailRef, setEmailFocus] = useFocus();
+    const [passwordRef, setPasswordFocus] = useFocus();
     const updateEmailValue = (event)=>{
         setEmail(event.target.value);
         setEmailValidate(null)
@@ -43,11 +50,13 @@ function SignInComponent(props)
         {
             setEmailValidate(false)
             isValidate=false;
+            setEmailFocus();
         }
         
         if(password=="")
         {
             setPasswordValidate(false);
+            if(isValidate) setPasswordFocus();
             isValidate=false;
         }
         
@@ -85,7 +94,7 @@ function SignInComponent(props)
             }
 
             {
-                loginstatus=="ACCOUNT_IS_LOCKED"&&
+                loginstatus=="ACCOUNT_IS_NOT_ENABLED"&&
                     <Alert security="error">{strings["login_account_locked"].replace("{0}", email)}</Alert>
             }
             
@@ -98,7 +107,13 @@ function SignInComponent(props)
                     <div className="mz-form-group__control-col">
                         <div className="mz-form-control mz-form-control-md">
                             <input type="email" id="auth-block__form-group__email" className={emailvalidate==false? "my-form-control error": "my-form-control"} 
-                                name="email" placeholder={strings["signin_email_placeholder"]} autoFocus="true" onChange={updateEmailValue}/>
+                                name="email" placeholder={strings["signin_email_placeholder"]} autoFocus="true" onChange={updateEmailValue} ref={emailRef}
+                                onKeyPress={(event) => {
+                                    if (event.key === "Enter") {
+                                      signIn();
+                                    }
+                                  }}
+                                />
                             {
                                 emailvalidate==false &&
                                 <label class="mz-form-error-label" for="auth-block__form-group__email">{strings["signin_validate_email"]}</label>
@@ -115,7 +130,12 @@ function SignInComponent(props)
                     <div className="mz-form-group__control-col">
                         <div className="mz-form-control mz-form-control-md">
                             <input type="password" className={passwordvalidate==false? "my-form-control error": "my-form-control"} name="password" 
-                            placeholder={strings["signin_password_placeholder"]} onChange={updatePasswordValue}/>
+                            placeholder={strings["signin_password_placeholder"]} onChange={updatePasswordValue} ref={passwordRef} onKeyPress={(event) => {
+                                if (event.key === "Enter") {
+                                  signIn();
+                                }
+                              }}
+                            />
                             {
                                 passwordvalidate==false &&
                                 <label class="mz-form-error-label" for="auth-block__form-group__email">{strings["signin_validate_password"]}</label>

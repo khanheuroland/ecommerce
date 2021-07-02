@@ -69,6 +69,10 @@
 
 /*global skip navigation*/
 
+#language-selection-menu .MuiPopover-paper {
+    margin-top: 45px;
+}
+
 #main-menu .MuiPopover-paper {
     top: 173px !important;
     width: 224px;

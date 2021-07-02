@@ -213,9 +213,9 @@ function PageHeaderComponent(props) {
                                     <li className="list-item"><a href="#" className="link__usermenu">{strings["serviceSupport"]}</a></li>
                                     <li className="list-item list-item--global">
                                         <button type="button" id="button__usermenu--global" className="button__usermenu sprite__common--after"
-                                        aria-controls="simple-menu" aria-haspopup="true" onClick={openChangeLanguage}>Global</button>
+                                        aria-controls="language-selection-menu" aria-haspopup="true" onClick={openChangeLanguage}>Global</button>
                                         <Menu
-                                            id="simple-menu"
+                                            id="language-selection-menu"
                                             anchorEl={anchorEl}
                                             keepMounted
                                             open={Boolean(anchorEl)}

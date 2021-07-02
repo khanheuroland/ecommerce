@@ -73,5 +73,7 @@
     "footer_working_time": "Các ngày trong tuần từ 09:00 ~ 18:00",
     "login_invalid_message": "Tên đăng nhập hoặc mật khẩu không đúng.",
     "login_account_inactive": "Tài khoản {0} chưa được kích hoạt.",
-    "login_account_locked": "Tài khoản {0} đang bị tạm khoá."
+    "login_account_locked": "Tài khoản {0} đang bị tạm khoá.",
+    "register_email_unavailable": "Email {0} đã được sử dụng bởi tài khoản khác.",
+    "register_successfully": "Tài khoản {0} đã được tạo thành công."
 }
