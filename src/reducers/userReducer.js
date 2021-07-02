@@ -53,8 +53,7 @@ const UserReducer = (state=initialUserState, action)=>{
         {
             return {
                 ...state,
-                authFormOpen: false,
-                authForm: ''
+                authFormOpen: false
             }
         }
         default:
