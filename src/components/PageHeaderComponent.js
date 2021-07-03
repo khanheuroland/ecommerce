@@ -1,11 +1,11 @@
 import React from "react";
-import {multilanguage, changeLanguage, loadLanguages} from "redux-multilanguage";
-import Button from '@material-ui/core/Button';
+import {multilanguage, changeLanguage} from "redux-multilanguage";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {connect, useSelector} from "react-redux";
 import { Link } from 'react-router-dom';
 import CheckIcon from '@material-ui/icons/Check';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -72,6 +72,11 @@ function PageHeaderComponent(props) {
         return state.userReducer
     })
 
+    const handleClickAway = () => {
+        setShowMenu(false);
+    };
+    
+
     return (
         <header id="header" className="js-ussr-component">
             <div id="desktop_layout-header" className="section__header">
@@ -121,11 +126,13 @@ function PageHeaderComponent(props) {
 
                         <div className="box__navigation">
                             <div id="skip-navigation-category-all" className="box__category-all">
+                                <ClickAwayListener onClickAway={handleClickAway}>
+                                    <div>
                                 <button type="button" id="button__category-all" className="button__category-all sprite__common--before"
                                     aria-controls="main-menu" aria-haspopup="true" onClick={openCategoryMenu}>{strings["allCategories"]}</button>
                                       {
-                                        showMenu &&
-                                          <>
+                                        showMenu ?
+                                          (
                                             <ul className="list__category-all">
                                                 <li className="list-item__1depth">
                                                     <Link to="/category/1/skinCare" onClick={openCategoryMenu}>
@@ -173,8 +180,10 @@ function PageHeaderComponent(props) {
                                                     </Link>
                                                 </li>
                                             </ul>
-                                          </>
-                                      }  
+                                          ):null
+                                      }
+                                      </div>
+                                </ClickAwayListener>
                             </div>
 
                             <div className="box__service-all">

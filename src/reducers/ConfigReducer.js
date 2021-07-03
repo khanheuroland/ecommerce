@@ -51,158 +51,216 @@ const initialConfigState={
             price: 39410
         }
     ],
-    popularProducts: [
-        {
-            id: 1,
-            name: {
-                'KO': '애호박(특/개)',
-                'EN': 'Zucchini (special/pcs)',
-                'VI': 'Zucchini (special/pcs)'
-            },
-            image: '//gdimg.gmarket.co.kr/1482817745/still/280?ver=1615181556',
-            middleImage: '//image.gmarket.co.kr/hanbando/202105/c25d3c61-5176-4bc0-8810-75df7815f949.jpg',
-            price: 1460,
-            currency: 'won',
-            tag: 'new'
+    popularProducts: [{
+        "ID": 1,
+        "CatID": 1,
+        "Name": {
+            "KO": "로션 피지오겔로션 200ml",
+            "EN": "Lotion Physiogel Lotion 200ml",
+            "VI": "Lotion Physiogel Lotion 200ml"
         },
-        {
-            id: 2,
-            name: {
-                'KO': '전용 크로와상냉동생지 120ea ',
-                'EN': 'Exclusive Croissant Frozen Dough 120ea',
-                'VI': 'Bánh sừng bò độc quyền bột đông lạnh 120ea'
-            },
-            image: '//gdimg.gmarket.co.kr/761799243/still/280?ver=1624352953',
-            middleImage: '//image.gmarket.co.kr/hanbando/202105/a864efe3-fa1b-47da-a8e6-35def4ce8159.jpg',
-            price: 18270,
-            currency: 'won',
-            tag: 'new'
+        "Image": "https://gdimg.gmarket.co.kr/1878140710/still/280?ver=1606457884",
+        "LargeImage": "http://gdimg.gmarket.co.kr/1878140710/still/600?ver=1606457884",
+        "Price": 34300,
+        "Discount": 30,
+        "Currency": "won"
+    }, {
+        "ID": 2,
+        "CatID": 1,
+        "Name": {
+            "KO": "클라리피끄 브라이트닝 에멀젼 75ml 세트",
+            "EN": "Clarifique Brightening Emulsion 75ml Set",
+            "VI": "Clarifique Brightening Emulsion 75ml Set"
         },
-        {
-            id: 3,
-            name: {
-                'KO': '우리토종신동진쌀_10KG 포 ',
-                'EN': 'Homegrown Shindongjin Rice_10KG Pouch',
-                'VI': 'Gạo Dongjin mới của Hàn Quốc_ Túi 10KG'
-            },
-            image: '//gdimg.gmarket.co.kr/2095259594/still/280?ver=1624356494',
-            middleImage: '//image.gmarket.co.kr/hanbando/202105/4305af33-6638-4102-95ab-dfe57c8fc480.jpg',
-            price: 33400,
-            currency: 'won',
-            tag: 'hot'
+        "Image": "https://gdimg.gmarket.co.kr/1984818057/still/280?ver=1612917268",
+        "LargeImage": "http://gdimg.gmarket.co.kr/1984818057/still/600?ver=1612917268",
+        "Price": 89250,
+        "Discount": 15,
+        "Currency": "won"
+    }, {
+        "ID": 3,
+        "CatID": 1,
+        "Name": {
+            "KO": "에센셜 파워 에멀젼(모이스춰) 120ml/건성 스킨로션",
+            "EN": "Essential Power Emulsion (Moisture) 120ml/Dry Skin Lotion",
+            "VI": "Essential Power Emulsion (Moisture) 120ml/Sữa dưỡng da khô"
         },
-        {
-            id: 4,
-            name: {
-                'KO': '백옥생 프리미엄 썬크림60ml*3개',
-                'EN': 'Baekoksaeng Premium Sun Cream 60ml*3ea',
-                'VI': 'Baekoksaeng Premium Sun Cream 60ml*3ea'
-            },
-            image: '//gdimg.gmarket.co.kr/1818154090/still/400/',
-            middleImage: '//image.gmarket.co.kr/hanbando/202105/7a62dbec-2fa7-47f9-8033-8f28d2076cb0.jpg',
-            price: 9900,
-            currency: 'won',
-            tag: 'hot'
+        "Image": "https://gdimg.gmarket.co.kr/1887689290/still/280?ver=1600145530",
+        "LargeImage": "http://gdimg.gmarket.co.kr/1887689290/still/600?ver=1600145530",
+        "Price": 27900,
+        "Discount": 0,
+        "Currency": "won"
+    }, {
+        "ID": 4,
+        "CatID": 1,
+        "Name": {
+            "KO": "단독 더마트러블 에멀젼 150ml/ 아이오페",
+            "EN": "Sole Dermatable Emulsion 150ml / IOPE",
+            "VI": "Sole Dermatable Emulsion 150ml / IOPE"
         },
-        {
-            id:5,
-            name: {
-                'KO': '엑스트라버진 아보카도오일 250ml *3병',
-                'EN': 'Extra Virgin Avocado Oil 250ml *3 Bottles',
-                'VI': 'Dầu bơ nguyên chất 250ml * 3 chai'
-            },
-            image: '//gdimg.gmarket.co.kr/2136645324/still/400/',
-            middleImage: '//image.gmarket.co.kr/hanbando/202105/e8df0352-947e-437a-91a3-bb3ce609b99b.jpg',
-            price: 23670,
-            currency: 'won',
-            tag: 'hot'
+        "Image": "https://gdimg.gmarket.co.kr/1142347562/still/280?ver=1625100631",
+        "LargeImage": "http://gdimg.gmarket.co.kr/1142347562/still/600?ver=1625100631",
+        "Price": 22400,
+        "Discount": 30,
+        "Currency": "won"
+    }, {
+        "ID": 5,
+        "CatID": 1,
+        "Name": {
+            "KO": "단독 더마트러블 에멀젼 150ml/ 아이오페",
+            "EN": "Sole Dermatable Emulsion 150ml / IOPE",
+            "VI": "Sole Dermatable Emulsion 150ml / IOPE"
         },
-        {
-            id:6,
-            name: {
-                'KO': '키핑백 음식부패방지/야채 신선보관 비닐',
-                'EN': 'Keeping Bag Food Corruption Prevention',
-                'VI': 'Giữ túi Ngăn ngừa tham nhũng thực phẩm'
-            },
-            image: '//gdimg.gmarket.co.kr/1871506383/still/400/',
-            middleImage: '//image.gmarket.co.kr/hanbando/202105/e24557a7-d386-4d95-80c9-f321ec6bc3f3.jpg',
-            price: 23670,
-            currency: 'won',
-            tag: 'hot'
-        }
-    ],
+        "Image": "https://gdimg.gmarket.co.kr/1142347562/still/280?ver=1625100631",
+        "LargeImage": "http://gdimg.gmarket.co.kr/1142347562/still/600?ver=1625100631",
+        "Price": 22400,
+        "Discount": 0,
+        "Currency": "won"
+    }, {
+        "ID": 6,
+        "CatID": 1,
+        "Name": {
+            "KO": "아이오페 라이브리프트 스킨 로션 크림 선",
+            "EN": "IOPE Livelift Skin Lotion Cream Sun",
+            "VI": "IOPE Livelift Skin Lotion Cream Sun"
+        },
+        "Image": "https://gdimg.gmarket.co.kr/797522029/still/280?ver=1604042293",
+        "LargeImage": "http://gdimg.gmarket.co.kr/797522029/still/600?ver=1604042293",
+        "Price": 32000,
+        "Discount": 0,
+        "Currency": "won"
+    }, {
+        "ID": 7,
+        "CatID": 1,
+        "Name": {
+            "KO": "피지오겔 DMT 바디로션 400mL",
+            "EN": "Physiogel DMT Body Lotion 400mL",
+            "VI": "Sữa dưỡng thể Physiogel DMT 400mL"
+        },
+        "Image": "https://gdimg.gmarket.co.kr/2084804835/still/280?ver=1617850044",
+        "LargeImage": "http://gdimg.gmarket.co.kr/2084804835/still/600?ver=1617850044",
+        "Price": 26800,
+        "Discount": 0,
+        "Currency": "won"
+    }, {
+        "ID": 8,
+        "CatID": 1,
+        "Name": {
+            "KO": "뉴스킨 바디바 비누140g 5개패키지",
+            "EN": "Nu Skin Body Bar Soap 140g 5 Packs",
+            "VI": "Nu Skin Body Bar Soap 140g 5 Gói"
+        },
+        "Image": "https://gdimg.gmarket.co.kr/1864438334/still/280?ver=1613953139",
+        "LargeImage": "http://gdimg.gmarket.co.kr/1864438334/still/600?ver=1613953139",
+        "Price": 47990,
+        "Discount": 0,
+        "Currency": "won"
+    }],
     freeshipProducts: [
         {
-            id:1,
-            name: {
-                'KO': '다우니 프리미엄 액체형 세탁세제 실내건조 2.8L 2개',
-                'EN': 'Downy Premium Liquid Laundry Detergent Indoor Drying 2.8L 2ea',
-                'VI': 'Nước giặt xả cao cấp Downey Nước giặt sấy trong nhà 2.8L 2ea'
+            "ID": 1,
+            "CatID": 1,
+            "Name": {
+                "KO": "로션 피지오겔로션 200ml",
+                "EN": "Lotion Physiogel Lotion 200ml",
+                "VI": "Lotion Physiogel Lotion 200ml"
             },
-            image: '//gdimg.gmarket.co.kr/1837767492/still/280?ver=1623646850',
-            price: 23670,
-            currency: 'won',
-            tag: 'hot'
-        },
-        {
-            id:2,
-            name: {
-                'KO': '헤라 옴므 웜업 쉐이브 젤 + 3종 증정',
-                'EN': 'Hera Homme Warm-up Shave Gel + 3 types',
-                'VI': 'Hera Homme Warm-up Shave Gel + 3 loại'
+            "Image": "https://gdimg.gmarket.co.kr/1878140710/still/280?ver=1606457884",
+            "LargeImage": "http://gdimg.gmarket.co.kr/1878140710/still/600?ver=1606457884",
+            "Price": 34300,
+            "Discount": 30,
+            "Currency": "won"
+        }, {
+            "ID": 2,
+            "CatID": 1,
+            "Name": {
+                "KO": "클라리피끄 브라이트닝 에멀젼 75ml 세트",
+                "EN": "Clarifique Brightening Emulsion 75ml Set",
+                "VI": "Clarifique Brightening Emulsion 75ml Set"
             },
-            image: '//gdimg.gmarket.co.kr/2088044418/still/400/',
-            price: 12000,
-            currency: 'won',
-            tag: 'hot'
-        },
-        {
-            id:3,
-            name: {
-                'KO': 'CJ 햇반 210G 10입 기획',
-                'EN': 'CJ Hetbahn 210G 10 pieces plan',
-                'VI': 'Gói 10 miếng CJ Hetbahn 210G'
+            "Image": "https://gdimg.gmarket.co.kr/1984818057/still/280?ver=1612917268",
+            "LargeImage": "http://gdimg.gmarket.co.kr/1984818057/still/600?ver=1612917268",
+            "Price": 89250,
+            "Discount": 15,
+            "Currency": "won"
+        }, {
+            "ID": 3,
+            "CatID": 1,
+            "Name": {
+                "KO": "에센셜 파워 에멀젼(모이스춰) 120ml/건성 스킨로션",
+                "EN": "Essential Power Emulsion (Moisture) 120ml/Dry Skin Lotion",
+                "VI": "Essential Power Emulsion (Moisture) 120ml/Sữa dưỡng da khô"
             },
-            image: '//gdimg.gmarket.co.kr/1482753736/still/280?ver=1621939506',
-            price: 10990,
-            currency: 'won',
-            tag: 'hot'
-        },
-        {
-            id:4,
-            name: {
-                'KO': '동원 생크림요거트 85G 4입',
-                'EN': 'Dongwon Fresh Cream Yogurt 85G 4 Packs',
-                'VI': 'Sữa Chua Kem Tươi Dongwon 85G 4 Góis'
+            "Image": "https://gdimg.gmarket.co.kr/1887689290/still/280?ver=1600145530",
+            "LargeImage": "http://gdimg.gmarket.co.kr/1887689290/still/600?ver=1600145530",
+            "Price": 27900,
+            "Discount": 0,
+            "Currency": "won"
+        }, {
+            "ID": 4,
+            "CatID": 1,
+            "Name": {
+                "KO": "단독 더마트러블 에멀젼 150ml/ 아이오페",
+                "EN": "Sole Dermatable Emulsion 150ml / IOPE",
+                "VI": "Sole Dermatable Emulsion 150ml / IOPE"
             },
-            image: '//gdimg.gmarket.co.kr/1482445561/still/280?ver=1614681844',
-            price: 10990,
-            currency: 'won',
-            tag: 'hot'
-        },
-        {
-            id: 5,
-            name: {
-                'KO': '우리토종신동진쌀_10KG 포 ',
-                'EN': 'Homegrown Shindongjin Rice_10KG Pouch',
-                'VI': 'Gạo Dongjin mới của Hàn Quốc_ Túi 10KG'
+            "Image": "https://gdimg.gmarket.co.kr/1142347562/still/280?ver=1625100631",
+            "LargeImage": "http://gdimg.gmarket.co.kr/1142347562/still/600?ver=1625100631",
+            "Price": 22400,
+            "Discount": 30,
+            "Currency": "won"
+        }, {
+            "ID": 5,
+            "CatID": 1,
+            "Name": {
+                "KO": "단독 더마트러블 에멀젼 150ml/ 아이오페",
+                "EN": "Sole Dermatable Emulsion 150ml / IOPE",
+                "VI": "Sole Dermatable Emulsion 150ml / IOPE"
             },
-            image: '//gdimg.gmarket.co.kr/2095259594/still/280?ver=1624356494',
-            price: 33400,
-            currency: 'won',
-            tag: 'hot'
-        },
-        {
-            id: 6,
-            name: {
-                'KO': '백옥생 프리미엄 썬크림60ml*3개',
-                'EN': 'Baekoksaeng Premium Sun Cream 60ml*3ea',
-                'VI': 'Baekoksaeng Premium Sun Cream 60ml*3ea'
+            "Image": "https://gdimg.gmarket.co.kr/1142347562/still/280?ver=1625100631",
+            "LargeImage": "http://gdimg.gmarket.co.kr/1142347562/still/600?ver=1625100631",
+            "Price": 22400,
+            "Discount": 0,
+            "Currency": "won"
+        }, {
+            "ID": 6,
+            "CatID": 1,
+            "Name": {
+                "KO": "아이오페 라이브리프트 스킨 로션 크림 선",
+                "EN": "IOPE Livelift Skin Lotion Cream Sun",
+                "VI": "IOPE Livelift Skin Lotion Cream Sun"
             },
-            image: '//gdimg.gmarket.co.kr/1818154090/still/400/',
-            price: 9900,
-            currency: 'won',
-            tag: 'hot'
+            "Image": "https://gdimg.gmarket.co.kr/797522029/still/280?ver=1604042293",
+            "LargeImage": "http://gdimg.gmarket.co.kr/797522029/still/600?ver=1604042293",
+            "Price": 32000,
+            "Discount": 0,
+            "Currency": "won"
+        }, {
+            "ID": 7,
+            "CatID": 1,
+            "Name": {
+                "KO": "피지오겔 DMT 바디로션 400mL",
+                "EN": "Physiogel DMT Body Lotion 400mL",
+                "VI": "Sữa dưỡng thể Physiogel DMT 400mL"
+            },
+            "Image": "https://gdimg.gmarket.co.kr/2084804835/still/280?ver=1617850044",
+            "LargeImage": "http://gdimg.gmarket.co.kr/2084804835/still/600?ver=1617850044",
+            "Price": 26800,
+            "Discount": 0,
+            "Currency": "won"
+        }, {
+            "ID": 8,
+            "CatID": 1,
+            "Name": {
+                "KO": "뉴스킨 바디바 비누140g 5개패키지",
+                "EN": "Nu Skin Body Bar Soap 140g 5 Packs",
+                "VI": "Nu Skin Body Bar Soap 140g 5 Gói"
+            },
+            "Image": "https://gdimg.gmarket.co.kr/1864438334/still/280?ver=1613953139",
+            "LargeImage": "http://gdimg.gmarket.co.kr/1864438334/still/600?ver=1613953139",
+            "Price": 47990,
+            "Discount": 0,
+            "Currency": "won"
         }
     ],
     currencyRate: {

@@ -96,7 +96,7 @@ function SignUpComponent(props)
                                     }
                                   }}/>
                             {   fullnameValidate==false &&
-                                <label class="mz-form-error-label" for="fullname">{strings["signup_fullname_validate"]}</label>
+                                <label className="mz-form-error-label" for="fullname">{strings["signup_fullname_validate"]}</label>
                             }
                         </div>
                     </div>
@@ -118,7 +118,7 @@ function SignUpComponent(props)
                                   }}/>
                             {
                                 emailValidate==false &&
-                                <label class="mz-form-error-label" for="email">{strings["signup_email_validate"]}</label>
+                                <label className="mz-form-error-label" for="email">{strings["signup_email_validate"]}</label>
                             }
                         </div>
                     </div>
@@ -139,7 +139,7 @@ function SignUpComponent(props)
                               }}/>
                             {   
                                 phoneValidate==false &&
-                                <label class="mz-form-error-label" for="phone">{strings["signup_phone_validate"]}</label>
+                                <label className="mz-form-error-label" for="phone">{strings["signup_phone_validate"]}</label>
                             }
                         </div>
                     </div>
@@ -182,11 +182,11 @@ function SignUpComponent(props)
                         </div>
                         {
                             passwordValidate==false && 
-                            <label class="mz-form-error-label" for="password">{strings["signup_password_validate"]}</label>
+                            <label className="mz-form-error-label" for="password">{strings["signup_password_validate"]}</label>
                         }
                         {
                             confirmPasswordValidate==false &&
-                            <label class="mz-form-error-label" for="password">{strings["signup_confirm_password_validate"]}</label>
+                            <label className="mz-form-error-label" for="password">{strings["signup_confirm_password_validate"]}</label>
                         }
                     </div>
                 </div>

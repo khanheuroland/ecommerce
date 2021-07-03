@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Link} from "react-router-dom";
+import { HashRouter as Router, Route, Switch} from "react-router-dom";
 import {multilanguage, changeLanguage, loadLanguages} from "redux-multilanguage";
 import {connect} from "react-redux";
 import HomePage from './pages/HomePage'
@@ -28,11 +28,13 @@ class App extends React.Component {
     const {strings, currentLanguageCode} = this.props;
     return (
       <>
-        <BrowserRouter>
-          <Route exact path="/" component={HomePage}/>
-          <Route path="/category/:catId/:catName" children={<CategoryPage/>}/>
-          <Route path="/product/:id" children={<DetailPage/>}/>
-        </BrowserRouter>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={HomePage}/>
+            <Route path="/category/:catId/:catName" children={<CategoryPage/>}/>
+            <Route path="/product/:id" children={<DetailPage/>}/>
+          </Switch>
+        </Router>
       </>
     )
   }

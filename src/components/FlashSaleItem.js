@@ -1,6 +1,8 @@
 
 import React from "react";
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import ArrowDownwardOutlinedIcon from '@material-ui/icons/ArrowDownwardOutlined';
 
 function FlashSaleItem(props)
 {
@@ -62,21 +64,36 @@ function FlashSaleItem(props)
 
     return (
         <>
-            <a href={"/product/"+ data.id} className="link__item">
+            <Link to={"/product/"+ data.id} className="link__item">
                 <div className="box__image">
-                    <img src={data.middleImage} alt={data.name[langcode.toUpperCase()]} className="image"/>
+                    <img src={data.Image} alt={data.Name[langcode.toUpperCase()]} className="image"/>
                 </div>
                 <div className="box__information">
-                    <div className="box__price"><span className="text__price">{getPrice(data.price, "won")}</span><span className="text__unit">{strings["currency"]}</span></div>
-                    <div className="text__name">{data.name[langcode.toUpperCase()]}</div>
+                    {   data.Discount>0&&
+                        <div className="box__discount">
+                            <ArrowDownwardOutlinedIcon/>
+                            <span className="text text__value">
+                                {data.Discount}</span><span className="text text__unit">%</span>
+                        </div>
+                    }
+                    <div className="box__price">
+                        <span className="text__price">{getPrice(data.Price, "won")}</span><span className="text__unit">{strings["currency"]}</span>
+                    </div>
+                    {   data.Discount>0&&
+                        <div className="box__price-original">
+                            <span className="text text__value">{getPrice(data.Price*(1+data.Discount/100), "won")}</span>
+                            <span className="text text__unit">{strings["currency"]}</span>
+                        </div>
+                    }
+                    <div className="text__name">{data.Name[langcode.toUpperCase()]}</div>
                 </div>
-            </a>
+            </Link>
             <div className="wrap__deal-purchase-control">
                 <div className="wrap__set-deal-purchase-count">
                     <button type="button" className="button__minus-item-count button__item-count" onClick={decrease}>
                         <span className="icon__minus"></span>
                     </button>
-                    <input type="text" readonly="" value={qty} className="text__added-item-count" title={strings["qty_title"]}/>
+                    <input type="text" value={qty} className="text__added-item-count" title={strings["qty_title"]}/>
                     <button type="button" className="button__plus-item-count button__item-count" onClick={increase}>
                         <span className="icon__plus-1"></span>
                         <span className="icon__plus-2"></span>

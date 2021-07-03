@@ -21,7 +21,7 @@ function PopularProductComponent(props)
                     <ul className="list__item">
                         {
                             popularProducts.map((item, index)=>(
-                                <li key={item.id} className="list-item">
+                                <li key={item.ID} className="list-item">
                                     <PopularProductItem data={item} langcode = {currentLanguageCode} translation={strings}></PopularProductItem>
                                 </li>
                             ))

@@ -5,24 +5,31 @@ import { useSelector, connect } from 'react-redux';
 import {multilanguage, changeLanguage, loadLanguages} from "redux-multilanguage";
 import FlashSaleItem from '../components/FlashSaleItem';
 import FooterComponent from '../components/FooterComponent';
+import AppsOutlinedIcon from '@material-ui/icons/AppsOutlined';
+import DnsOutlinedIcon from '@material-ui/icons/DnsOutlined';
+
+var data = require('../assets/dumpdata.json');
 
 function CategoryPage(props)
 {
     let {catId, catName} = useParams();
     const {strings, currentLanguageCode} = props;
     const bestProducts = useSelector((state)=>{
-        return state.configReducer.popularProducts
+        return data.Products;//state.configReducer.popularProducts
     })
 
     return(
         <>
             <PageHeaderComponent/>
-            
             <div className="section__main section__main-category">
                     <div className="section__main-inner">
                         <div className="box__superdeal">
                             <h2 className="text__title">
                                 {strings["menu_"+catName]}
+                                <span className="layout-change">
+                                    <AppsOutlinedIcon className="active"/>
+                                    <DnsOutlinedIcon/>
+                                </span>
                             </h2>
                             <div className="box__item">
                                 <ul className="list__item">

@@ -1801,6 +1801,20 @@
     margin: 0 0 24px 24px
 }
 
+.section__main-category .box__superdeal .box__item .list-item {
+    width: 282px !important;
+}
+
+.section__main-category .box__superdeal .box__item .link__item .box__image {
+    width: 270px !important;
+    height: 200px !important;
+}
+
+.section__main-category .box__superdeal .box__item .box__image .image {
+    width: auto !important;
+    height: 100% !important;
+}
+
 .box__superdeal .box__item .link__item {
     display: block
 }

@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from "react";
+import {multilanguage, changeLanguage, loadLanguages} from "redux-multilanguage";
+import {connect, useSelector} from "react-redux";
 import store from "../store";
 import {loginSuccess, openAuthForm, closeAuthForm} from '../reducers/userReducer'
-import { useSelector } from 'react-redux';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import userservice from "../services/user.service";
 import Alert from '@material-ui/lab/Alert';
@@ -70,6 +71,7 @@ function SignInComponent(props)
                 if(user.Token)
                 {
                     store.dispatch(loginSuccess(user))
+                    changeLanguage(user.Language)
                 }
                 else{
                     setLoginStatus(user.Message)
@@ -116,7 +118,7 @@ function SignInComponent(props)
                                 />
                             {
                                 emailvalidate==false &&
-                                <label class="mz-form-error-label" for="auth-block__form-group__email">{strings["signin_validate_email"]}</label>
+                                <label className="mz-form-error-label" for="auth-block__form-group__email">{strings["signin_validate_email"]}</label>
                             }
                         </div>
                     </div>
@@ -138,7 +140,7 @@ function SignInComponent(props)
                             />
                             {
                                 passwordvalidate==false &&
-                                <label class="mz-form-error-label" for="auth-block__form-group__email">{strings["signin_validate_password"]}</label>
+                                <label className="mz-form-error-label" for="auth-block__form-group__email">{strings["signin_validate_password"]}</label>
                             }
                         </div>
                     </div>
@@ -185,4 +187,4 @@ function SignInComponent(props)
     )
 }
 
-export default SignInComponent
+export default connect()(multilanguage(SignInComponent));

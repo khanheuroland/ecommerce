@@ -32,7 +32,7 @@ function FlashSaleProductCoponent(props)
                                         ))
                                     }
                                 </ul>
-                                <a href="#" class="link__all-more"><span class="sprite__homemain--after">{strings["view_all"]}</span></a>
+                                <a href="#" className="link__all-more"><span className="sprite__homemain--after">{strings["view_all"]}</span></a>
                             </div>
                         </div>
                     </div>

@@ -44,15 +44,15 @@ function PopularProductItem(props)
     }
 
     return (
-        <a href={"/product/"+ data.id} className="link__item">
+        <a href={"/product/"+ data.ID} className="link__item">
             <div className="box__image">
-                <img src={data.image} alt={data.name[langcode.toUpperCase()]} className="image"/>
+                <img src={data.Image} alt={data.Name[langcode.toUpperCase()]} className="image"/>
             </div>
             <div className="box__information">
                 <span className="text__tag" style={{backgroundColor:'#00B8A4'}}>{strings[data.tag]}</span>
-                <div className="text__name">{data.name[langcode.toUpperCase()]}</div>
+                <div className="text__name">{data.Name[langcode.toUpperCase()]}</div>
                 <div className="box__price">
-                    <span className="text__price">{getCurrency(data.price, data.currency)}</span>
+                    <span className="text__price">{getCurrency(data.Price, data.Currency)}</span>
                 <span className="text__unit">{strings["currency"]}</span></div>
             </div>
         </a>

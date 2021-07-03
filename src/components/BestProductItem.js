@@ -1,6 +1,7 @@
 
 import React from "react";
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function BestProductItem(props)
 {
@@ -46,7 +47,7 @@ function BestProductItem(props)
     }
 
     return (
-        <a href={"/product/"+ data.id} className="link__item">
+        <Link to={"/product/"+ data.id} className="link__item">
             <span className="text__rank">{index}</span>
             <div className="box__image">
                 <img src={data.image} className="image"/>
@@ -55,7 +56,7 @@ function BestProductItem(props)
                 <div className="text__name">{data.name[langcode.toUpperCase()]}</div>
                 <div className="box__price"><span className="text__price">{getCurrency(data.price, "won")}</span><span className="text__unit">{strings["currency"]}</span></div>
             </div>
-        </a>
+        </Link>
     )
 }
 
