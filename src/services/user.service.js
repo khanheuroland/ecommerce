@@ -16,4 +16,8 @@ async function register(fullname, email, phone, password, lang){
     return result;
 }
 
-export default {login, register}
+async function saveSelectedLanguage(lang, token){
+    let result = await callApi("user", 'PUT', {Language: lang}, token)
+}
+
+export default {login, register, saveSelectedLanguage}

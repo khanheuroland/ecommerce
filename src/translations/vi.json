@@ -29,10 +29,10 @@
     "bestProductTitle": "Sản phẩm tốt nhất",
     "viewAll": "Xem tất cả",
     "signin_title": "Đăng nhập",
-    "signin_email": "Email",
+    "signin_email": "Email/Số điện thoại",
     "signin_password": "Mật khẩu",
     "signin_confirm_password": "Xác nhận mật khẩu",
-    "signin_email_placeholder": "Địa chỉ Email của quý khách",
+    "signin_email_placeholder": "Địa chỉ Email hoặc Số điện thoại của quý khách",
     "signin_password_placeholder": "Mật khẩu của quý khách",
     "signin_forgot_password": "Quên mật khẩu?",
     "signin_login": "Đăng nhập",
@@ -54,7 +54,7 @@
     "free_ship_title": "Miễn phí vận chuyển",
     "free_ship_see_more": "Danh sách sản phẩm miễn phí vận chuyển",
     "qty_title": "Số lượng",
-    "signin_validate_email": "Vui lòng nhập Email đúng định dạng",
+    "signin_validate_email": "Vui lòng nhập Email hoặc Số điện thoại",
     "signin_validate_password": "Vui lòng nhập mật khẩu",
     "signup_fullname_validate": "Vui lòng nhập họ và tên hợp lệ",
     "signup_email_validate": "Vui lòng nhập Email đúng định dạng",
@@ -75,5 +75,6 @@
     "login_account_inactive": "Tài khoản {0} chưa được kích hoạt.",
     "login_account_locked": "Tài khoản {0} đang bị tạm khoá.",
     "register_email_unavailable": "Email {0} đã được sử dụng bởi tài khoản khác.",
+    "register_phone_unavailable": "Số điện thoại {0} đã được sử dụng bởi tài khoản khác.",
     "register_successfully": "Tài khoản {0} đã được tạo thành công."
 }

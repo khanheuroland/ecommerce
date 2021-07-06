@@ -47,7 +47,8 @@ function SignInComponent(props)
         
         let isValidate = true;
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if(re.test(String(email).toLowerCase())==false)
+        const rePhone= /^[0-9]{10}$/
+        if(re.test(String(email).toLowerCase())==false && rePhone.test(email)==false)
         {
             setEmailValidate(false)
             isValidate=false;
@@ -71,7 +72,7 @@ function SignInComponent(props)
                 if(user.Token)
                 {
                     store.dispatch(loginSuccess(user))
-                    changeLanguage(user.Language)
+                    store.dispatch(changeLanguage(user.Language))
                 }
                 else{
                     setLoginStatus(user.Message)
@@ -97,7 +98,7 @@ function SignInComponent(props)
 
             {
                 loginstatus=="ACCOUNT_IS_NOT_ENABLED"&&
-                    <Alert security="error">{strings["login_account_locked"].replace("{0}", email)}</Alert>
+                    <Alert severity="error">{strings["login_account_locked"].replace("{0}", email)}</Alert>
             }
             
             <form id="auth-block__login-form" className="auth-block__form" method="post">

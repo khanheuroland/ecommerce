@@ -14,6 +14,8 @@ import Fade from '@material-ui/core/Fade';
 import SignInComponent from "./SignInComponent";
 import SignUpComponent from "./SignUpComponent";
 import {openAuthForm, closeAuthForm, logout} from "../reducers/userReducer";
+import userservice from "../services/user.service";
+
 const useStyles = makeStyles((theme) => ({
     modal: {
       display: 'flex',
@@ -44,6 +46,7 @@ function PageHeaderComponent(props) {
     const handleClose = () => {
         setAnchorEl(null);
         setShowMenu(false);
+        setProfileEl(false);
         props.dispatch(closeAuthForm());
     };
 
@@ -66,6 +69,10 @@ function PageHeaderComponent(props) {
         let selectedItem = event.currentTarget;
         props.dispatch(changeLanguage(selectedItem.id));
         setAnchorEl(null);
+        if(userContext.profile.Token!=null)
+        {
+            userservice.saveSelectedLanguage(selectedItem.id, userContext.profile.Token)
+        }
     }
 
     const userContext = useSelector((state)=>{

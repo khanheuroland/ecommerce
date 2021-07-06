@@ -29,10 +29,10 @@
     "bestProductTitle": "Best Productions",
     "viewAll": "View all",
     "signin_title": "Sign in",
-    "signin_email": "Email",
+    "signin_email": "Email/Phone",
     "signin_password": "Password",
     "signin_confirm_password": "Confirm password",
-    "signin_email_placeholder": "Your email address",
+    "signin_email_placeholder": "Your email address or phone number",
     "signin_password_placeholder": "Your password",
     "signin_forgot_password": "Forgot password?",
     "signin_login": "Log in",
@@ -54,7 +54,7 @@
     "free_ship_title": "Free Shipping",
     "free_ship_see_more": "See more Free shipping products",
     "qty_title": "Quantity",
-    "signin_validate_email": "Please enter Email in correct format",
+    "signin_validate_email": "Please enter Email or Phone Number",
     "signin_validate_password": "Please enter your password",
     "signup_fullname_validate": "Please enter a valid fullname",
     "signup_email_validate": "Please enter your correct Email",
@@ -77,5 +77,6 @@
     "login_account_inactive": "Account {0} has not been activated.",
     "login_account_locked": "Account {0} is temporarily locked.",
     "register_email_unavailable": "Email {0} is already in use by another account.",
+    "register_phone_unavailable": "The Phone number {0} is already in use by another account.",
     "register_successfully": "Account {0} has been created successfully."
 }

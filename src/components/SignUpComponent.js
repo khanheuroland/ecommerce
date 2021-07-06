@@ -33,7 +33,7 @@ function SignUpComponent(props)
     async function signUp(event){
         let isValid = true;
 
-        const reFullname = /^[\D\s]+$/
+        const reFullname = /^\D+[^@#$\^\*]$/
         setFullnameValidate(reFullname.test(String(fullname)));
         isValid = reFullname.test(String(fullname));
         !isValid && setFullNameFocus();
@@ -75,6 +75,10 @@ function SignUpComponent(props)
             {
                 registerStatus=="EMAIL_IS_IN_USED"&&
                     <Alert severity="error">{strings["register_email_unavailable"].replace("{0}",email)}</Alert>
+            }
+            {
+                registerStatus=="PHONE_IS_IN_USED"&&
+                    <Alert severity="error">{strings["register_phone_unavailable"].replace("{0}",phone)}</Alert>
             }
             {
                 registerStatus == "REGISTERED" && 

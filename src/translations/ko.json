@@ -29,10 +29,10 @@
     "bestProductTitle": "지금 제일 잘 나가는 상품",
     "viewAll": "전체보기",
     "signin_title": "로그인",
-    "signin_email": "이메일",
+    "signin_email": "이메일 / 전화 번호",
     "signin_password": "암호",
     "signin_confirm_password": "비밀번호 확인",
-    "signin_email_placeholder": "귀하의 이메일 주소",
+    "signin_email_placeholder": "귀하의 이메일 주소 또는 전화 번호",
     "signin_password_placeholder": "너의 비밀번호",
     "signin_forgot_password": "비밀번호를 잊으 셨나요?",
     "signin_login": "로그인",
@@ -54,7 +54,7 @@
     "free_ship_title": "무료배송 상품",
     "free_ship_see_more": "무료 배송 상품 더보기",
     "qty_title": "선택된 상품 수량",
-    "signin_validate_email": "올바른 형식으로 이메일을 입력하십시오",
+    "signin_validate_email": "이메일 또는 전화 번호를 입력하세요",
     "signin_validate_password": "비밀번호를 입력하세요",
     "signup_fullname_validate": "유효한 성과 이름을 입력하십시오",
     "signup_email_validate": "정확한 이메일을 입력하세요",
@@ -75,5 +75,6 @@
     "login_account_inactive": "귀하의 계정 {0}이 활성화되지 않았습니다.",
     "login_account_locked": "귀하의 계정 {0}이 일시적으로 잠겨 있습니다.",
     "register_email_unavailable": "{0} 이메일은 이미 다른 계정에서 사용 중입니다.",
+    "register_phone_unavailable": "전화 번호 {0}은 (는) 이미 다른 계정에서 사용 중입니다.",
     "register_successfully": "{0} 계정이 생성되었습니다."
 }
