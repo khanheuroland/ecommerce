@@ -441,19 +441,30 @@ pre {
     width: 100%
 }
 
-.section__main-category .text__title
-{
-    margin-top: 20px;
+.section__main-category .text__title {
+    margin-top: 15px;
     width: auto;
     text-transform: uppercase;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    height: 40px;
 }
 
-.section__main-category .box__item
-{
+.section__main-category .layout-change {
+    position: absolute;
+    right: 0;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.section__main-category .layout-change .active {
+    color: #FF8C0B;
+}
+
+.section__main-category .box__item {
     margin-top: 10px;
 }
 
-.modal-form .MuiAlert-standardError, .modal-form .MuiAlert-standardSuccess
-{
+.modal-form .MuiAlert-standardError,
+.modal-form .MuiAlert-standardSuccess {
     max-width: 318px !important;
 }

@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
     paper: {
       backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
+      border: '2px solid #FF8C0B',
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
       borderRadius:10
@@ -188,10 +188,10 @@ function PageHeaderComponent(props) {
 
                             <div className="box__service-all">
                                 <ul className="list__service-all">
-                                    <li className="list-item"><a href="#" className="link__service" target="" rel="">{strings["best"]}</a></li>
-                                    <li className="list-item"><a href="#" className="link__service" target="" rel="">{strings["freeShip"]}</a></li>
-                                    <li className="list-item"><a href="#" className="link__service" target="" rel="">{strings["discount"]}</a></li>
-                                    <li className="list-item"><a href="#" className="link__service" target="" rel="">{strings["newProduct"]}</a></li>
+                                    <li className="list-item"><Link to="/best-products" className="link__service" target="" rel="">{strings["best"]}</Link></li>
+                                    <li className="list-item"><Link to="/freeship" className="link__service" target="" rel="">{strings["freeShip"]}</Link></li>
+                                    <li className="list-item"><Link to="/discount" className="link__service" target="" rel="">{strings["discount"]}</Link></li>
+                                    <li className="list-item"><Link to="/new-products" className="link__service" target="" rel="">{strings["newProduct"]}</Link></li>
                                 </ul>
                             </div>
                             

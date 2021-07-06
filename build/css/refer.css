@@ -1739,14 +1739,14 @@
 
 .section__main-superdeal {
     position: relative;
-    padding-top: 63px;
+    padding-top: 52px;
     margin-top: 40px;
 }
 
 .section__main-superdeal:after {
     content: '';
     position: absolute;
-    height: 300px;
+    height: 225px;
     top: 0;
     width: 100%;
     background-color: #ffd202
@@ -1801,16 +1801,19 @@
     margin: 0 0 24px 24px
 }
 
-.section__main-category .box__superdeal .box__item .list-item {
+.box__superdeal .box__item .list-item {
     width: 282px !important;
+    height: 320px;
 }
 
-.section__main-category .box__superdeal .box__item .link__item .box__image {
-    width: 270px !important;
-    height: 200px !important;
+.box__superdeal .box__item .link__item .box__image {
+    width: 282px !important;
+    height: 175px !important;
+    text-align: center;
+    background: #FFF;
 }
 
-.section__main-category .box__superdeal .box__item .box__image .image {
+.box__superdeal .box__item .box__image .image {
     width: auto !important;
     height: 100% !important;
 }
@@ -1950,7 +1953,6 @@
 }
 
 .box__superdeal .box__information {
-    width: 332px;
     margin-top: 20px
 }
 

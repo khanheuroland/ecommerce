@@ -10,12 +10,12 @@ import DnsOutlinedIcon from '@material-ui/icons/DnsOutlined';
 
 var data = require('../assets/dumpdata.json');
 
-function CategoryPage(props)
+function FreeshipPage(props)
 {
     let {catId, catName} = useParams();
     const {strings, currentLanguageCode} = props;
     const bestProducts = useSelector((state)=>{
-        return data.Products.filter(c=>c.CatID==catId) ;//state.configReducer.popularProducts
+        return data.Products.filter(c=>c.tag=='freeship') ;//state.configReducer.popularProducts
     })
 
     return(
@@ -25,7 +25,7 @@ function CategoryPage(props)
                     <div className="section__main-inner">
                         <div className="box__superdeal">
                             <h2 className="text__title">
-                                {strings["menu_"+catName]}
+                                {strings["freeship"].toUpperCase()}
                                 <span className="layout-change">
                                     <AppsOutlinedIcon className="active"/>
                                     <DnsOutlinedIcon/>
@@ -50,4 +50,4 @@ function CategoryPage(props)
     )
 }
 
-export default connect()(multilanguage(CategoryPage));
+export default connect()(multilanguage(FreeshipPage));

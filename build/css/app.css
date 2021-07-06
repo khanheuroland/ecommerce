@@ -3496,13 +3496,37 @@ button {
 }
 
 .box__superdeal .box__information {
-    width: 332px;
     margin-top: 20px
 }
 
 .box__superdeal .box__information .box__price {
     font-size: 16px;
-    color: #222
+    color: #222;
+    display: inline-block;
+}
+
+.box__superdeal .box__information .box__discount {
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: middle;
+    font-size: 22px;
+    color: #74cb0d;
+}
+
+.box__superdeal .box__information .box__discount svg {
+    vertical-align: middle;
+    color: #FF8C0B;
+}
+
+.box__superdeal .box__information .box__price-original {
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: middle;
+    margin-left: 15px;
+    font-size: 13px;
+    line-height: 22px;
+    color: #949494;
+    text-decoration: line-through;
 }
 
 .box__superdeal .box__information .box__price .text__sale {
@@ -3525,7 +3549,7 @@ button {
 .box__superdeal .box__information .text__name {
     display: block;
     overflow: hidden;
-    height: 22px;
+    height: auto;
     margin-top: 5px;
     font-size: 16px;
     line-height: 22px;
@@ -3920,7 +3944,7 @@ button {
     color: #777;
 }
 
-.box__headline .box__headline--col .box__headline--item ~ .box__headline--item {
+.box__headline .box__headline--col .box__headline--item~.box__headline--item {
     margin-left: 5px;
     padding-left: 6px;
 }
@@ -3941,7 +3965,7 @@ button {
     vertical-align: bottom;
 }
 
-.box__headline .box__headline--col .box__headline--item ~ .box__headline--item:before {
+.box__headline .box__headline--col .box__headline--item~.box__headline--item:before {
     content: '';
     position: absolute;
     left: 0;
@@ -3988,6 +4012,12 @@ button {
     text-align: right;
 }
 
+.box__item-info .box__item .box__discount {
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
 .box__item-info .box__item-summary .box__price .text__price-percent {
     position: relative;
     top: -3px;
@@ -3997,6 +4027,7 @@ button {
     font-size: 0;
     color: #2e8de5;
 }
+
 .box__item-info .box__item-summary .box__price .text__price-discount {
     font-size: 50px;
     line-height: 48px;
@@ -4115,7 +4146,7 @@ button {
     background-position: -390px -220px;
 }
 
-.box__others-info .box__others-item .button__small .flag ~ .button__name {
+.box__others-info .box__others-item .button__small .flag~.button__name {
     position: relative;
     top: -1px;
     font-size: 15px;
@@ -4135,6 +4166,7 @@ button {
     background-position: -84px -76px !important;
     -webkit-background-position: -84px -76px;
 }
+
 .shipping-type {
     font-size: 0;
     width: 100%;
@@ -4142,6 +4174,7 @@ button {
     margin-top: 10px;
     text-align: right;
 }
+
 .icon-overseas-shipping {
     width: 100%;
     height: 28px;
@@ -4159,10 +4192,7 @@ button {
     height: 62px;
 }
 
-.box__slide .box__list-thumb .list-item img
-{
-
-}
+.box__slide .box__list-thumb .list-item img {}
 
 .box__slide .box__list-thumb .button__thumb-list {
     display: block;
@@ -4173,6 +4203,7 @@ button {
     margin: 0;
     background-color: transparent;
 }
+
 .box__slide .box__list-thumb {
     overflow: hidden;
     width: 356px;
@@ -4181,7 +4212,10 @@ button {
     font-size: 0;
     text-align: center;
 }
-.box__list-thumb .list-item.list-item--active .button__thumb-list {border:#233549 solid 1px}
+
+.box__list-thumb .list-item.list-item--active .button__thumb-list {
+    border: #233549 solid 1px
+}
 
 .box__others-info .box__others-item .button__accordion {
     position: absolute;
@@ -4310,7 +4344,6 @@ button {
     display: table-cell;
 }
 
-
 [class^="button__basic-"] {
     height: 62px;
     background-color: transparent;
@@ -4334,11 +4367,10 @@ button {
     color: #fff;
 }
 
-.box__button-buy
-{
+.box__button-buy {
     margin-top: 30px;
     display: table;
-    table-layout:fixed;
+    table-layout: fixed;
     width: 100%;
 }
 

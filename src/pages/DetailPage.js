@@ -6,10 +6,51 @@ import {multilanguage, changeLanguage, loadLanguages} from "redux-multilanguage"
 import PageHeaderComponent from '../components/PageHeaderComponent';
 import FooterComponent from '../components/FooterComponent';
 
+var data = require('../assets/dumpdata.json');
+
 function DetailPage(props)
 {
-    let {pId} = useParams();
+    let {id} = useParams();
     const {strings, currentLanguageCode} = props;
+    const product = useSelector((state)=>{
+        return data.Products.filter(c=>c.ID==id)[0];//state.configReducer.popularProducts
+    })
+
+    const currencyRate = useSelector((state)=>{
+        return state.configReducer.currencyRate
+    })
+
+    const getPrice = (price, fromCurrency="won")=>{
+        let val;
+        if(currentLanguageCode=="vi")
+        {
+            val = (Math.round(price*currencyRate[fromCurrency+strings["currencycode"]]/100))*100;
+        }
+        else if(currentLanguageCode=="en")
+        {
+            val = (price*currencyRate[fromCurrency+strings["currencycode"]]).toFixed(2);
+        }
+        else
+        {
+            val = price;
+        }
+        if(val>999)
+        {
+            let reverted = val.toString().split('').reverse();
+            let formatted=[]
+            for(let i=1; i<=reverted.length; i++)
+            {
+                formatted.push(reverted[i-1]);
+                if(i%3==0 && i!=reverted.length)
+                {
+                    formatted.push(strings["currency_group"]);
+                }
+            }
+            return formatted.reverse().join('');
+        }
+        else
+            return val;
+    }
 
     return(
         <>
@@ -24,14 +65,14 @@ function DetailPage(props)
                                 <div className="box__article-top">
                                     <div className="box__viewer-img">
                                         <div className="box__thumb--gallery">
-                                            <img style={{width:"500px", height:"500px", display:"block"}} src="//gdimg.gmarket.co.kr/1542498533/still/600?ver=1623826915" alt="[Mamonde] Pore Clean Water Toner 1+1 Half Price Sale"/>
+                                            <img style={{width:"500px", height:"500px", display:"block"}} src={product.LargeImage} alt="[Mamonde] Pore Clean Water Toner 1+1 Half Price Sale"/>
                                         </div>
                                         <div className="box__slide">
                                             <div className="box__list-thumb">
                                                 <ul className="list__thumb">
                                                     <li className="list-item list-item--active">
                                                         <button type="button" className="button__thumb-list">
-                                                            <img className="image__slide" style={{width:"60px", height:"60px"}} src="//gdimg.gmarket.co.kr/1542498533/still/600?ver=1623826915" alt="[Mamonde] Pore Clean Water Toner 1+1 Half Price Sale"/>
+                                                            <img className="image__slide" style={{width:"60px", height:"60px"}} src={product.Image} alt="[Mamonde] Pore Clean Water Toner 1+1 Half Price Sale"/>
                                                         </button>
                                                     </li>
                                                 </ul>
@@ -52,10 +93,17 @@ function DetailPage(props)
                                         </div>
                                         <div className="box__item-info">
                                             <div className="box__item--col box__item-summary">
-                                                <p className="text__item-title">[Mamonde] Pore Clean Water Toner 1+1 Half Price Sale</p>
+                                                <p className="text__item-title">{product.Name[currentLanguageCode.toUpperCase()]}</p>
                                                 <div className="box__price">
-                                                    <p className="text__price-percent"><span className="text__price-discount">50</span><span className="text__price-mark">%</span></p>
-                                                    <p className="text__price-tag"><span className="text__price-selling">$27.33</span><strong className="text__price-decide"><span className="text__price-foreign">$13.67</span><span className="text__price-won">(￦15,000)</span></strong></p>
+                                                    { product.Discount>0 &&
+                                                        <p className="text__price-percent"><span className="text__price-discount">{product.Discount}</span><span className="text__price-mark">%</span></p>
+                                                    }
+                                                    <p className="text__price-tag">
+                                                        <span className="text__price-selling">{getPrice(product.Price*(1+product.Discount/100), "won")} {strings["currency"]}</span>
+                                                        <strong className="text__price-decide">
+                                                            <span className="text__price-foreign">{getPrice(product.Price, "won")} {strings["currency"]}</span>
+                                                        </strong>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -97,8 +145,7 @@ function DetailPage(props)
                                                             </div>
                                                         </div>
                                                         <div className="box__choice--col box__choice-total">
-                                                            <span className="text__choice-foreign">$20.43</span
-                                                            ><span className="text__choice-won">(￦22,400)</span>
+                                                            <span className="text__choice-foreign">{getPrice(product.Price, "won")} {strings["currency"]}</span>
                                                         </div>
                                                     </div>
                                                 </div>

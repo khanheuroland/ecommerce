@@ -5,6 +5,9 @@ import {connect} from "react-redux";
 import HomePage from './pages/HomePage'
 import CategoryPage from './pages/CategoryPage'
 import DetailPage from './pages/DetailPage'
+import FreeshipPage from './pages/FreeshipPage';
+import DiscountPage from './pages/DiscountPage';
+import NewProducts from "./pages/NewProducts";
 
 
 class App extends React.Component {
@@ -32,6 +35,10 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={HomePage}/>
             <Route path="/category/:catId/:catName" children={<CategoryPage/>}/>
+            <Route exact path="/freeship" component={FreeshipPage}/>
+            <Route exact path="/discount" component={DiscountPage}/>
+            <Route path="/new-products" component={NewProducts}/>
+            <Route path="/best-products" component={NewProducts}/>
             <Route path="/product/:id" children={<DetailPage/>}/>
           </Switch>
         </Router>

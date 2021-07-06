@@ -23,7 +23,7 @@ function FlashSaleItem(props)
     }
 
     const addToCart=()=>{
-        alert("Add to cart: qty="+ qty +"- id="+ data.id)
+        alert("Add to cart: qty="+ qty +"- id="+ data.ID)
     }
 
     const currencyRate = useSelector((state)=>{
@@ -64,7 +64,7 @@ function FlashSaleItem(props)
 
     return (
         <>
-            <Link to={"/product/"+ data.id} className="link__item">
+            <Link to={"/product/"+ data.ID} className="link__item">
                 <div className="box__image">
                     <img src={data.Image} alt={data.Name[langcode.toUpperCase()]} className="image"/>
                 </div>
