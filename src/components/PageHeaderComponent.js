@@ -15,6 +15,8 @@ import SignInComponent from "./SignInComponent";
 import SignUpComponent from "./SignUpComponent";
 import {openAuthForm, closeAuthForm, logout} from "../reducers/userReducer";
 import userservice from "../services/user.service";
+import UpdateAddressComponent from "./UpdateAddressComponent";
+import Badge from '@material-ui/core/Badge';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -46,7 +48,7 @@ function PageHeaderComponent(props) {
     const handleClose = () => {
         setAnchorEl(null);
         setShowMenu(false);
-        setProfileEl(false);
+        setProfileEl(null);
         props.dispatch(closeAuthForm());
     };
 
@@ -119,13 +121,14 @@ function PageHeaderComponent(props) {
                                     <li className="list-item list-item--recent">
                                         <button type="button" id="button__recent-layer" className="button" aria-haspopup="listbox" aria-controls="box__recent-layer" title="최근본상품">
                                             <img src="//pics.gmarket.co.kr/pc/single/kr/common/image__header-recent.svg" alt="" className="image"/>
-                                            <span className="box__recent-item"></span>
+                                            <span className="box__recent-item">5</span>
                                         </button>
                                     </li>
-                                    <li className="list-item list-item--cart">
-                                        <a href="/cart" className="link" title="장바구니 이동">
+                                    <li className="list-item list-item--recent">
+                                        <button type="button" id="button__recent-layer" className="button" aria-haspopup="listbox" aria-controls="box__recent-layer" title="장바구니 이동">
                                             <img src="//pics.gmarket.co.kr/pc/single/kr/common/image__header-cart.svg" alt="" className="image"/>
-                                        </a>
+                                            <span className="box__recent-item">5</span>
+                                        </button>
                                     </li>
                                 </ul>
                             </div>
@@ -219,7 +222,7 @@ function PageHeaderComponent(props) {
                                                 id="profile-menu"
                                                 anchorEl={profileEl}
                                                 keepMounted
-                                                open={Boolean(profileEl)}
+                                                open={Boolean(profileEl)==true}
                                                 onClose={handleClose}
                                             >
                                                 <MenuItem onClick={logOut} id="logout">Logout</MenuItem>
@@ -263,7 +266,9 @@ function PageHeaderComponent(props) {
                 onClose={handleClose}
                 closeAfterTransition
                 BackdropComponent={Backdrop}
+                disablePortal
                 disableEnforceFocus
+                disableAutoFocus
              >
                 <Fade in={userContext.authFormOpen}>
                     <div className={classes.paper}>
@@ -275,6 +280,11 @@ function PageHeaderComponent(props) {
                             userContext.authForm=="signup" && 
                                 <SignUpComponent translation={strings} langcode={currentLanguageCode}/>
                         }
+                        {
+                            userContext.authForm == "update_address"&&
+                                <UpdateAddressComponent translation={strings} langcode={currentLanguageCode}/>
+                        }
+
                     </div>
                 </Fade>
             </Modal>

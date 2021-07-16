@@ -1,0 +1,185 @@
+[{
+    "Province": "Hà Nội",
+    "Districts": [
+        {
+            "District": "Quận Ba Đình",
+            "Wards": [
+                "Cống Vị", "Điện Biên", "Đội Cấn", "Giảng Võ", "Kim Mã", "Liễu Giai", "Ngọc Hà", "Ngọc Khánh", "Nguyễn Trung Trực", "Phúc Xá", "Quán Thánh", "Thành Công", "Trúc Bạch", "Vĩnh Phúc"
+            ]
+        },
+        {
+            "District": "Quận Bắc Từ Liêm",
+            "Wards": [
+                "Cổ Nhuế 1", "Cổ Nhuế 2", "Đông Ngạc", "Đức Thắng", "Liên Mạc", "Minh Khai", "Phú Diễn", "Phúc Diễn", "Tây Tựu", "Thượng Cát", "Thụy Phương", "Xuân Đỉnh", "Xuân Tảo"
+            ]
+        },
+        {
+            "District": "Quận Cầu Giấy",
+            "Wards": [
+                "Nghĩa Đô", "Quan Hoa", "Dịch Vọng", "Dịch Vọng Hậu", "Trung Hòa", "Nghĩa Tân", "Mai Dịch", "Yên Hòa"
+            ]
+        },
+        {
+            "District": "Quận Đống Đa",
+            "Wards": [
+                "Văn Miếu", "Quốc Tử Giám", "Hàng Bột", "Nam Đồng", "Trung Liệt", "Khâm Thiên", "Phương Liên", "Phương Mai", "Khương Thượng", "Ngã Tư Sở", "Láng Thượng", "Cát Linh", "Văn Chương", "Ô Chợ Dừa", "Quang Trung", "Thổ Quan", "Trung Phụng", "Kim Liên", "Trung Tự", "Thịnh Quang", "Láng Hạ"
+            ]
+        }, 
+        {
+            "District": "Quận Hà Đông",
+            "Wards": [
+                "Quang Trung"," Nguyễn Trãi"," Hà Cầu"," Vạn Phúc"," Phúc La"," Yết Kiêu"," Mộ Lao"," Văn Quán"," La Khê"," Phú La"," Kiến Hưng"," Yên Nghĩa"," Phú Lương"," Phú Lãm"," Dương Nội"," Biên Giang"," Đồng Mai"
+            ]
+        },
+        {
+            "District": "Quận Hai Bà Trưng",
+            "Wards": [
+                "Nguyễn Du","Bùi Thị Xuân","Ngô Thì Nhậm","Đồng Nhân","Bạch Đằng","Thanh Nhàn","Bách Khoa","Vĩnh Tuy","Trương Định","Lê Đại Hành","Phố Huế","Phạm Đình Hổ","Đống Mác","Thanh Lương","Cầu Dền","Bạch Mai","Quỳnh Mai","Minh Khai","Đồng Tâm","Quỳnh Lôi"
+            ]
+        },
+        {
+            "District": "Quận Hoàn Kiếm",
+            "Wards": [
+                "Chương Dương Độ","Cửa Đông","Cửa Nam","Đồng Xuân","Hàng Bạc","Hàng Bài","Hàng Bồ","Hàng Bông","Hàng Buồm","Hàng Đào","Hàng Gai","Hàng Mã","Hàng Trống","Lý Thái Tổ","Phan Chu Trinh","Phúc Tân","Trần Hưng Đạo","Tràng Tiền"
+            ]
+        },
+        {
+            "District": "Quận Hoàng Mai",
+            "Wards": [
+                "Định Công","Đại Kim","Giáp Bát","Hoàng Liệt","Hoàng Văn Thụ","Lĩnh Nam","Mai Động","Tân Mai","Thanh Trì","Thịnh Liệt","Trần Phú","Tương Mai","Vĩnh Hưng","Yên Sở"
+            ]
+        }, 
+        {
+            "District": "Quận Long Biên",
+            "Wards": [
+                "Bồ Đề","Gia Thụy","Cự Khối","Đức Giang","Giang Biên","Long Biên","Ngọc Lâm","Ngọc Thụy","Phúc Đồng","Phúc Lợi","Sài Đồng","Thạch Bàn","Thượng Thanh","Việt Hưng"
+            ]
+        },
+        {
+            "District": "Quận Nam Từ Liêm",
+            "Wards": [
+                "Cầu Diễn","Đại Mỗ","Mễ Trì","Mỹ Đình 1","Mỹ Đình 2","Phú Đô","Phương Canh","Tây Mỗ","Trung Văn","Xuân Phương"
+            ]
+        },
+        {
+            "District": "Quận Tây Hồ",
+            "Wards": [
+                "Bưởi","Thụy Khuê","Yên Phụ","Tứ Liên","Nhật Tân","Quảng An","Xuân La","Phú Thượng"
+            ]
+        },
+        {
+            "District": "Quận Thanh Xuân",
+            "Wards": [
+                "Hạ Đình","Kim Giang","Khương Đình","Khương Mai","Khương Trung","Nhân Chính","Phương Liệt","Thanh Xuân Bắc","Thanh Xuân Nam","Thanh Xuân Trung","Thượng Đình"
+            ]
+        },
+        {
+            "District": "Thị Xã Sơn Tây",
+            "Wards": [
+                "Lê Lợi","Quang Trung","Phú Thịnh","Ngô Quyền","Sơn Lộc","Xuân Khanh","Trung Hưng","Viên Sơn","Trung Sơn Trầm", "Đường Lâm","Thanh Mỹ","Xuân Sơn","Kim Sơn","Sơn Đông","Cổ Đông"
+            ]
+        },
+        {
+            "District": "Huyện Ba Vì",
+            "Wards": [
+                "Tây Đằng", "Ba Trại","Ba Vì","Cẩm Lĩnh","Cam Thượng","Châu Sơn","Chu Minh","Cổ Đô","Đông Quang","Đồng Thái","Khánh Thượng","Minh Châu","Minh Quang","Phong Vân","Phú Châu","Phú Cường","Phú Đông","Phú Phương","Phú Sơn","Sơn Đà","Tản Hồng","Tản Lĩnh","Thái Hòa","Thuần Mỹ","Thụy An","Tiên Phong","Tòng Bạt","Vân Hòa","Vạn Thắng","Vật Lại","Yên Bài"
+            ]
+        },
+        {
+            "District": "Huyện Chương Mỹ",
+            "Wards": [
+                "Chúc Sơn", "Xuân Mai", "Đại Yên","Đông Phương Yên","Đông Sơn","Đồng Lạc","Đồng Phú","Hòa Chính","Hoàng Diệu","Hoàng Văn Thụ","Hồng Phong","Hợp Đồng","Hữu Văn","Lam Điền","Mỹ Lương","Nam Phương Tiến","Ngọc Hòa","Phú Nam An","Phú Nghĩa","Phụng Châu","Quảng Bị","Tân Tiến","Thanh Bình","Thụy Hương","Thủy Xuân Tiên","Thượng Vực","Tiên Phương","Tốt Động","Trần Phú","Trung Hòa","Trường Yên","Văn Võ"
+            ]
+        },
+        {
+            "District": "Huyện Đan Phượng",
+            "Wards": [
+                "Phùng", "Đan Phượng","Đồng Tháp","Hạ Mỗ","Hồng Hà","Liên Hà","Liên Hồng","Liên Trung","Phương Đình","Song Phượng","Tân Hội","Tân Lập","Thọ An","Thọ Xuân","Thượng Mỗ","Trung Châu"
+            ]
+        },
+        {
+            "District": "Huyện Đông Anh",
+            "Wards": [
+                
+            ]
+        },
+        {
+            "District": "Huyện Gia Lâm",
+            "Wards": [
+                
+            ]
+        },
+        {
+            "District": "Huyện Hoài Đức",
+            "Wards": [
+                
+            ]
+        },
+        {
+            "District": "Huyện Mê Linh",
+            "Wards": [
+                
+            ]
+        },
+        {
+            "District": "Huyện Mỹ Đức",
+            "Wards": [
+                
+            ]
+        },
+        {
+            "District": "Huyện Phú Xuyên",
+            "Wards": [
+                
+            ]
+        },
+        {
+            "District": "Huyện Phúc Thọ",
+            "Wards": [
+                
+            ]
+        },
+        {
+            "District": "Huyện Quốc Oai",
+            "Wards": [
+                
+            ]
+        },
+        {
+            "District": "Huyện Sóc Sơn",
+            "Wards": [
+                
+            ]
+        },
+        {
+            "District": "Huyện Thạch Thất",
+            "Wards": [
+                
+            ]
+        },
+        {
+            "District": "Huyện Thanh Oai",
+            "Wards": [
+                
+            ]
+        },
+        {
+            "District": "Huyện Thanh Trì",
+            "Wards": [
+                
+            ]
+        },
+        {
+            "District": "Huyện Thường Tín",
+            "Wards": [
+                
+            ]
+        },
+        {
+            "District": "Huyện Ứng Hoà",
+            "Wards": [
+                
+            ]
+        }
+    ]
+}]

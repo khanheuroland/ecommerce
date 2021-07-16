@@ -66,13 +66,17 @@ function SignInComponent(props)
         {
             setProcessing(true);
             let user = await userservice.login(email, password);
-                
             if(user)
             {
                 if(user.Token)
                 {
                     store.dispatch(loginSuccess(user))
                     store.dispatch(changeLanguage(user.Language))
+
+                    if(user.Address.length==0)
+                    {
+                        store.dispatch(openAuthForm("update_address"));
+                    }
                 }
                 else{
                     setLoginStatus(user.Message)

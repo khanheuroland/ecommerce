@@ -5,6 +5,7 @@ import {multilanguage, changeLanguage, loadLanguages} from "redux-multilanguage"
 
 import PageHeaderComponent from '../components/PageHeaderComponent';
 import FooterComponent from '../components/FooterComponent';
+import Alert from '@material-ui/lab/Alert';
 
 var data = require('../assets/dumpdata.json');
 
@@ -18,6 +19,10 @@ function DetailPage(props)
 
     const currencyRate = useSelector((state)=>{
         return state.configReducer.currencyRate
+    })
+
+    const userContext = useSelector((state)=>{
+        return state.userReducer
     })
 
     const getPrice = (price, fromCurrency="won")=>{
@@ -117,6 +122,14 @@ function DetailPage(props)
                                                 <button type="button" className="button__accordion"><i className="sprite__img-accopen">open</i></button>
                                             </div>
                                             <div className="box__others-item">
+                                                <div className="box__others-title" style={{display: "block"}}>Delivery address</div>
+                                                <div className="delivery-box" style={{padding:"5px"}}>
+                                                    <Alert severity="info">
+                                                        {userContext.profile.Address[0].Address} <br/> Xã/Phường: {userContext.profile.Address[0].Ward} - Quận/Huyện: {userContext.profile.Address[0].District} - Thành phố/Tỉnh: {userContext.profile.Address[0].Province}
+                                                    </Alert>
+                                                </div>
+                                            </div>
+                                            <div className="box__others-item">
                                                 <div className="box__others-title">Estimated Item Weight</div>
                                                 <div className="box__others-content"><span className="text__letter-s">0.94 kg</span></div>
                                             </div>
@@ -127,6 +140,18 @@ function DetailPage(props)
                                             <div className="box__others-item box__others-item--full ">
                                                 <div className="box__others-title">Shipping fee</div>
                                                 <div className="box__others-content"><p className="text__delivery-price">$5<span className="text__others--point"></span></p></div>
+                                            </div>
+                                            <div className="box__others-item box__others-item--full ">
+                                                <div className="box__others-title">Domestic shipping fee</div>
+                                                <div className="box__others-content">
+                                                    <p className="text__delivery-price">
+                                                        <div className="box__others-title" style={{display: "table-cell"}}>5 $</div>
+                                                        <div className="domestic-transporter" style={{display: "table-cell", textAlign: "right", paddingRight: "40px", fontWeight: "normal"}}>
+                                                            <img src="http://giaohangtietkiem.vn/wp-content/uploads/2015/10/logo.png" style={{width:"24px"}}/> Giao hàng tiết kiệm
+                                                            <button type="button" className="button__accordion"><i className="sprite__img-accopen">open</i></button>
+                                                        </div>
+                                                    </p>
+                                                </div>
                                             </div>
                                             <div className="box__others-item js-accordion-item">
                                                 <div className="box__others-title"><i className="sprite__img-air">aviation</i>Shipment will start on</div>

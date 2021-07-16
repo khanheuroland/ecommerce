@@ -474,10 +474,13 @@ button {
 
 #desktop_layout-header .box__header .box__head-mytools .list__mytools .list-item--recent .box__recent-item {
     position: absolute;
-    left: 21px;
-    top: 28px;
-    width: 28px;
-    height: 28px;
+    right: 5px;
+    top: 5px;
+    width: 18px;
+    height: 18px;
+    background: red;
+    color: white;
+    border-radius: 50%;
 }
 
 #desktop_layout-header .box__header .box__head-mytools .list__mytools .list-item--recent .box__recent-item .image__recent-item {
@@ -3895,7 +3898,8 @@ button {
     display: table;
     width: 100%;
     padding: 4px 0 12px;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #a4a9b0;
+    margin-bottom: 16px;
 }
 
 .box__headline .box__headline--col .link__headline--brand {
@@ -4196,7 +4200,7 @@ button {
 
 .box__slide .box__list-thumb .button__thumb-list {
     display: block;
-    width: 100%;
+    width: auto;
     height: 100%;
     border: none;
     padding: 0;
