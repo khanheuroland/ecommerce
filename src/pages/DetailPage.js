@@ -121,14 +121,17 @@ function DetailPage(props)
                                                 </div>
                                                 <button type="button" className="button__accordion"><i className="sprite__img-accopen">open</i></button>
                                             </div>
-                                            <div className="box__others-item">
-                                                <div className="box__others-title" style={{display: "block"}}>Delivery address</div>
-                                                <div className="delivery-box" style={{padding:"5px"}}>
-                                                    <Alert severity="info">
-                                                        {userContext.profile.Address[0].Address} <br/> Xã/Phường: {userContext.profile.Address[0].Ward} - Quận/Huyện: {userContext.profile.Address[0].District} - Thành phố/Tỉnh: {userContext.profile.Address[0].Province}
-                                                    </Alert>
+                                            {
+                                                userContext.profile.Address && userContext.profile.Address.length>0 &&
+                                                <div className="box__others-item">
+                                                    <div className="box__others-title" style={{display: "block"}}>Delivery address</div>
+                                                    <div className="delivery-box" style={{padding:"5px"}}>
+                                                        <Alert severity="info">
+                                                            {userContext.profile.Address[0].Address} <br/> Xã/Phường: {userContext.profile.Address[0].Ward} - Quận/Huyện: {userContext.profile.Address[0].District} - Thành phố/Tỉnh: {userContext.profile.Address[0].Province}
+                                                        </Alert>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            }
                                             <div className="box__others-item">
                                                 <div className="box__others-title">Estimated Item Weight</div>
                                                 <div className="box__others-content"><span className="text__letter-s">0.94 kg</span></div>

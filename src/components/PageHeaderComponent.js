@@ -16,7 +16,15 @@ import SignUpComponent from "./SignUpComponent";
 import {openAuthForm, closeAuthForm, logout} from "../reducers/userReducer";
 import userservice from "../services/user.service";
 import UpdateAddressComponent from "./UpdateAddressComponent";
-import Badge from '@material-ui/core/Badge';
+
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import ShopingCartComponent from "./ShopingCartComponent";
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -38,6 +46,15 @@ function PageHeaderComponent(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [profileEl, setProfileEl] = React.useState(null);
     const [showMenu, setShowMenu] = React.useState(null);
+    const [openTrackingOrder, setOpenTrackingOrder] = React.useState(false);
+
+    const handleClickOpenTrackingOrder = () => {
+        setOpenTrackingOrder(true);
+    };
+  
+    const handleCloseTrackingOrder = () => {
+        setOpenTrackingOrder(false);
+    };
 
     const classes = useStyles();
 
@@ -209,15 +226,15 @@ function PageHeaderComponent(props) {
                                 <ul className="list__usermenu">
                                     {
                                         userContext.profile.Token==null&&
-                                        <li className="list-item"><a href="#" className="link__usermenu" onClick={()=>{handleOpen("signin")}}>{strings["signIn"]}</a></li>
+                                        <li className="list-item"><a href="javascript:void(0)" className="link__usermenu" onClick={()=>{handleOpen("signin")}}>{strings["signIn"]}</a></li>
                                     }
                                     {
                                         userContext.profile.Token==null&&
-                                        <li className="list-item"><a href="#" className="link__usermenu" onClick={()=>{handleOpen("signup")}}>{strings["signUp"]}</a></li>
+                                        <li className="list-item"><a href="javascript:void(0)" className="link__usermenu" onClick={()=>{handleOpen("signup")}}>{strings["signUp"]}</a></li>
                                     }
                                     {
                                         userContext.profile.Token &&
-                                        <li className="list-item"><a href="#" className="link__usermenu" aria-controls="profile-menu" aria-haspopup="true" onClick={openProfile}>{strings["hello"]} <b>{userContext.profile.FullName}</b></a>
+                                        <li className="list-item"><a href="javascript:void(0)" className="link__usermenu" aria-controls="profile-menu" aria-haspopup="true" onClick={openProfile}>{strings["hello"]} <b>{userContext.profile.FullName}</b></a>
                                             <Menu
                                                 id="profile-menu"
                                                 anchorEl={profileEl}
@@ -229,7 +246,9 @@ function PageHeaderComponent(props) {
                                             </Menu>
                                         </li>
                                     }
-                                    <li className="list-item"><a href="#" className="link__usermenu">{strings["serviceSupport"]}</a></li>
+                                    <li className="list-item">
+                                        <a href="javascript:void(0)" className="link__usermenu" onClick={handleClickOpenTrackingOrder}>{strings["trackingorder"]}</a>
+                                    </li>
                                     <li className="list-item list-item--global">
                                         <button type="button" id="button__usermenu--global" className="button__usermenu sprite__common--after"
                                         aria-controls="language-selection-menu" aria-haspopup="true" onClick={openChangeLanguage}>Global</button>
@@ -288,6 +307,43 @@ function PageHeaderComponent(props) {
                     </div>
                 </Fade>
             </Modal>
+
+            <Dialog open={openTrackingOrder} onClose={handleCloseTrackingOrder} aria-labelledby="form-dialog-title" maxWidth="xs">
+                <DialogTitle id="form-dialog-title">{strings["trackingorder"]}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        {strings["strackingorderdes"]}
+                    </DialogContentText>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label={strings["signin_email"]}
+                        type="email"
+                        fullWidth
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                    <TextField
+                        margin="dense"
+                        id="ordercode"
+                        label={strings["ordercode"]}
+                        type="text"
+                        fullWidth
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCloseTrackingOrder} color="primary">
+                        {strings["tracking"]}
+                    </Button>
+                </DialogActions>
+            </Dialog>
+
+            <ShopingCartComponent open="true"/>
         </header>
     );
 }

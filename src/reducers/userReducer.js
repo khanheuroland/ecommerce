@@ -8,6 +8,7 @@ const initialUserState={
         FullName: "",
         Token: null
     },
+    shoppingCart: []
 }
 
 export const openAuthForm = (form)=> async(dispatch)=>{
@@ -28,6 +29,9 @@ export const logout=()=>async(dispatch)=>{
     }})
 }
 
+export const addToShoppingCart=(item)=>async(dispatch)=>{
+    dispatch({type: "ADD_TO_CART", payload: item});
+}
 
 const UserReducer = (state=initialUserState, action)=>{
     switch(action.type)
