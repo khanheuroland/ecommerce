@@ -8,7 +8,7 @@ import DetailPage from './pages/DetailPage'
 import FreeshipPage from './pages/FreeshipPage';
 import DiscountPage from './pages/DiscountPage';
 import NewProducts from "./pages/NewProducts";
-
+import ShoppingCartPage from "./pages/ShoppingCartPage";
 
 class App extends React.Component {
   componentDidMount(){
@@ -40,6 +40,7 @@ class App extends React.Component {
             <Route path="/new-products" component={NewProducts}/>
             <Route path="/best-products" component={NewProducts}/>
             <Route path="/product/:id" children={<DetailPage/>}/>
+            <Route path="/shoppingcart" component={ShoppingCartPage}/>
           </Switch>
         </Router>
       </>

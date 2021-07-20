@@ -15,5 +15,10 @@ const routes= [
         path: '/product',
         exact: true,
         main: (match)=> <DetailPage match={match}/>
+    },
+    {
+        path: '/shoppingcart',
+        exact: true,
+        main: (match)=> <ShoppingCartPage match={match}/>
     }
 ]

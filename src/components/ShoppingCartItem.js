@@ -2,6 +2,7 @@
 import React from "react";
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 import ArrowDownwardOutlinedIcon from '@material-ui/icons/ArrowDownwardOutlined';
 
 function ShoppingCartItem(props)
@@ -99,8 +100,14 @@ function ShoppingCartItem(props)
                         <span className="icon__plus-2"></span>
                     </button>
                 </div>
-                <button type="button" className="button__add-deal-cart" onClick={addToCart}>
-                </button>
+                <div className="item-total">
+                    <pan className="total-value">123456</pan><span className="text text__unit">{strings["currency"]}</span>
+                </div>
+            </div>
+            <div style={{marginTop:"15px"}}>
+            <Button size="small" variant="outlined" color="primary">
+                Remove
+            </Button>
             </div>
         </>
     )

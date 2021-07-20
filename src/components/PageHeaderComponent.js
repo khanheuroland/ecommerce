@@ -24,7 +24,6 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import ShopingCartComponent from "./ShopingCartComponent";
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -142,10 +141,12 @@ function PageHeaderComponent(props) {
                                         </button>
                                     </li>
                                     <li className="list-item list-item--recent">
-                                        <button type="button" id="button__recent-layer" className="button" aria-haspopup="listbox" aria-controls="box__recent-layer" title="장바구니 이동">
-                                            <img src="//pics.gmarket.co.kr/pc/single/kr/common/image__header-cart.svg" alt="" className="image"/>
-                                            <span className="box__recent-item">5</span>
-                                        </button>
+                                        <Link to="/shoppingcart">
+                                            <button type="button" id="button__recent-layer" className="button" aria-haspopup="listbox" aria-controls="box__recent-layer" title="장바구니 이동">
+                                                <img src="//pics.gmarket.co.kr/pc/single/kr/common/image__header-cart.svg" alt="" className="image"/>
+                                                <span className="box__recent-item">5</span>
+                                            </button>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
@@ -342,8 +343,6 @@ function PageHeaderComponent(props) {
                     </Button>
                 </DialogActions>
             </Dialog>
-
-            <ShopingCartComponent open="true"/>
         </header>
     );
 }
