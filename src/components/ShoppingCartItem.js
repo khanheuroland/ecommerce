@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import ArrowDownwardOutlinedIcon from '@material-ui/icons/ArrowDownwardOutlined';
+import {adjustQtyShoppingCart, removeFromShoppingCart} from '../reducers/userReducer'
+import store from "../store";
 
 function ShoppingCartItem(props)
 {
@@ -11,20 +13,31 @@ function ShoppingCartItem(props)
     const data = props.data;
     const strings = props.translation;
 
-    const [qty, setQty] = React.useState(1);
+    const [qty, setQty] = React.useState(data.Qty? data.Qty: 1);
 
     const increase=()=>{
         if(qty<100)
+        {
             setQty(qty+1);
+            data.Qty = qty+1;
+            data.Total = (qty+1)*data.Price;
+            store.dispatch(adjustQtyShoppingCart(data));
+        }
+            
     }
 
     const decrease=()=>{
         if(qty>1)
+        {
             setQty(qty-1);
+            data.Qty = qty-1;
+            data.Total = (qty-1)*data.Price;
+            store.dispatch(adjustQtyShoppingCart(data));
+        }
     }
 
-    const addToCart=()=>{
-        alert("Add to cart: qty="+ qty +"- id="+ data.ID)
+    const removeFromCart=()=>{
+        store.dispatch(removeFromShoppingCart(data));
     }
 
     const currencyRate = useSelector((state)=>{
@@ -101,11 +114,16 @@ function ShoppingCartItem(props)
                     </button>
                 </div>
                 <div className="item-total">
-                    <pan className="total-value">123456</pan><span className="text text__unit">{strings["currency"]}</span>
+                    <pan className="total-value">
+                        {
+                            getPrice(qty*data.Price)
+                        }
+                    </pan>
+                    <span className="text text__unit">{strings["currency"]}</span>
                 </div>
             </div>
             <div style={{marginTop:"15px"}}>
-            <Button size="small" variant="outlined" color="primary">
+            <Button size="small" variant="outlined" color="primary" onClick={removeFromCart}>
                 Remove
             </Button>
             </div>

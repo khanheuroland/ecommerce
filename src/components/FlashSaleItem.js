@@ -3,15 +3,24 @@ import React from "react";
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ArrowDownwardOutlinedIcon from '@material-ui/icons/ArrowDownwardOutlined';
+import {addToShoppingCart} from '../reducers/userReducer'
+import store from "../store";
+import Snackbar from '@material-ui/core/Snackbar';
+import Alert from '@material-ui/lab/Alert';
+import {openAuthForm} from "../reducers/userReducer";
 
 function FlashSaleItem(props)
 {
     const langcode = props.langcode;
     const data = props.data;
     const strings = props.translation;
+    
+    const userContext = useSelector((state)=>{
+        return state.userReducer
+    })
 
     const [qty, setQty] = React.useState(1);
-
+    const [addedToCart, setAddedToCart] = React.useState(false);
     const increase=()=>{
         if(qty<100)
             setQty(qty+1);
@@ -23,7 +32,25 @@ function FlashSaleItem(props)
     }
 
     const addToCart=()=>{
-        alert("Add to cart: qty="+ qty +"- id="+ data.ID)
+        if(userContext.profile.Token!=null)
+        {
+            data.Qty = qty;
+            data.Total = qty*data.Price;
+            store.dispatch(addToShoppingCart(data));
+            setAddedToCart(true);
+        }
+        else
+        {
+            store.dispatch(openAuthForm("signin"));
+        }
+    }
+
+    const closeAddedCartMessage=(event, reason)=>{
+        if(reason === 'clickaway')
+        {
+            return;
+        }
+        setAddedToCart(false);
     }
 
     const currencyRate = useSelector((state)=>{
@@ -32,11 +59,11 @@ function FlashSaleItem(props)
 
     const getPrice = (price, fromCurrency="won")=>{
         let val;
-        if(langcode=="vi")
+        if(langcode==="vi")
         {
             val = (Math.round(price*currencyRate[fromCurrency+strings["currencycode"]]/100))*100;
         }
-        else if(langcode=="en")
+        else if(langcode==="en")
         {
             val = (price*currencyRate[fromCurrency+strings["currencycode"]]).toFixed(2);
         }
@@ -51,7 +78,7 @@ function FlashSaleItem(props)
             for(let i=1; i<=reverted.length; i++)
             {
                 formatted.push(reverted[i-1]);
-                if(i%3==0 && i!=reverted.length)
+                if(i%3===0 && i!==reverted.length)
                 {
                     formatted.push(strings["currency_group"]);
                 }
@@ -102,6 +129,12 @@ function FlashSaleItem(props)
                 <button type="button" className="button__add-deal-cart" onClick={addToCart}>
                 </button>
             </div>
+
+            <Snackbar open={addedToCart} autoHideDuration={3000} onClose={closeAddedCartMessage}>
+                <Alert severity="success">
+                    Đã thêm thành công {qty} sản phẩm <b>{data.Name[langcode.toUpperCase()]} vào giỏ hàng</b>
+                </Alert>
+            </Snackbar>
         </>
     )
 }

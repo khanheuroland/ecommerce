@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from 'react-redux';
 import PopularProductItem from "./PopularProductItem";
-import {multilanguage, changeLanguage, loadLanguages} from "redux-multilanguage";
+import {multilanguage} from "redux-multilanguage";
 import {connect} from "react-redux";
 
 var data = require('../assets/dumpdata.json');

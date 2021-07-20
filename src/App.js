@@ -1,6 +1,6 @@
 import React from "react";
 import { HashRouter as Router, Route, Switch} from "react-router-dom";
-import {multilanguage, changeLanguage, loadLanguages} from "redux-multilanguage";
+import {multilanguage, loadLanguages} from "redux-multilanguage";
 import {connect} from "react-redux";
 import HomePage from './pages/HomePage'
 import CategoryPage from './pages/CategoryPage'
@@ -28,7 +28,6 @@ class App extends React.Component {
   }
 
   render(){
-    const {strings, currentLanguageCode} = this.props;
     return (
       <>
         <Router>

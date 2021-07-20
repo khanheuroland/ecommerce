@@ -16,11 +16,11 @@ function BestProductItem(props)
 
     const getCurrency = (price, fromCurrency="won")=>{
         let val;
-        if(langcode=="vi")
+        if(langcode==="vi")
         {
             val = (Math.round(price*currencyRate[fromCurrency+strings["currencycode"]]/100))*100;
         }
-        else if(langcode=="en")
+        else if(langcode==="en")
         {
             val = (price*currencyRate[fromCurrency+strings["currencycode"]]).toFixed(2);
         }
@@ -35,7 +35,7 @@ function BestProductItem(props)
             for(let i=1; i<=reverted.length; i++)
             {
                 formatted.push(reverted[i-1]);
-                if(i%3==0 && i!=reverted.length)
+                if(i%3===0 && i!==reverted.length)
                 {
                     formatted.push(strings["currency_group"]);
                 }
@@ -50,7 +50,7 @@ function BestProductItem(props)
         <Link to={"/product/"+ data.id} className="link__item">
             <span className="text__rank">{index}</span>
             <div className="box__image">
-                <img src={data.image} className="image"/>
+                <img src={data.image} className="image" alt={data.name[langcode.toUpperCase()]}/>
             </div>
             <div className="box__information">
                 <div className="text__name">{data.name[langcode.toUpperCase()]}</div>

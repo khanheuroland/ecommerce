@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import {multilanguage, changeLanguage, loadLanguages} from "redux-multilanguage";
 import {connect, useSelector} from "react-redux";
 import store from "../store";
-import {loginSuccess, openAuthForm, closeAuthForm} from '../reducers/userReducer'
+import {loginSuccess, openAuthForm} from '../reducers/userReducer'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import userservice from "../services/user.service";
 import Alert from '@material-ui/lab/Alert';

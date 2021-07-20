@@ -1,16 +1,15 @@
 import React from "react";
 import { useSelector } from 'react-redux';
 import { Swiper, SwiperSlide} from "swiper/react";
-import SwiperCore, {Autoplay, Navigation, Pagination} from 'swiper';
 import BestProductItem from "./BestProductItem";
-import {multilanguage, changeLanguage, loadLanguages} from "redux-multilanguage";
+import {multilanguage} from "redux-multilanguage";
 import {connect} from "react-redux";
 
 function BestProductComponent(props)
 {
     const {strings, currentLanguageCode} = props;
     const bestProducts = useSelector((state)=>{
-        return state.configReducer.bestProducts
+        return []//state.configReducer.bestProducts
       })
 
     return (

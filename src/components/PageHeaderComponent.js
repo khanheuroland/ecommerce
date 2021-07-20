@@ -3,7 +3,7 @@ import {multilanguage, changeLanguage} from "redux-multilanguage";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {connect, useSelector} from "react-redux";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import CheckIcon from '@material-ui/icons/Check';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 function PageHeaderComponent(props) {
+    const history = useHistory();
     const {strings, currentLanguageCode} = props;
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [profileEl, setProfileEl] = React.useState(null);
@@ -78,6 +79,17 @@ function PageHeaderComponent(props) {
 
     const openCategoryMenu=(event)=>{
         setShowMenu(!showMenu);
+    }
+
+    const openShoppingCart=(event)=>{
+        if(!userContext.profile.Token)
+        {
+            props.dispatch(openAuthForm("signin"));
+        }
+        else
+        {
+            history.push("/shoppingcart");
+        }
     }
 
     const logOut = (event)=>{
@@ -141,12 +153,11 @@ function PageHeaderComponent(props) {
                                         </button>
                                     </li>
                                     <li className="list-item list-item--recent">
-                                        <Link to="/shoppingcart">
-                                            <button type="button" id="button__recent-layer" className="button" aria-haspopup="listbox" aria-controls="box__recent-layer" title="장바구니 이동">
+                                            <button type="button" id="button__recent-layer" className="button" aria-haspopup="listbox" aria-controls="box__recent-layer" title="장바구니 이동"
+                                                onClick={openShoppingCart}>
                                                 <img src="//pics.gmarket.co.kr/pc/single/kr/common/image__header-cart.svg" alt="" className="image"/>
                                                 <span className="box__recent-item">5</span>
                                             </button>
-                                        </Link>
                                     </li>
                                 </ul>
                             </div>

@@ -1,8 +1,6 @@
 import React from "react";
 import { useSelector } from 'react-redux';
-import { Swiper, SwiperSlide} from "swiper/react";
-import SwiperCore, {Autoplay, Navigation, Pagination} from 'swiper';
-import {multilanguage, changeLanguage, loadLanguages} from "redux-multilanguage";
+import {multilanguage} from "redux-multilanguage";
 import {connect} from "react-redux";
 import FlashSaleItem from './FlashSaleItem';
 
@@ -10,7 +8,7 @@ function FlashSaleProductCoponent(props)
 {
     const {strings, currentLanguageCode} = props;
     const bestProducts = useSelector((state)=>{
-        return state.configReducer.popularProducts
+        return []//state.configReducer.popularProducts
       })
 
     return (
