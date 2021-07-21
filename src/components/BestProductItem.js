@@ -47,14 +47,14 @@ function BestProductItem(props)
     }
 
     return (
-        <Link to={"/product/"+ data.id} className="link__item">
+        <Link to={"/product/"+ data.ID} className="link__item">
             <span className="text__rank">{index}</span>
             <div className="box__image">
-                <img src={data.image} className="image" alt={data.name[langcode.toUpperCase()]}/>
+                <img src={data.Image} className="image" alt={data.Name[langcode.toUpperCase()]}/>
             </div>
             <div className="box__information">
-                <div className="text__name">{data.name[langcode.toUpperCase()]}</div>
-                <div className="box__price"><span className="text__price">{getCurrency(data.price, "won")}</span><span className="text__unit">{strings["currency"]}</span></div>
+                <div className="text__name">{data.Name[langcode.toUpperCase()]}</div>
+                <div className="box__price"><span className="text__price">{getCurrency(data.Price, "won")}</span><span className="text__unit">{strings["currency"]}</span></div>
             </div>
         </Link>
     )

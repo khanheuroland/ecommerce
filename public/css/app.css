@@ -3371,13 +3371,13 @@ button {
 .col-left
 {
     float: left;
-    width: 50%;
+    width: 51%;
     padding: 8px 0;
 }
 .col-right
 {
     float: left;
-    width: 50%;
+    width: 49%;
     padding: 8px 0;
     text-align: right;
 }
@@ -4013,7 +4013,6 @@ button {
     color: #000;
     font-weight: 400;
     letter-spacing: -.2px;
-    min-height: 72px;
     word-break: break-word;
     overflow: hidden;
     display: -webkit-box;
@@ -4404,7 +4403,7 @@ button {
 
 .shopping-cart-title
 {
-    margin: 10px 0;
+    margin: 10px 0 20px;
 }
 
 .cart-container
@@ -4529,4 +4528,44 @@ button {
 }
 .address-box p{
     padding: 5px 0;
+}
+
+.recent-viewed-item img
+{
+    max-width: 32px;
+    max-height: 32px;
+}
+
+.detail_item_icon
+{
+    background: url(//pics.gmarket.co.kr/pc/ko/item/vip/sp_vipgroup.png) no-repeat;
+    width: 24px;
+    height: 24px;
+    display: table-cell;
+}
+
+.box__others-item>div
+{
+    padding-left: 10px;
+}
+
+
+.ship_icon
+{
+    background-position: -814px -442px;
+}
+
+.weight_icon
+{
+    background-position: -868px -442px;
+}
+
+.package_icon
+{
+    background-position: -896px -442px;
+}
+
+.ship_fee
+{
+    background-position: -701px -442px;
 }

@@ -11,6 +11,8 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/1878140710/still/600?ver=1606457884",
         "Price": 34300,
         "Discount": 30,
+        "Weight": 0.4,
+        "Size": 0.6,
         "Currency": "won",
         "tag": "new"
     }, {

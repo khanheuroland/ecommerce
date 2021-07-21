@@ -9,8 +9,14 @@ function BestProductComponent(props)
 {
     const {strings, currentLanguageCode} = props;
     const bestProducts = useSelector((state)=>{
-        return []//state.configReducer.bestProducts
-      })
+        let viewItems =  state.userReducer.viewedItems.slice();
+        return viewItems.reverse();
+    })
+
+    let slide = [];
+    bestProducts.map((item, index)=>(
+        index%5==0?slide.push(slide.length):index
+    ));
 
     return (
         <>
@@ -29,17 +35,22 @@ function BestProductComponent(props)
                                 pagination = {{type: "fraction", el: ".swiper-pagination"}}
                                 navigation
                             >
-                                <SwiperSlide>
-                                    <ul className="list__item">
-                                        {
-                                            bestProducts.map((item, index)=>(
-                                                <li key={item.id} className="list-item">
-                                                    <BestProductItem data={item} index={1+ index} langcode = {currentLanguageCode} translation={strings}></BestProductItem>
-                                                </li>
-                                            ))
-                                        }
-                                    </ul>
-                                </SwiperSlide>
+                                {
+                                    slide.map((s, index)=>(
+                                        <SwiperSlide>
+                                            <ul className="list__item" id={s}>
+                                                {
+                                                    bestProducts.slice(s*5, 5*(s+1)).map((item, index)=>(
+                                                        <li key={item.id} className="list-item">
+                                                            <BestProductItem data={item} index={1+ index} langcode = {currentLanguageCode} translation={strings}></BestProductItem>
+                                                        </li>
+                                                    ))
+                                                }
+                                            </ul>
+                                        </SwiperSlide>
+                                    ))
+                                }
+                                
                                 
                             </Swiper>
                            

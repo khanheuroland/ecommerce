@@ -25,6 +25,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
+import Snackbar from '@material-ui/core/Snackbar';
+import Alert from '@material-ui/lab/Alert';
 const useStyles = makeStyles((theme) => ({
     modal: {
       display: 'flex',
@@ -47,6 +49,16 @@ function PageHeaderComponent(props) {
     const [profileEl, setProfileEl] = React.useState(null);
     const [showMenu, setShowMenu] = React.useState(null);
     const [openTrackingOrder, setOpenTrackingOrder] = React.useState(false);
+
+    const [isEmpty, setEmptyStatus] = React.useState(false);
+
+    const closeCartEmptyMessage=(event, reason)=>{
+        if(reason === 'clickaway')
+        {
+            return;
+        }
+        setEmptyStatus(false);
+    }
 
     const handleClickOpenTrackingOrder = () => {
         setOpenTrackingOrder(true);
@@ -81,6 +93,13 @@ function PageHeaderComponent(props) {
         setShowMenu(!showMenu);
     }
 
+    const viewHistoryProduct=(event)=>{
+        if(userContext.viewedItems.length>0)
+        {
+            history.push("/viewed");
+        }
+    }
+
     const openShoppingCart=(event)=>{
         if(!userContext.profile.Token)
         {
@@ -88,7 +107,14 @@ function PageHeaderComponent(props) {
         }
         else
         {
-            history.push("/shoppingcart");
+            if(userContext.shoppingCart.Items.length==0)
+            {
+                setEmptyStatus(true);
+            }
+            else
+            {
+                history.push("/shoppingcart");
+            }
         }
     }
 
@@ -107,6 +133,10 @@ function PageHeaderComponent(props) {
 
     const userContext = useSelector((state)=>{
         return state.userReducer
+    })
+
+    const viewedItems = useSelector((state)=>{
+        return state.userReducer.viewedItems;
     })
 
     const handleClickAway = () => {
@@ -147,16 +177,28 @@ function PageHeaderComponent(props) {
                                         </a>
                                     </li>
                                     <li className="list-item list-item--recent">
-                                        <button type="button" id="button__recent-layer" className="button" aria-haspopup="listbox" aria-controls="box__recent-layer" title="최근본상품">
+                                        <button type="button" id="button__recent-layer" className="button" aria-haspopup="listbox" aria-controls="box__recent-layer" title="최근본상품" 
+                                            onClick={viewHistoryProduct}
+                                            >
                                             <img src="//pics.gmarket.co.kr/pc/single/kr/common/image__header-recent.svg" alt="" className="image"/>
-                                            <span className="box__recent-item">5</span>
+                                            {
+                                                viewedItems.length>0 &&
+                                                <span className="recent-viewed-item">
+                                                    <img src={viewedItems.length>0? viewedItems[viewedItems.length-1].Image: ""} alt=""/>
+                                                </span>
+                                            }
+                                            
+                                            {
+                                                viewedItems.length>0 &&
+                                                <span className="box__recent-item">{viewedItems.length}</span>
+                                            }
                                         </button>
                                     </li>
                                     <li className="list-item list-item--recent">
                                             <button type="button" id="button__recent-layer" className="button" aria-haspopup="listbox" aria-controls="box__recent-layer" title="장바구니 이동"
                                                 onClick={openShoppingCart}>
                                                 <img src="//pics.gmarket.co.kr/pc/single/kr/common/image__header-cart.svg" alt="" className="image"/>
-                                                <span className="box__recent-item">5</span>
+                                                <span className="box__recent-item">{userContext.shoppingCart.Items.length}</span>
                                             </button>
                                     </li>
                                 </ul>
@@ -354,6 +396,12 @@ function PageHeaderComponent(props) {
                     </Button>
                 </DialogActions>
             </Dialog>
+
+            <Snackbar open={isEmpty} anchorOrigin={{vertical:'top', horizontal:'center'}} autoHideDuration={3000} onClose={closeCartEmptyMessage}>
+                <Alert severity="info">
+                    {strings["cart_empty"]}
+                </Alert>
+            </Snackbar>
         </header>
     );
 }

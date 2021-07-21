@@ -494,7 +494,7 @@
 
 .box__best .box__item .list__item {
     overflow: hidden;
-    text-align: center;
+    text-align: left;
     font-size: 0
 }
 

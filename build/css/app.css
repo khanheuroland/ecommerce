@@ -474,10 +474,14 @@ button {
 
 #desktop_layout-header .box__header .box__head-mytools .list__mytools .list-item--recent .box__recent-item {
     position: absolute;
-    left: 21px;
-    top: 28px;
-    width: 28px;
-    height: 28px;
+    right: 5px;
+    top: 5px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    background: red;
+    color: white;
+    border-radius: 50%;
 }
 
 #desktop_layout-header .box__header .box__head-mytools .list__mytools .list-item--recent .box__recent-item .image__recent-item {
@@ -3364,6 +3368,20 @@ button {
     clear: both;
 }
 
+.col-left
+{
+    float: left;
+    width: 51%;
+    padding: 8px 0;
+}
+.col-right
+{
+    float: left;
+    width: 49%;
+    padding: 8px 0;
+    text-align: right;
+}
+
 .box__best .box__item .swiper-button-prev,
 .box__best .box__item .swiper-button-next {
     top: 92px;
@@ -3895,7 +3913,8 @@ button {
     display: table;
     width: 100%;
     padding: 4px 0 12px;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #a4a9b0;
+    margin-bottom: 16px;
 }
 
 .box__headline .box__headline--col .link__headline--brand {
@@ -3994,7 +4013,6 @@ button {
     color: #000;
     font-weight: 400;
     letter-spacing: -.2px;
-    min-height: 72px;
     word-break: break-word;
     overflow: hidden;
     display: -webkit-box;
@@ -4196,7 +4214,7 @@ button {
 
 .box__slide .box__list-thumb .button__thumb-list {
     display: block;
-    width: 100%;
+    width: auto;
     height: 100%;
     border: none;
     padding: 0;
@@ -4381,4 +4399,173 @@ button {
 
 .box__button-buy .box__button--col [class^="button__"] {
     width: 100%;
+}
+
+.shopping-cart-title
+{
+    margin: 10px 0 20px;
+}
+
+.cart-container
+{
+    position: relative;
+}
+
+.cart-item-box{
+    width: 950px;
+    float: left;
+    padding-bottom: 50px;
+}
+
+.cart-summary-box
+{
+    float: right;
+    width: 250px;
+}
+
+.cart-container .list-item {
+    position: relative;
+    float: left;
+    width: 384px;
+    height: 375px;
+    margin: 0 0 24px 24px
+}
+
+.cart-container .list-item {
+    width: 282px !important;
+}
+
+.cart-container .box__image
+{
+    width: 282px !important;
+    height: 175px !important;
+    text-align: center;
+    background: #FFF;
+    border: solid 1px #CCC;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.cart-container .list-item .image {
+    width: auto !important;
+    height: 100% !important;
+    transition: -webkit-transform .2s cubic-bezier(.165, .84, .44, 1);
+    transition: transform .2s cubic-bezier(.165, .84, .44, 1);
+    transition: transform .2s cubic-bezier(.165, .84, .44, 1), -webkit-transform .2s cubic-bezier(.165, .84, .44, 1)
+}
+
+.cart-container .list-item:hover .image {
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05)
+}
+
+.cart-container .box__information {
+    margin-top: 20px;
+}
+
+.cart-container .box__information .box__discount {
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: middle;
+    font-size: 22px;
+    color: #74cb0d;
+}
+
+.cart-container .box__information .box__price {
+    font-size: 16px;
+    color: #222;
+    display: inline-block;
+}
+
+.cart-container .box__information .box__price .text__price {
+    font-weight: bold;
+    font-size: 19px;
+}
+
+.cart-container .item-total
+{
+    text-align: right;
+    color: rgb(245, 114, 36);
+}
+
+.cart-container .total-value
+{
+    font-weight: bold;
+    font-size: 19px;
+    margin-right: 5px;
+}
+
+.cart-container .box__information .box__price-original {
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: middle;
+    margin-left: 15px;
+    font-size: 13px;
+    line-height: 22px;
+    color: #949494;
+    text-decoration: line-through;
+}
+
+.cart-container .box__information .text__name {
+    display: block;
+    overflow: hidden;
+    height: auto;
+    margin-top: 5px;
+    font-size: 16px;
+    line-height: 22px;
+    color: #444;
+    letter-spacing: -0.5px;
+    word-break: break-all;
+}
+
+.address-box {
+    color: rgb(13, 60, 97);
+    background-color: rgb(232, 244, 253);
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 90%;
+}
+.address-box p{
+    padding: 5px 0;
+}
+
+.recent-viewed-item img
+{
+    max-width: 32px;
+    max-height: 32px;
+}
+
+.detail_item_icon
+{
+    background: url(//pics.gmarket.co.kr/pc/ko/item/vip/sp_vipgroup.png) no-repeat;
+    width: 24px;
+    height: 24px;
+    display: table-cell;
+}
+
+.box__others-item>div
+{
+    padding-left: 10px;
+}
+
+
+.ship_icon
+{
+    background-position: -814px -442px;
+}
+
+.weight_icon
+{
+    background-position: -868px -442px;
+}
+
+.package_icon
+{
+    background-position: -896px -442px;
+}
+
+.ship_fee
+{
+    background-position: -701px -442px;
 }

@@ -5,6 +5,7 @@ import PageHeaderComponent from '../components/PageHeaderComponent';
 import ShoppingCartItem from "../components/ShoppingCartItem";
 import Button from '@material-ui/core/Button';
 import {multilanguage, changeLanguage, loadLanguages} from "redux-multilanguage";
+import FooterComponent from '../components/FooterComponent';
 
 var data = require('../assets/dumpdata.json');
 
@@ -61,9 +62,9 @@ const ShoppingCartPage = (props) => {
             <div className="section__main section__main-category">
                 <div className="section__main-inner">
                     <div className="warning" style={{paddingTop: "10px", paddingBottom: "10px"}}>
-                        <Alert severity="info">Do ảnh hưởng của dịch Covid-19, một số khu vực có thể nhận hàng chậm hơn dự kiến. Chúng tôi đang nỗ lực giao các đơn hàng trong thời gian sớm nhất. Cám ơn sự thông cảm của quý khách.</Alert>
+                        <Alert severity="info">{strings["covid_note"]}</Alert>
                     </div>
-                    <h3 className="shopping-cart-title">GIỎ HÀNG ({cart.Qty} sản phẩm)</h3>
+                    <h3 className="shopping-cart-title">{strings["shopping_cart"]} ({cart.Items.length} {strings["item"]})</h3>
                     <div className="cart-container">
                         <div className="cart-item-box">
                             <ul className="list__item">
@@ -77,9 +78,9 @@ const ShoppingCartPage = (props) => {
                             </ul>
                         </div>
                         <div className="cart-summary-box">
-                            <h4>Thông tin thanh toán</h4>
+                            <h4>{strings["billing_information"]}</h4>
                             <p style={{marginTop: "10px"}}>
-                                <div className="col-left">Tạm tính:</div>
+                                <div className="col-left">{strings["total_goods"]}:</div>
                                 <div className="col-right">
                                     {
                                         getPrice(cart.Total)
@@ -89,7 +90,7 @@ const ShoppingCartPage = (props) => {
                                 <div className="clear"/>
                             </p>
                             <p>
-                                <div className="col-left">Phí giao hàng:</div>
+                                <div className="col-left">{strings["delivery_charge"]}:</div>
                                 <div className="col-right">
                                     {
                                         getPrice(cart.ShipFee)
@@ -99,7 +100,7 @@ const ShoppingCartPage = (props) => {
                                 <div className="clear"/>
                             </p>
                             <p style={{borderTop: "solid 1px #CCC"}}>
-                                <div className="col-left"><b>Tổng cộng</b></div>
+                                <div className="col-left"><b>{strings["total"]}</b></div>
                                 <div className="col-right"><b style={{fontSize: "18px", color: "#f57224"}}>
                                     {
                                        getPrice(
@@ -129,13 +130,14 @@ const ShoppingCartPage = (props) => {
                             }
                             <div style={{marginTop: "20px"}}>
                                 <Button variant="contained" color="primary" fullWidth>
-                                    Mua hàng
+                                    {strings["purchase"]}
                                 </Button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <FooterComponent/>
         </>
     );
 };

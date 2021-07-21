@@ -124,7 +124,7 @@ function ShoppingCartItem(props)
             </div>
             <div style={{marginTop:"15px"}}>
             <Button size="small" variant="outlined" color="primary" onClick={removeFromCart}>
-                Remove
+                {strings["remove"]}
             </Button>
             </div>
         </>

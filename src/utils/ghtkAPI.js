@@ -1,27 +1,20 @@
 import axios from 'axios';
 
 export default async function callApi(endpoint, method = 'GET', body, token) {
-    let API_URL = 'http://app.testmaster.vn/api';
-    //let API_URL = 'http://10.10.15.54/Youngsante/api';
-    let service = '';
-    if(endpoint.startsWith('http'))
-      service = endpoint;
-    else 
-      service = `${API_URL}/${endpoint}`;
     try {
       let data;
       if (token !== undefined || token !== null || token !== '') {
         data = await axios({
           method: method,
-          url: service,
-          headers: { Authorization: `Bearer ${token}` },
+          url: endpoint,
+          headers: { 'Token': '72f862d1997f81f12e6f15Aa96194B9A9f15B4Eb' },
           data: body
         });
         return data.data;
       } else {
         data = await axios({
           method: method,
-          url: `${API_URL}/${endpoint}`,
+          url: endpoint,
           data: body
         });
         return data.data;

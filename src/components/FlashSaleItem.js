@@ -3,7 +3,7 @@ import React from "react";
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ArrowDownwardOutlinedIcon from '@material-ui/icons/ArrowDownwardOutlined';
-import {addToShoppingCart} from '../reducers/userReducer'
+import {addToShoppingCart, addViewItems} from '../reducers/userReducer'
 import store from "../store";
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
@@ -89,9 +89,13 @@ function FlashSaleItem(props)
             return val;
     }
 
+    const viewItem=()=>{
+        store.dispatch(addViewItems(data));
+    }
+
     return (
         <>
-            <Link to={"/product/"+ data.ID} className="link__item">
+            <Link to={"/product/"+ data.ID} className="link__item" onClick={viewItem}>
                 <div className="box__image">
                     <img src={data.Image} alt={data.Name[langcode.toUpperCase()]} className="image"/>
                 </div>
@@ -132,7 +136,8 @@ function FlashSaleItem(props)
 
             <Snackbar open={addedToCart} autoHideDuration={3000} onClose={closeAddedCartMessage}>
                 <Alert severity="success">
-                    Đã thêm thành công {qty} sản phẩm <b>{data.Name[langcode.toUpperCase()]} vào giỏ hàng</b>
+                    <div dangerouslySetInnerHTML={{__html:strings["add_to_cart_success"].replace("{0}", qty).replace("{1}", data.Name[langcode.toUpperCase()])}}>
+                    </div>
                 </Alert>
             </Snackbar>
         </>

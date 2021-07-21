@@ -12,56 +12,10 @@ const initialUserState={
         Total: 0,
         ShipFee: 0,
         Qty: 0,
-        Items: [
-            /*{
-            "ID": 1,
-            "CatID": 1,
-            "Name": {
-                "KO": "로션 피지오겔로션 200ml",
-                "EN": "Lotion Physiogel Lotion 200ml",
-                "VI": "Lotion Physiogel Lotion 200ml"
-            },
-            "Image": "https://gdimg.gmarket.co.kr/1878140710/still/280?ver=1606457884",
-            "LargeImage": "http://gdimg.gmarket.co.kr/1878140710/still/600?ver=1606457884",
-            "Price": 34300,
-            "Discount": 30,
-            "Currency": "won",
-            "Qty": 1,
-            "ShipFee": 10000,
-            "Total": 34300
-        }, {
-            "ID": 2,
-            "CatID": 1,
-            "Name": {
-                "KO": "클라리피끄 브라이트닝 에멀젼 75ml 세트",
-                "EN": "Clarifique Brightening Emulsion 75ml Set",
-                "VI": "Clarifique Brightening Emulsion 75ml Set"
-            },
-            "Image": "https://gdimg.gmarket.co.kr/1984818057/still/280?ver=1612917268",
-            "LargeImage": "http://gdimg.gmarket.co.kr/1984818057/still/600?ver=1612917268",
-            "Price": 89250,
-            "Discount": 15,
-            "Currency": "won",
-            "Qty": 1,
-            "ShipFee": 10000,
-            "Total": 89250
-        }, {
-            "ID": 3,
-            "CatID": 1,
-            "Name": {
-                "KO": "에센셜 파워 에멀젼(모이스춰) 120ml/건성 스킨로션",
-                "EN": "Essential Power Emulsion (Moisture) 120ml/Dry Skin Lotion",
-                "VI": "Essential Power Emulsion (Moisture) 120ml/Sữa dưỡng da khô"
-            },
-            "Image": "https://gdimg.gmarket.co.kr/1887689290/still/280?ver=1600145530",
-            "LargeImage": "http://gdimg.gmarket.co.kr/1887689290/still/600?ver=1600145530",
-            "Price": 27900,
-            "Discount": 0,
-            "Qty": 1,
-            "ShipFee": 10000,
-            "Total": 27900
-        }*/]
-    }
+        Items: []
+    },
+    viewedItems: [
+    ]
 }
 
 export const openAuthForm = (form)=> async(dispatch)=>{
@@ -81,7 +35,9 @@ export const logout=()=>async(dispatch)=>{
         Token: null
     }})
 }
-
+export const addViewItems=(item)=>async(dispatch)=>{
+    dispatch({type: "ADD_VIEW_ITEM", payload: item});
+}
 export const addToShoppingCart=(item)=>async(dispatch)=>{
     dispatch({type: "ADD_TO_CART", payload: item});
 }
@@ -120,6 +76,17 @@ const UserReducer = (state=initialUserState, action)=>{
                 ...state,
                 authFormOpen: false
             }
+        }
+        case "ADD_VIEW_ITEM":
+        {
+            const viewItem = action.payload;
+            let lstItems = state.viewedItems;
+            lstItems.push(viewItem);
+            return {
+                ...state,
+                viewedItems: lstItems
+            }
+            
         }
         case "ADD_TO_CART":
         {

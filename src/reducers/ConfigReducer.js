@@ -4,6 +4,16 @@ const initialConfigState={
         wonvnd: 20.29,
         wonwon: 1
     },
+    intenationalShipFee: {
+        weightUnit: 12500,
+        volumeUnit: 12500
+    },
+    shipServices: {
+        ghtk: {
+            service: 'https://services.giaohangtietkiem.vn/services/shipment/fee',
+            token: '72f862d1997f81f12e6f15Aa96194B9A9f15B4Eb'
+        }
+    },
     authStatus:{
         module: ''
     }
