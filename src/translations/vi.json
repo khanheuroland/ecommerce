@@ -86,6 +86,7 @@
     "billing_information": "Thông tin thanh toán",
     "total_goods": "Tổng tiền hàng",
     "delivery_charge": "Phí giao hàng",
+    "delivery_address": "Địa chỉ giao hàng",
     "total": "TỔNG CỘNG",
     "purchase": "Mua hàng",
     "covid_note": "Do ảnh hưởng của dịch Covid-19, một số khu vực có thể nhận hàng chậm hơn dự kiến. Chúng tôi đang nỗ lực giao các đơn hàng trong thời gian sớm nhất. Cám ơn sự thông cảm của quý khách.",
@@ -101,5 +102,9 @@
     "buy_now": "Mua ngay",
     "viewed_product_list": "Sản phẩm bạn đã xem",
     "cart_empty": "Hiện không có sản phẩm nào trong giỏ hàng của bạn.",
-    "add_to_cart_success": "Đã thêm {0} sản phẩm <b>{1}</b> vào giỏ hàng của bạn"
+    "add_to_cart_success": "Đã thêm {0} sản phẩm <b>{1}</b> vào giỏ hàng của bạn",
+    "shipping_by": "Vận chuyển bởi",
+    "wards": "Xã/Phường",
+    "district": "Quận/Huyện",
+    "province": "Tỉnh/Thành phố"
 }

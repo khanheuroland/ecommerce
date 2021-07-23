@@ -86,6 +86,7 @@
     "billing_information": "결제 정보",
     "total_goods": "지불 금액",
     "delivery_charge": "배송료",
+    "delivery_address": "배달 주소",
     "total": "합계",
     "purchase": "매수",
     "covid_note": "코로나19의 영향으로 일부 지역은 예상보다 상품 수령이 늦어질 수 있습니다. 우리는 가능한 한 빨리 주문을 전달하기 위해 열심히 노력하고 있습니다. 이해해 주셔서 감사합니다.",
@@ -101,5 +102,9 @@
     "buy_now": "지금 구매",
     "viewed_product_list": "조회한 제품",
     "cart_empty": "장바구니에 담긴 상품이 없습니다.",
-    "add_to_cart_success": "장바구니에 {0} 제품 <b>{1}</b>을(를) 추가했습니다."
+    "add_to_cart_success": "장바구니에 {0} 제품 <b>{1}</b>을(를) 추가했습니다.",
+    "shipping_by": "배송",
+    "wards": "병동",
+    "district": "지구",
+    "province": "지방"
 }

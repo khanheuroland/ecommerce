@@ -1,12 +1,17 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { useParams } from "react-router"
 import { useSelector, connect } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 import {multilanguage, changeLanguage, loadLanguages} from "redux-multilanguage";
 
 import PageHeaderComponent from '../components/PageHeaderComponent';
 import FooterComponent from '../components/FooterComponent';
 import Alert from '@material-ui/lab/Alert';
 import shipService from "../services/ship.service";
+import Snackbar from '@material-ui/core/Snackbar';
+import store from "../store";
+import {addToShoppingCart} from '../reducers/userReducer'
+import {openAuthForm} from "../reducers/userReducer";
 
 var data = require('../assets/dumpdata.json');
 
@@ -17,15 +22,70 @@ function DetailPage(props)
     const product = useSelector((state)=>{
         return data.Products.filter(c=>c.ID==id)[0];//state.configReducer.popularProducts
     })
+    const history = useHistory();
+
+    const [qty, setQty] = React.useState(1);
+    const [addedToCart, setAddedToCart] = React.useState(false);
+    const increase=()=>{
+        if(qty<100)
+            setQty(qty+1);
+    }
+
+    const decrease=()=>{
+        if(qty>1)
+            setQty(qty-1);
+    }
+
+    const addToCart=()=>{
+        if(userContext.profile.Token!=null)
+        {
+            product.Qty = qty;
+            product.ShipFee = (domesticFee + getPrice(getShipFee(), "won", strings["currencycode"], false));
+            store.dispatch(addToShoppingCart(product));
+            setAddedToCart(true);
+
+            history.push("/shoppingcart");
+        }
+        else
+        {
+            store.dispatch(openAuthForm("signin"));
+        }
+    }
+
+    const closeAddedCartMessage=(event, reason)=>{
+        if(reason === 'clickaway')
+        {
+            return;
+        }
+        setAddedToCart(false);
+    }
 
     const intenationalShipFee  =useSelector((state)=>{
         return state.configReducer.intenationalShipFee
     })
 
-    const domesticShip=()=>{
-        let shipInfo = shipService('ghtk', "Quận 1 TP Hồ Chí Minh", "TP Hồ Chí Minh", "Quận 1", 950, 1125000);
-        return shipInfo.fee;
-    }
+    const [domesticFee, setDomesticFee] = useState(null);
+    const [total, setTotal] = useState(0);
+    useEffect(() => {
+        async function getDomesticFee() {
+            if(userContext.profile.Address && userContext.profile.Address.length>0)
+            {
+                let result = await shipService('ghtk', 
+                userContext.profile.Address[0].Address, 
+                userContext.profile.Address[0].Province, 
+                userContext.profile.Address[0].District, product.Weight?product.Weight*1000:1000, getPrice(product.Price, "won", "vnd", false));
+                setTotal(result.Fee*qty+getPrice(getShipFee(), "won", "vnd", false)*qty + getPrice(product.Price, "won", "vnd", false)*qty)
+                return setDomesticFee(
+                    getPrice(result.Fee, "vnd", strings["currencycode"], false)
+                );
+            }
+            else
+            {
+                setTotal(getPrice(product.Price, "won", "vnd", false)*qty + getPrice(getShipFee(), "won", "vnd", false)*qty)
+            }
+        }
+        getDomesticFee();
+    });
 
     const currencyRate = useSelector((state)=>{
         return state.configReducer.currencyRate
@@ -48,28 +108,34 @@ function DetailPage(props)
     }
 
     const getShipFee=()=>{
-        let weight = Math.ceil(product.Weight);
-        let size = Math.ceil(product.Size);
+        if(product.Weight && product.Size)
+        {
+            let weight = Math.ceil(product.Weight);
+            let size = Math.ceil(product.Size);
 
-        let fee = weight*intenationalShipFee.weightUnit> size*intenationalShipFee.volumeUnit?weight*intenationalShipFee.weightUnit:size*intenationalShipFee.volumeUnit;
-        return getPrice(fee);
+            let fee = weight*intenationalShipFee.weightUnit> size*intenationalShipFee.volumeUnit?weight*intenationalShipFee.weightUnit:size*intenationalShipFee.volumeUnit;
+            return fee;
+        }
+        return 0;
     }
 
-    const getPrice = (price, fromCurrency="won")=>{
+    const getPrice = (price, fromCurrency="won", toCurrency = strings["currencycode"],isFormat=true)=>{
         let val;
-        if(currentLanguageCode=="vi")
+        let convertedPrice = price*currencyRate[fromCurrency+toCurrency];
+
+        if(toCurrency=="vnd" || toCurrency=="won")
         {
-            val = (Math.round(price*currencyRate[fromCurrency+strings["currencycode"]]/100))*100;
+            val = (Math.round(convertedPrice/100))*100;
         }
-        else if(currentLanguageCode=="en")
+        else if(toCurrency=="usd")
         {
-            val = (price*currencyRate[fromCurrency+strings["currencycode"]]).toFixed(2);
+            val = convertedPrice.toFixed(2);
         }
         else
         {
             val = price;
         }
-        if(val>999)
+        if(val>999 && isFormat)
         {
             let reverted = val.toString().split('').reverse();
             let formatted=[]
@@ -147,10 +213,10 @@ function DetailPage(props)
                                             {
                                                 userContext.profile.Address && userContext.profile.Address.length>0 &&
                                                 <div className="box__others-item">
-                                                    <div className="box__others-title" style={{display: "block"}}>Delivery address</div>
+                                                    <div className="box__others-title" style={{display: "block"}}>{strings["delivery_address"]}</div>
                                                     <div className="delivery-box" style={{padding:"5px"}}>
                                                         <Alert severity="info">
-                                                            {userContext.profile.Address[0].Address} <br/> Xã/Phường: {userContext.profile.Address[0].Ward} - Quận/Huyện: {userContext.profile.Address[0].District} - Thành phố/Tỉnh: {userContext.profile.Address[0].Province}
+                                                            {userContext.profile.Address[0].Address} <br/> {strings["wards"]}: {userContext.profile.Address[0].Ward} - {strings["district"]}: {userContext.profile.Address[0].District} - {strings["province"]}: {userContext.profile.Address[0].Province}
                                                         </Alert>
                                                     </div>
                                                 </div>
@@ -158,31 +224,35 @@ function DetailPage(props)
                                             <div className="box__others-item">
                                                 <span className="detail_item_icon weight_icon"></span>
                                                 <div className="box__others-title">{strings["estimated_weight"]}</div>
-                                                <div className="box__others-content"><span className="text__letter-s">0.94 kg</span></div>
+                                                <div className="box__others-content"><span className="text__letter-s">{product.Weight} kg</span></div>
                                             </div>
                                             <div className="box__others-item">
                                                 <span className="detail_item_icon package_icon"></span>
                                                 <div className="box__others-title">{strings["estimated_package"]}</div>
-                                                <div className="box__others-content"><span className="text__letter-s">0.5 liter</span></div>
+                                                <div className="box__others-content"><span className="text__letter-s">{product.Size} liter</span></div>
                                             </div>
                                             <div className="box__others-item box__others-item--full ">
                                                 <span className="detail_item_icon ship_fee"></span>
                                                 <div className="box__others-title">{strings["international_shipping_fee"]}</div>
-                                                <div className="box__others-content"><p className="text__delivery-price">{getShipFee()} {strings["currency"]}<span className="text__others--point"></span></p></div>
+                                                <div className="box__others-content"><p className="text__delivery-price">{getPrice(getShipFee())}<span className="text__others--point"> {strings["currency"]}</span></p></div>
                                             </div>
-                                            <div className="box__others-item box__others-item--full ">
-                                                <span className="detail_item_icon ship_fee"></span>
-                                                <div className="box__others-title">{strings["domestic_shipping_fee"]}</div>
-                                                <div className="box__others-content">
-                                                    <p className="text__delivery-price">
-                                                        <div className="box__others-title" style={{display: "table-cell"}}>{domesticShip()}</div>
-                                                        <div className="domestic-transporter" style={{display: "table-cell", textAlign: "right", paddingRight: "40px", fontWeight: "normal"}}>
-                                                            <img src="http://giaohangtietkiem.vn/wp-content/uploads/2015/10/logo.png" style={{width:"24px"}}/> GHTK
-                                                            <button type="button" className="button__accordion"><i className="sprite__img-accopen">open</i></button>
-                                                        </div>
-                                                    </p>
+                                            {
+                                                domesticFee!=null &&
+                                                <div className="box__others-item box__others-item--full ">
+                                                    <span className="detail_item_icon ship_fee"></span>
+                                                    <div className="box__others-title">{strings["domestic_shipping_fee"]}</div>
+                                                    <div className="box__others-content">
+                                                        <p className="text__delivery-price">
+                                                            <div className="box__others-title" style={{display: "table-cell"}}>{domesticFee} {strings["currency"]}</div>
+                                                            <div className="domestic-transporter" style={{display: "table-cell", textAlign: "right", paddingRight: "40px", fontWeight: "normal"}}>
+                                                                <img src="http://giaohangtietkiem.vn/wp-content/uploads/2015/10/logo.png" style={{width:"24px"}}/> {strings["shipping_by"]}: GHTK
+                                                                <button type="button" className="button__accordion"><i className="sprite__img-accopen">open</i></button>
+                                                            </div>
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            }
+                                            
                                             <div className="box__others-item js-accordion-item">
                                                 <div className="box__others-title"><i className="sprite__img-air">aviation</i>{strings["ship_start_on"]}</div>
                                                 <div className="box__others-content"><span className="text__others--point text__letter-s">{getDeliveryStartDate()}</span></div>
@@ -194,13 +264,13 @@ function DetailPage(props)
                                                     <div className="box__choice-info">
                                                         <div className="box__choice-ctrl  box__choice--col">
                                                             <div className="box__choice-ctrlbox">
-                                                                <button className="button__plus" type="button"><i className="sprite__img-plus">수량증가</i></button>
-                                                                <button className="button__minus" type="button"><i className="sprite__img-minus">수량감소</i></button>
-                                                                <input className="form__ctrl-num" type="text" maxlength="3" title="수량" value="1"/>
+                                                                <button className="button__plus" type="button" onClick={increase}><i className="sprite__img-plus">수량증가</i></button>
+                                                                <button className="button__minus" type="button" onClick={decrease}><i className="sprite__img-minus">수량감소</i></button>
+                                                                <input className="form__ctrl-num" type="text" maxLength="3" title="수량" value={qty}/>
                                                             </div>
                                                         </div>
                                                         <div className="box__choice--col box__choice-total">
-                                                            <span className="text__choice-foreign">{getPrice(product.Price, "won")} {strings["currency"]}</span>
+                                                            <span className="text__choice-foreign">{getPrice(total, "vnd", strings["currencycode"])} {strings["currency"]}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -208,12 +278,12 @@ function DetailPage(props)
                                         </div>
                                         <div className="box__button-buy">
                                             <div className="box__button--col">
-                                                <button type="button" className="button__basic-default" id="_cartAction">
+                                                <button type="button" className="button__basic-default" id="_cartAction" onClick={addToCart}>
                                                     {strings["add_to_cart"]}
                                                 </button>
                                             </div>
                                             <div className="box__button--col">
-                                                <button type="button" className="button__basic-primary" id="_buyAction">
+                                                <button type="button" className="button__basic-primary" id="_buyAction" onClick={addToCart}>
                                                     {strings["buy_now"]}
                                                 </button>
                                             </div>
@@ -224,6 +294,14 @@ function DetailPage(props)
                         </div>
                     </div>
             </div>
+            <Snackbar open={addedToCart} autoHideDuration={3000} onClose={closeAddedCartMessage}>
+                <Alert severity="success">
+                    {strings["add_to_cart_success"] &&
+                        <div dangerouslySetInnerHTML={{__html:strings["add_to_cart_success"].replace("{0}", qty).replace("{1}", product.Name[currentLanguageCode.toUpperCase()])}}>
+                        </div>
+                    }
+                </Alert>
+            </Snackbar>
             <FooterComponent/>
         </>
     )

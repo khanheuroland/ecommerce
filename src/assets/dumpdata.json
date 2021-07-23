@@ -11,7 +11,7 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/1878140710/still/600?ver=1606457884",
         "Price": 34300,
         "Discount": 30,
-        "Weight": 0.4,
+        "Weight": 0.5,
         "Size": 0.6,
         "Currency": "won",
         "tag": "new"
@@ -41,6 +41,8 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/1887689290/still/600?ver=1600145530",
         "Price": 27900,
         "Discount": 0,
+        "Weight":0.36,
+        "Size":0.5,
         "Currency": "won"
     }, {
         "ID": 4,
@@ -53,6 +55,8 @@
         "Image": "https://gdimg.gmarket.co.kr/1142347562/still/280?ver=1625100631",
         "LargeImage": "http://gdimg.gmarket.co.kr/1142347562/still/600?ver=1625100631",
         "Price": 22400,
+        "Weight": 0.45,
+        "Size":0.6,
         "Discount": 30,
         "Currency": "won",
         "tag": "new"
@@ -67,6 +71,8 @@
         "Image": "https://gdimg.gmarket.co.kr/1142347562/still/280?ver=1625100631",
         "LargeImage": "http://gdimg.gmarket.co.kr/1142347562/still/600?ver=1625100631",
         "Price": 22400,
+        "Weight": 0.4,
+        "Size":0.65,
         "Discount": 0,
         "Currency": "won",
         "tag": "freeship"
@@ -94,6 +100,8 @@
         "Image": "https://gdimg.gmarket.co.kr/2084804835/still/280?ver=1617850044",
         "LargeImage": "http://gdimg.gmarket.co.kr/2084804835/still/600?ver=1617850044",
         "Price": 26800,
+        "Weight":0.4,
+        "Size":0.55,
         "Discount": 0,
         "Currency": "won",
         "tag": "new"
@@ -122,6 +130,8 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/2120756255/still/600?ver=1621740204",
         "Price": 40940,
         "Discount": 30,
+        "Weight":0.25,
+        "Size":0.45,
         "Currency": "won",
         "tag": "new"
     }, {
@@ -136,7 +146,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/2120756255/still/600?ver=1621740204",
         "Price": 144000,
         "Discount": 0,
-        "Currency": "won"
+        "Weight": 0.25,
+        "Size":0.4,
+        "Currency": "won",
+        "tag": "best"
     }, {
         "ID": 11,
         "CatID": 1,
@@ -149,7 +162,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/1673951572/still/600?ver=1618291744",
         "Price": 25900,
         "Discount": 0,
-        "Currency": "won"
+        "Weight": 1.25,
+        "Size": 0.96,
+        "Currency": "won",
+        "tag": "best"
     }, {
         "ID": 12,
         "CatID": 1,
@@ -162,7 +178,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/2016733324/still/600?ver=1611561013",
         "Price": 16960,
         "Discount": 60,
-        "Currency": "won"
+        "Weight": 0.45,
+        "Size":0.6,
+        "Currency": "won",
+        "tag": "best"
     }, {
         "ID": 13,
         "CatID": 2,
@@ -175,6 +194,8 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/2122253582/still/600?ver=1621921311",
         "Price": 82900,
         "Discount": 0,
+        "Weight":0.3,
+        "Size":0.5,
         "Currency": "won",
         "tag": "freeship"
     }, {
@@ -188,8 +209,11 @@
         "Image": "https://gdimg.gmarket.co.kr/2122114912/still/280?ver=1621911665",
         "LargeImage": "http://gdimg.gmarket.co.kr/2122114912/still/600?ver=1621911665",
         "Price": 35900,
+        "Weight": 0.56,
+        "Size":0.6,
         "Discount": 0,
-        "Currency": "won"
+        "Currency": "won",
+        "tag": "best"
     }, {
         "ID": 15,
         "CatID": 2,
@@ -201,6 +225,8 @@
         "Image": "https://gdimg.gmarket.co.kr/877610305/still/280?ver=1621488378",
         "LargeImage": "http://gdimg.gmarket.co.kr/877610305/still/600?ver=1621488378",
         "Price": 21900,
+        "Weight":0.25,
+        "Size":0.3,
         "Discount": 12,
         "Currency": "won",
         "tag": "freeship"
@@ -216,6 +242,8 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/1553240611/still/600?ver=1625150226",
         "Price": 36960,
         "Discount": 4,
+        "Weight":0.35,
+        "Size":0.4,
         "Currency": "won",
         "tag": "freeship"
     }, {
@@ -230,6 +258,8 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/1710011863/still/600?ver=1606982378",
         "Price": 10900,
         "Discount": 0,
+        "Weight":0.45,
+        "Size":0.65,
         "Currency": "won",
         "tag": "new"
     }, {
@@ -244,7 +274,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/814805625/still/600?ver=1612328793",
         "Price": 9900,
         "Discount": 20,
-        "Currency": "won"
+        "Weight": 0.1,
+        "Size": 0.3,
+        "Currency": "won",
+        "tag": "best"
     }, {
         "ID": 19,
         "CatID": 3,
@@ -270,6 +303,8 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/1830647215/still/600?ver=1615971271",
         "Price": 36900,
         "Discount": 7,
+        "Weight":0.25,
+        "Size":0.5,
         "Currency": "won",
         "tag": "new"
     }, {
@@ -284,7 +319,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/1531221443/still/600?ver=1611629250",
         "Price": 17900,
         "Discount": 10,
-        "Currency": "won"
+        "Weight": 2,
+        "Size": 5,
+        "Currency": "won",
+        "tag": "best"
     }, {
         "ID": 22,
         "CatID": 4,
@@ -323,7 +361,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/1469834469/still/600?ver=1618771496",
         "Price": 35000,
         "Discount": 2,
-        "Currency": "won"
+        "Weight": 0.3,
+        "Size":2,
+        "Currency": "won",
+        "tag": "best"
     }, {
         "ID": 25,
         "CatID": 4,
@@ -335,8 +376,11 @@
         "Image": "https://gdimg.gmarket.co.kr/2144276383/still/280?ver=1624083389",
         "LargeImage": "http://gdimg.gmarket.co.kr/2144276383/still/600?ver=1624083389",
         "Price": 6900,
+        "Weight":0.1,
+        "Size":0.2,
         "Discount": 0,
-        "Currency": "won"
+        "Currency": "won",
+        "tag": "popular"
     }, {
         "ID": 26,
         "CatID": 4,
@@ -349,7 +393,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/1992594509/still/600?ver=1609217403",
         "Price": 9800,
         "Discount": 0,
-        "Currency": "won"
+        "Weight":0.4,
+        "Size":0.5,
+        "Currency": "won",
+        "tag": "best"
     }, {
         "ID": 27,
         "CatID": 4,
@@ -362,7 +409,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/2142304805/still/600?ver=1623921370",
         "Price": 23800,
         "Discount": 0,
-        "Currency": "won"
+        "Weight":0.65,
+        "Size":0.9,
+        "Currency": "won",
+        "tag": "popular"
     }, {
         "ID": 28,
         "CatID": 5,
@@ -388,7 +438,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/2072414982/still/600?ver=1623669300",
         "Price": 30900,
         "Discount": 0,
-        "Currency": "won"
+        "Weight":0.1,
+        "Size":0.25,
+        "Currency": "won",
+        "tag": "popular"
     }, {
         "ID": 30,
         "CatID": 5,
@@ -492,7 +545,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/806737314/still/600?ver=1618906573",
         "Price": 28800,
         "Discount": 0,
-        "Currency": "won"
+        "Weight":0.25,
+        "Size":0.4,
+        "Currency": "won",
+        "tag": "popular"
     }, {
         "ID": 38,
         "CatID": 6,
@@ -544,7 +600,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/1647210837/still/600?ver=1612340396",
         "Price": 22300,
         "Discount": 20,
-        "Currency": "won"
+        "Weight": 0.6,
+        "Size":2,
+        "Currency": "won",
+        "tag": "best"
     }, {
         "ID": 42,
         "CatID": 6,
@@ -557,7 +616,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/2092956615/still/600?ver=1618806805",
         "Price": 10900,
         "Discount": 8,
-        "Currency": "won"
+        "Weight":0.36,
+        "Size":0.5,
+        "Currency": "won",
+        "tag": "popular"
     }, {
         "ID": 42,
         "CatID": 7,
@@ -622,7 +684,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/1709829723/still/600?ver=1606955877",
         "Price": 17500,
         "Discount": 0,
-        "Currency": "won"
+        "Weight":0.15,
+        "Size":0.3,
+        "Currency": "won",
+        "tag": "popular"
     }, {
         "ID": 47,
         "CatID": 7,
@@ -674,7 +739,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/2113650699/still/600?ver=1620960642",
         "Price": 59900,
         "Discount": 0,
-        "Currency": "won"
+        "Size":0.2,
+        "Weight":0.15,
+        "Currency": "won",
+        "tag": "popular"
     }, {
         "ID": 51,
         "CatID": 7,
@@ -712,8 +780,11 @@
         "Image": "https://gdimg.gmarket.co.kr/1941760084/still/280?ver=1617335360",
         "LargeImage": "http://gdimg.gmarket.co.kr/1941760084/still/600?ver=1617335360",
         "Price": 18000,
+        "Weight": 0.35,
+        "Size":0.4,
         "Discount": 0,
-        "Currency": "won"
+        "Currency": "won",
+        "tag": "best"
     }, {
         "ID": 54,
         "CatID": 7,
@@ -726,7 +797,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/1867155715/still/600?ver=1597821259",
         "Price": 11000,
         "Discount": 0,
-        "Currency": "won"
+        "Weight":0.15,
+        "Size":0.2,
+        "Currency": "won",
+        "tag": "popular"
     }, {
         "ID": 55,
         "CatID": 7,
@@ -765,7 +839,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/127767547/still/600?ver=1610417570",
         "Price": 29800,
         "Discount": 0,
-        "Currency": "won"
+        "Size":0.6,
+        "Weight":0.75,
+        "Currency": "won",
+        "tag": "popular"
     }, {
         "ID": 58,
         "CatID": 8,
@@ -777,6 +854,8 @@
         "Image": "https://gdimg.gmarket.co.kr/1927014270/still/280?ver=1604304231",
         "LargeImage": "http://gdimg.gmarket.co.kr/1927014270/still/600?ver=1604304231",
         "Price": 39600,
+        "Weight":0.35,
+        "Size":0.5,
         "Discount": 0,
         "Currency": "won",
         "tag": "freeship"
@@ -792,7 +871,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/1815356534/still/600?ver=1617335663",
         "Price": 24500,
         "Discount": 0,
-        "Currency": "won"
+        "Weight":0.45,
+        "Size":0.5,
+        "Currency": "won",
+        "tag": "popular"
     }, {
         "ID": 60,
         "CatID": 8,
@@ -805,7 +887,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/1870734174/still/600?ver=1618463919",
         "Price": 34900,
         "Discount": 30,
-        "Currency": "won"
+        "Weight":1.2,
+        "Size":1,
+        "Currency": "won",
+        "tag": "popular"
     }, {
         "ID": 61,
         "CatID": 8,
@@ -831,6 +916,8 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/162634553/still/600?ver=1612399995",
         "Price": 26500,
         "Discount": 0,
+        "Weight":0.25,
+        "Size":0.3,
         "Currency": "won",
         "tag": "freeship"
     }, {
@@ -911,7 +998,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/2089723156/still/600?ver=1618394478",
         "Price": 12900,
         "Discount": 18,
-        "Currency": "won"
+        "Size":0.3,
+        "Weight":0.5,
+        "Currency": "won",
+        "tag": "popular"
     }, {
         "ID": 69,
         "CatID": 9,
@@ -924,7 +1014,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/2135962741/still/600?ver=1623223293",
         "Price": 20900,
         "Discount": 30,
-        "Currency": "won"
+        "Weight":0.25,
+        "Size":0.4,
+        "Currency": "won",
+        "tag": "popular"
     }, {
         "ID": 70,
         "CatID": 9,
@@ -950,7 +1043,10 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/2135966880/still/600?ver=1623223536",
         "Price": 15900,
         "Discount": 33,
-        "Currency": "won"
+        "Weight":0.15,
+        "Size":0.4,
+        "Currency": "won",
+        "tag": "popular"
     }, {
         "ID": 72,
         "CatID": 9,
@@ -973,10 +1069,13 @@
             "VI": "Kem chống nắng Waterful Essence 50ml 1 + 1"
         },
         "Image": "https://gdimg.gmarket.co.kr/1887286570/still/280?ver=1623907342",
-        "LargeImage": "http://item.gmarket.co.kr/Item?goodscode=1887286570",
+        "LargeImage": "http://gdimg.gmarket.co.kr/1887286570/still/600?ver=1625837248",
         "Price": 32000,
         "Discount": 50,
-        "Currency": "won"
+        "Weight":0.15,
+        "Size":0.3,
+        "Currency": "won",
+        "tag": "popular"
     }, {
         "ID": 74,
         "CatID": 9,
@@ -1015,6 +1114,9 @@
         "LargeImage": "http://gdimg.gmarket.co.kr/2079139668/still/600?ver=1623288257",
         "Price": 38700,
         "Discount": 10,
-        "Currency": "won"
+        "Size":0.3,
+        "Weight":0.21,
+        "Currency": "won",
+        "tag": "popular"
     }]
 }

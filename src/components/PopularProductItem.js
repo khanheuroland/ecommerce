@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector } from 'react-redux';
-
+import { Link } from 'react-router-dom';
+import store from "../store";
+import { addViewItems} from '../reducers/userReducer'
 function PopularProductItem(props)
 {
     const langcode = props.langcode;
@@ -43,8 +45,12 @@ function PopularProductItem(props)
             return val;
     }
 
+    const viewItem=()=>{
+        store.dispatch(addViewItems(data));
+    }
+
     return (
-        <a href={"/product/"+ data.ID} className="link__item">
+        <Link to={"/product/"+ data.ID} className="link__item" onClick={viewItem}>
             <div className="box__image">
                 <img src={data.Image} alt={data.Name[langcode.toUpperCase()]} className="image"/>
             </div>
@@ -55,7 +61,7 @@ function PopularProductItem(props)
                     <span className="text__price">{getCurrency(data.Price, data.Currency)}</span>
                 <span className="text__unit">{strings["currency"]}</span></div>
             </div>
-        </a>
+        </Link>
     )
 }
 

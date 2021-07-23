@@ -24,21 +24,23 @@ const ShoppingCartPage = (props) => {
         return state.configReducer.currencyRate
     })
     
-    const getPrice = (price, fromCurrency="won")=>{
+    const getPrice = (price, fromCurrency="won", toCurrency = strings["currencycode"],isFormat=true)=>{
         let val;
-        if(currentLanguageCode=="vi")
+        let convertedPrice = price*currencyRate[fromCurrency+toCurrency];
+
+        if(toCurrency=="vnd" || toCurrency=="won")
         {
-            val = (Math.round(price*currencyRate[fromCurrency+strings["currencycode"]]/100))*100;
+            val = (Math.round(convertedPrice/100))*100;
         }
-        else if(currentLanguageCode=="en")
+        else if(toCurrency=="usd")
         {
-            val = (price*currencyRate[fromCurrency+strings["currencycode"]]).toFixed(2);
+            val = convertedPrice.toFixed(2);
         }
         else
         {
             val = price;
         }
-        if(val>999)
+        if(val>999 && isFormat)
         {
             let reverted = val.toString().split('').reverse();
             let formatted=[]
@@ -83,7 +85,7 @@ const ShoppingCartPage = (props) => {
                                 <div className="col-left">{strings["total_goods"]}:</div>
                                 <div className="col-right">
                                     {
-                                        getPrice(cart.Total)
+                                        getPrice(cart.Total, 'won', strings["currencycode"], true)
                                     }
                                     <span style={{marginLeft: "5px"}}>{strings["currency"]}</span>
                                 </div>
@@ -93,7 +95,7 @@ const ShoppingCartPage = (props) => {
                                 <div className="col-left">{strings["delivery_charge"]}:</div>
                                 <div className="col-right">
                                     {
-                                        getPrice(cart.ShipFee)
+                                        getPrice(cart.ShipFee, strings["currencycode"], strings["currencycode"], true)
                                     }
                                     <span style={{marginLeft: "5px"}}>{strings["currency"]}</span>
                                 </div>
@@ -103,9 +105,7 @@ const ShoppingCartPage = (props) => {
                                 <div className="col-left"><b>{strings["total"]}</b></div>
                                 <div className="col-right"><b style={{fontSize: "18px", color: "#f57224"}}>
                                     {
-                                       getPrice(
-                                        cart.Total + cart.ShipFee
-                                        )
+                                       getPrice(getPrice(cart.Total, 'won', strings["currencycode"], false) + cart.ShipFee, strings["currencycode"], strings["currencycode"], true)
                                     }
                                     <span style={{marginLeft: "5px"}}>{strings["currency"]}</span>
                                     </b></div>

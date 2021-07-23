@@ -2,7 +2,10 @@ const initialConfigState={
     currencyRate: {
         wonusd: 0.00088,
         wonvnd: 20.29,
-        wonwon: 1
+        wonwon: 1,
+        vndvnd:1,
+        vndwon: 0.04928,
+        vndusd: 0.0000426
     },
     intenationalShipFee: {
         weightUnit: 12500,

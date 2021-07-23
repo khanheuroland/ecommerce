@@ -101,7 +101,6 @@ const UserReducer = (state=initialUserState, action)=>{
                 {
                     isUpdated=true;
                     item.Qty += addedItem.Qty;
-                    item.Total += addedItem.Total;
                 }
             });
 
@@ -113,8 +112,8 @@ const UserReducer = (state=initialUserState, action)=>{
             return{
                 ...state,
                 shoppingCart: {
-                    Total: state.shoppingCart.Total + addedItem.Total,
-                    ShipFee: 0,
+                    Total: state.shoppingCart.Total + addedItem.Price*addedItem.Qty,
+                    ShipFee: state.shoppingCart.ShipFee + addedItem.ShipFee*addedItem.Qty,
                     Qty: state.shoppingCart.Qty + addedItem.Qty,
                     Items: cartItems
                 }
@@ -125,11 +124,19 @@ const UserReducer = (state=initialUserState, action)=>{
             const removeItem = action.payload;
             let cartItems = state.shoppingCart.Items;
             let removeIndex=-1;
+            let Total=0;
+            let ShipFee=0;
+            let Qty=0;
             cartItems.forEach((item, index) => {
                 if(item.ID === removeItem.ID)
                 {
                     removeIndex = index;
-                    return;
+                }
+                else
+                {
+                    Total += item.Qty*item.Price;
+                    ShipFee += item.Qty*item.ShipFee;
+                    Qty += item.Qty;
                 }
             });
             cartItems.splice(removeIndex,1);
@@ -138,9 +145,9 @@ const UserReducer = (state=initialUserState, action)=>{
                 return {
                     ...state,
                     shoppingCart: {
-                        Total: state.shoppingCart.Total - removeItem.Total,
-                        ShipFee: 0,
-                        Qty: state.shoppingCart.Qty - removeItem.Qty,
+                        Total: Total,
+                        ShipFee: ShipFee,
+                        Qty: Qty,
                         Items: cartItems
                     }
                 }
@@ -150,23 +157,22 @@ const UserReducer = (state=initialUserState, action)=>{
         case "CHANGE_QTY":
         {
             const changedItem = action.payload;
-            let cartItems = state.shoppingCart.Items;
-            let total = state.shoppingCart.Total;
-            let qty = state.shoppingCart.Qty;
+            const cartItems = state.shoppingCart.Items.slice();
+            let Total=0;
+            let ShipFee=0;
+            let Qty=0;
             cartItems.forEach(item => {
-                if(item.ID === changedItem.ID)
-                {
-                    item.Qty = changedItem.Qty;
-                    item.Total = changedItem.Total;
-                }
+                Total += item.Qty*item.Price;
+                ShipFee += item.Qty*item.ShipFee;
+                Qty += item.Qty;
             });
-            
+
             return {
                 ...state,
                 shoppingCart: {
-                    Total: cartItems.reduce((a, b)=>{return {Total: a.Total + b.Total}}).Total,
-                    ShipFee: 0,
-                    Qty: cartItems.reduce((a, b)=>{return {Qty: a.Qty + b.Qty}}).Qty,
+                    Total: Total,
+                    ShipFee: ShipFee,
+                    Qty: Qty,
                     Items: cartItems
                 }
             }

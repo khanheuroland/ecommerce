@@ -1,10 +1,10 @@
-import callApi from '../utils/ghtkAPI'
+import callApi from '../utils/callApi'
 
 async function getShipFee(service, address, province, district, weight, value){
     let endpoint="";
     if(service=="ghtk")
-        endpoint = "https://services.giaohangtietkiem.vn/services/shipment/fee"
-    let response = await callApi(endpoint +"/?address="+ encodeURIComponent(address) + "&province="+ encodeURIComponent(province) + "&district="+encodeURIComponent(district) + "&pick_province=H%C3%A0%20n%E1%BB%99i&pick_district=Qu%E1%BA%ADn%20H%C3%A0%20%C4%90%C3%B4ng&weight="+weight+"&value="+value) ;
+        endpoint = "Order/getGHTKFee"
+    let response = await callApi(endpoint +"/?address="+ address + "&province="+ province + "&district="+district + "&weight="+weight+"&value="+value) ;
     return response;
 }
 

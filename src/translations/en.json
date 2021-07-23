@@ -88,6 +88,7 @@
     "billing_information": "Billing Information",
     "total_goods": "Payment",
     "delivery_charge": "Delivery charges",
+    "delivery_address": "Delivery address",
     "total": "TOTAL",
     "purchase": "Purchase",
     "covid_note": "Due to the impact of the Covid-19 epidemic, some areas may receive goods later than expected. We are working hard to deliver orders as soon as possible. Thank you for your understanding.",
@@ -103,6 +104,10 @@
     "buy_now": "Buy now",
     "viewed_product_list": "Your Viewed Products",
     "cart_empty": "There are no products in your cart.",
-    "add_to_cart_success": "Added {0} product <b>{1}</b> to your shopping cart"
+    "add_to_cart_success": "Added {0} product <b>{1}</b> to your shopping cart",
+    "shipping_by": "Shipping by",
+    "wards": "Wards",
+    "district": "District",
+    "province": "Province"
 
 }

@@ -4,11 +4,13 @@ import {multilanguage} from "redux-multilanguage";
 import {connect} from "react-redux";
 import FlashSaleItem from './FlashSaleItem';
 
+var data = require('../assets/dumpdata.json');
+
 function FlashSaleProductCoponent(props)
 {
     const {strings, currentLanguageCode} = props;
     const bestProducts = useSelector((state)=>{
-        return []//state.configReducer.popularProducts
+        return data.Products.filter(c=>c.tag=='popular');
       })
 
     return (

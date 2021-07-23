@@ -14,7 +14,6 @@ import ViewedProductPage from "./pages/ViewedProductPage";
 class App extends React.Component {
   componentDidMount(){
     this.loadLanguages();
-    //store.dispatch(fetchUser())
   }
   loadLanguages(){
     this.props.dispatch(

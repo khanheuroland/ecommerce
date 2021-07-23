@@ -5,12 +5,17 @@ import BestProductItem from "./BestProductItem";
 import {multilanguage} from "redux-multilanguage";
 import {connect} from "react-redux";
 
+var data = require('../assets/dumpdata.json');
+
 function BestProductComponent(props)
 {
     const {strings, currentLanguageCode} = props;
     const bestProducts = useSelector((state)=>{
+        /*
         let viewItems =  state.userReducer.viewedItems.slice();
         return viewItems.reverse();
+        */
+        return data.Products.filter(c=>c.tag=='best') ;
     })
 
     let slide = [];

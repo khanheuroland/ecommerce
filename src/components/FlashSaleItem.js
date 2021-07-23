@@ -8,6 +8,7 @@ import store from "../store";
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 import {openAuthForm} from "../reducers/userReducer";
+import shipService from "../services/ship.service";
 
 function FlashSaleItem(props)
 {
@@ -31,11 +32,16 @@ function FlashSaleItem(props)
             setQty(qty-1);
     }
 
-    const addToCart=()=>{
+    const addToCart= async ()=>{
         if(userContext.profile.Token!=null)
         {
+            let result = await shipService('ghtk', 
+                userContext.profile.Address[0].Address, 
+                userContext.profile.Address[0].Province, 
+                userContext.profile.Address[0].District, data.Weight?data.Weight*1000:1000, getPrice(data.Price, "won", "vnd", false));
+
             data.Qty = qty;
-            data.Total = qty*data.Price;
+            data.ShipFee = getPrice(getShipFee(), "won", strings["currencycode"], false) + getPrice(result.Fee, "vnd",  strings["currencycode"], false);
             store.dispatch(addToShoppingCart(data));
             setAddedToCart(true);
         }
@@ -57,28 +63,46 @@ function FlashSaleItem(props)
         return state.configReducer.currencyRate
     })
 
-    const getPrice = (price, fromCurrency="won")=>{
-        let val;
-        if(langcode==="vi")
+    const intenationalShipFee  =useSelector((state)=>{
+        return state.configReducer.intenationalShipFee
+    })
+
+    const getShipFee=()=>{
+        if(data.Weight && data.Size)
         {
-            val = (Math.round(price*currencyRate[fromCurrency+strings["currencycode"]]/100))*100;
+            let weight = Math.ceil(data.Weight);
+            let size = Math.ceil(data.Size);
+
+            let fee = weight*intenationalShipFee.weightUnit> size*intenationalShipFee.volumeUnit?weight*intenationalShipFee.weightUnit:size*intenationalShipFee.volumeUnit;
+            return fee;
         }
-        else if(langcode==="en")
+        return 1*intenationalShipFee.weightUnit;
+    }
+
+     const getPrice = (price, fromCurrency="won", toCurrency = strings["currencycode"],isFormat=true)=>{
+        let val;
+        let convertedPrice = price*currencyRate[fromCurrency+toCurrency];
+
+        if(toCurrency=="vnd" || toCurrency=="won")
         {
-            val = (price*currencyRate[fromCurrency+strings["currencycode"]]).toFixed(2);
+            val = (Math.round(convertedPrice/100))*100;
+        }
+        else if(toCurrency=="usd")
+        {
+            val = convertedPrice.toFixed(2);
         }
         else
         {
             val = price;
         }
-        if(val>999)
+        if(val>999 && isFormat)
         {
             let reverted = val.toString().split('').reverse();
             let formatted=[]
             for(let i=1; i<=reverted.length; i++)
             {
                 formatted.push(reverted[i-1]);
-                if(i%3===0 && i!==reverted.length)
+                if(i%3==0 && i!=reverted.length)
                 {
                     formatted.push(strings["currency_group"]);
                 }
@@ -136,8 +160,10 @@ function FlashSaleItem(props)
 
             <Snackbar open={addedToCart} autoHideDuration={3000} onClose={closeAddedCartMessage}>
                 <Alert severity="success">
-                    <div dangerouslySetInnerHTML={{__html:strings["add_to_cart_success"].replace("{0}", qty).replace("{1}", data.Name[langcode.toUpperCase()])}}>
-                    </div>
+                    {strings["add_to_cart_success"] &&
+                        <div dangerouslySetInnerHTML={{__html:strings["add_to_cart_success"].replace("{0}", qty).replace("{1}", data.Name[langcode.toUpperCase()])}}>
+                        </div>
+                    }
                 </Alert>
             </Snackbar>
         </>

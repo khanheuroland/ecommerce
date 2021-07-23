@@ -20,7 +20,6 @@ function ShoppingCartItem(props)
         {
             setQty(qty+1);
             data.Qty = qty+1;
-            data.Total = (qty+1)*data.Price;
             store.dispatch(adjustQtyShoppingCart(data));
         }
             
@@ -31,7 +30,6 @@ function ShoppingCartItem(props)
         {
             setQty(qty-1);
             data.Qty = qty-1;
-            data.Total = (qty-1)*data.Price;
             store.dispatch(adjustQtyShoppingCart(data));
         }
     }
@@ -44,21 +42,23 @@ function ShoppingCartItem(props)
         return state.configReducer.currencyRate
     })
 
-    const getPrice = (price, fromCurrency="won")=>{
+    const getPrice = (price, fromCurrency="won", toCurrency = strings["currencycode"],isFormat=true)=>{
         let val;
-        if(langcode=="vi")
+        let convertedPrice = price*currencyRate[fromCurrency+toCurrency];
+
+        if(toCurrency=="vnd" || toCurrency=="won")
         {
-            val = (Math.round(price*currencyRate[fromCurrency+strings["currencycode"]]/100))*100;
+            val = (Math.round(convertedPrice/100))*100;
         }
-        else if(langcode=="en")
+        else if(toCurrency=="usd")
         {
-            val = (price*currencyRate[fromCurrency+strings["currencycode"]]).toFixed(2);
+            val = convertedPrice.toFixed(2);
         }
         else
         {
             val = price;
         }
-        if(val>999)
+        if(val>999 && isFormat)
         {
             let reverted = val.toString().split('').reverse();
             let formatted=[]
