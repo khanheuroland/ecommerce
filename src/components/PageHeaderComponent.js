@@ -280,15 +280,15 @@ function PageHeaderComponent(props) {
                                 <ul className="list__usermenu">
                                     {
                                         userContext.profile.Token==null&&
-                                        <li className="list-item"><a href="javascript:void(0)" className="link__usermenu" onClick={()=>{handleOpen("signin")}}>{strings["signIn"]}</a></li>
+                                        <li className="list-item"><a href="#" className="link__usermenu" onClick={()=>{handleOpen("signin")}}>{strings["signIn"]}</a></li>
                                     }
                                     {
                                         userContext.profile.Token==null&&
-                                        <li className="list-item"><a href="javascript:void(0)" className="link__usermenu" onClick={()=>{handleOpen("signup")}}>{strings["signUp"]}</a></li>
+                                        <li className="list-item"><a href="#" className="link__usermenu" onClick={()=>{handleOpen("signup")}}>{strings["signUp"]}</a></li>
                                     }
                                     {
                                         userContext.profile.Token &&
-                                        <li className="list-item"><a href="javascript:void(0)" className="link__usermenu" aria-controls="profile-menu" aria-haspopup="true" onClick={openProfile}>{strings["hello"]} <b>{userContext.profile.FullName}</b></a>
+                                        <li className="list-item"><a href="#" className="link__usermenu" aria-controls="profile-menu" aria-haspopup="true" onClick={openProfile}>{strings["hello"]} <b>{userContext.profile.FullName}</b></a>
                                             <Menu
                                                 id="profile-menu"
                                                 anchorEl={profileEl}
@@ -301,7 +301,7 @@ function PageHeaderComponent(props) {
                                         </li>
                                     }
                                     <li className="list-item">
-                                        <a href="javascript:void(0)" className="link__usermenu" onClick={handleClickOpenTrackingOrder}>{strings["trackingorder"]}</a>
+                                        <a href="#" className="link__usermenu" onClick={handleClickOpenTrackingOrder}>{strings["trackingorder"]}</a>
                                     </li>
                                     <li className="list-item list-item--global">
                                         <button type="button" id="button__usermenu--global" className="button__usermenu sprite__common--after"

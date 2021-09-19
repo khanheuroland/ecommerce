@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default async function callApi(endpoint, method = 'GET', body, token) {
     let API_URL = 'http://app.testmaster.vn/api';
-    //let API_URL = 'http://10.10.15.54/Youngsante/api';
+    //let API_URL = 'http://192.168.1.144/Youngsante/api';
     let service = '';
     if(endpoint.startsWith('http'))
       service = endpoint;
