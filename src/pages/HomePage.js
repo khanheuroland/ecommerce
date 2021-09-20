@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useEffect} from "react"
 import PageHeaderComponent from '../components/PageHeaderComponent';
 import MenuSliderComponent from '../components/MenuSliderComponent';
 import BestProductComponent from '../components/BestProductComponent';
@@ -7,10 +7,15 @@ import FreeShipProductComponent from "../components/FreeShipProductComponent";
 import FlashSaleProductCoponent from '../components/FlashSaleProductCoponent';
 import FooterComponent from '../components/FooterComponent';
 import LoadingOverlay from "react-loading-overlay";
+import productsvc from "../services/product.service";
 
 function HomePage(props)
 {
-    const [loaddata, setLoadData] = React.useState(true);
+    const [loaddata, setLoadData] = React.useState(false);
+
+    useEffect(() => {
+       productsvc.getCategoryList();
+    });
 
     return(
         <>
