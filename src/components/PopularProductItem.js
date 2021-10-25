@@ -8,7 +8,7 @@ function PopularProductItem(props)
     const langcode = props.langcode;
     const data = props.data;
     const strings = props.translation;
-
+    
     const currencyRate = useSelector((state)=>{
         return state.configReducer.currencyRate
     })
@@ -55,7 +55,18 @@ function PopularProductItem(props)
                 <img src={data.Image} alt={data.Name[langcode.toUpperCase()]} className="image"/>
             </div>
             <div className="box__information">
-                <span className="text__tag" style={{backgroundColor:'#00B8A4'}}>{strings[data.tag]}</span>
+                {
+                    data.Tags.indexOf('best')!=-1 &&
+                        <span class="text__tag" style={{backgroundColor:"#2d8ce6"}}>{strings["best"]}</span>
+                }
+                {
+                    data.Tags.indexOf('sale')!=-1 &&
+                        <span class="text__tag" style={{backgroundColor:"#FF8C05"}}>{strings["flashsale"]}</span>
+                }
+                {
+                    data.Tags.indexOf('freeship')!=-1 &&
+                        <span class="text__tag" style={{backgroundColor:"#3452B8"}}>{strings["freeship"]}</span>
+                }
                 <div className="text__name">{data.Name[langcode.toUpperCase()]}</div>
                 <div className="box__price">
                     <span className="text__price">{getCurrency(data.Price, data.Currency)}</span>

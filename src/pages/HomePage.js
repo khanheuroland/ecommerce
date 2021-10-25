@@ -15,6 +15,9 @@ function HomePage(props)
 
     useEffect(() => {
        productsvc.getCategoryList();
+       productsvc.getProductListByTagName('best');
+       productsvc.getProductListByTagName('popular');
+       productsvc.getProductListByTagName('freeship');
     });
 
     return(

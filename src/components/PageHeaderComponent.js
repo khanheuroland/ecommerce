@@ -135,8 +135,10 @@ function PageHeaderComponent(props) {
         return state.userReducer
     })
 
-    const viewedItems = useSelector((state)=>{
-        return state.userReducer.viewedItems;
+    const viewedItems = userContext.viewedItems;
+
+    const categories = useSelector((state)=>{
+        return state.configReducer.categories;
     })
 
     const handleClickAway = () => {
@@ -215,51 +217,15 @@ function PageHeaderComponent(props) {
                                         showMenu ?
                                           (
                                             <ul className="list__category-all">
-                                                <li className="list-item__1depth">
-                                                    <Link to="/category/1/skinCare" onClick={openCategoryMenu}>
-                                                        <span className="link__1depth-item">{strings["menu_skinCare"]}</span>
-                                                    </Link>
-                                                </li>
-                                                <li className="list-item__1depth">
-                                                    <Link to="/category/2/perfume" onClick={openCategoryMenu}>
-                                                        <span className="link__1depth-item">{strings["menu_perfume"]}</span>
-                                                    </Link>
-                                                </li>
-                                                <li className="list-item__1depth">
-                                                    <Link to="/category/3/beautyAccessories" onClick={openCategoryMenu}>
-                                                        <span className="link__1depth-item">{strings["menu_beautyAccessories"]}</span>
-                                                    </Link>
-                                                </li>
-                                                <li className="list-item__1depth">
-                                                    <Link to="/category/4/nailCare" onClick={openCategoryMenu}>
-                                                        <span className="link__1depth-item">{strings["menu_nailCare"]}</span>
-                                                    </Link>
-                                                </li>
-                                                <li className="list-item__1depth">
-                                                    <Link to="/category/5/colorMakeup" onClick={openCategoryMenu}>
-                                                        <span className="link__1depth-item">{strings["menu_colorMakeup"]}</span>
-                                                    </Link>
-                                                </li>
-                                                <li className="list-item__1depth">
-                                                    <Link to="/category/6/cleansingPeeling" onClick={openCategoryMenu}>
-                                                        <span className="link__1depth-item">{strings["menu_cleansingPeeling"]}</span>
-                                                    </Link>
-                                                </li>
-                                                <li className="list-item__1depth">
-                                                    <Link to="/category/7/mask" onClick={openCategoryMenu}>
-                                                        <span className="link__1depth-item">{strings["menu_mask"]}</span>
-                                                    </Link>
-                                                </li>
-                                                <li className="list-item__1depth">
-                                                    <Link to="/category/8/menCosmetics" onClick={openCategoryMenu}>
-                                                        <span className="link__1depth-item">{strings["menu_menCosmetics"]}</span>
-                                                    </Link>
-                                                </li>
-                                                <li className="list-item__1depth">
-                                                    <Link to="/category/9/sunCare" onClick={openCategoryMenu}>
-                                                        <span className="link__1depth-item">{strings["menu_sunCare"]}</span>
-                                                    </Link>
-                                                </li>
+                                                {
+                                                    categories.map((item, index)=>(
+                                                        <li className="list-item__1depth">
+                                                            <Link to={"/category/"+item.id} onClick={openCategoryMenu}>
+                                                                <span className="link__1depth-item">{item.Name[currentLanguageCode.toUpperCase()]}</span>
+                                                            </Link>
+                                                        </li>
+                                                    ))
+                                                }
                                             </ul>
                                           ):null
                                       }

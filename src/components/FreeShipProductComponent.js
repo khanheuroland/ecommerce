@@ -10,7 +10,8 @@ function FreeShipProductComponent(props)
 {
     const {strings, currentLanguageCode} = props;
     const freeshipProducts = useSelector((state)=>{
-        return data.Products.filter(c=>c.tag=='freeship').slice(1, 7)//state.configReducer.freeshipProducts
+        let lstProducts =  state.configReducer.freeShipProducts;
+        return lstProducts;
     })
 
     return (

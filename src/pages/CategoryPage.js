@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useEffect} from "react"
 import PageHeaderComponent from '../components/PageHeaderComponent';
 import { useParams } from "react-router"
 import { useSelector, connect } from 'react-redux';
@@ -12,11 +12,22 @@ var data = require('../assets/dumpdata.json');
 
 function CategoryPage(props)
 {
-    let {catId, catName} = useParams();
+    let {catId} = useParams();
     const {strings, currentLanguageCode} = props;
     const bestProducts = useSelector((state)=>{
         return data.Products.filter(c=>c.CatID==catId) ;//state.configReducer.popularProducts
     })
+    
+    const categories = useSelector((state)=>{
+        return state.configReducer.categories;
+    })
+
+    const [catName, updateCatName] = React.useState('');
+    
+    useEffect(() => {
+        var cat = categories.filter((item)=>{return item.ID==catId});
+        updateCatName(cat[0].Name[currentLanguageCode.toUpperCase()]);
+    });
 
     return(
         <>
@@ -25,7 +36,7 @@ function CategoryPage(props)
                     <div className="section__main-inner">
                         <div className="box__superdeal">
                             <h2 className="text__title">
-                                {strings["menu_"+catName]}
+                                {catName}
                                 <span className="layout-change">
                                     <AppsOutlinedIcon className="active"/>
                                     <DnsOutlinedIcon/>

@@ -11,11 +11,11 @@ function BestProductComponent(props)
 {
     const {strings, currentLanguageCode} = props;
     const bestProducts = useSelector((state)=>{
-        /*
-        let viewItems =  state.userReducer.viewedItems.slice();
-        return viewItems.reverse();
-        */
-        return data.Products.filter(c=>c.tag=='best') ;
+        
+        let bestProducts =  state.configReducer.bestProducts;
+        return bestProducts;
+        
+        //return data.Products.filter(c=>c.tag=='best') ;
     })
 
     let slide = [];
@@ -41,13 +41,13 @@ function BestProductComponent(props)
                                 navigation
                             >
                                 {
-                                    slide.map((s, index)=>(
+                                    slide.map((s, slideIndex)=>(
                                         <SwiperSlide>
                                             <ul className="list__item" id={s}>
                                                 {
                                                     bestProducts.slice(s*5, 5*(s+1)).map((item, index)=>(
                                                         <li key={item.id} className="list-item">
-                                                            <BestProductItem data={item} index={1+ index} langcode = {currentLanguageCode} translation={strings}></BestProductItem>
+                                                            <BestProductItem data={item} index={slideIndex*5 + index+1} langcode = {currentLanguageCode} translation={strings}></BestProductItem>
                                                         </li>
                                                     ))
                                                 }

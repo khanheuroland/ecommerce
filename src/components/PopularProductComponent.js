@@ -10,7 +10,8 @@ function PopularProductComponent(props)
 {
     const {strings, currentLanguageCode} = props;
     const popularProducts = useSelector((state)=>{
-        return data.Products.filter(c=>c.tag=='new');//state.configReducer.popularProducts
+        let popularProducts =  state.configReducer.popularProducts;
+        return popularProducts;
     })
 
     return (
